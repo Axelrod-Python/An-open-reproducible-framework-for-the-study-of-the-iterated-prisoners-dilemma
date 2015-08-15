@@ -1,16 +1,52 @@
 \documentclass{article}
 
-\begin{document}
+% Nicer bibliography management
+\usepackage[backend=biber, backref=true, firstinits=true, url=true, isbn=true]{biblatex}
+\addbibresource{references.bib}
+%-----------------------------
 
-\title{Title of paper}
+% Lazy page formating (we can adjust when submitting)
+\usepackage{fullpage}
+\usepackage[parfill]{parskip}
+%-----------------------------
+
+\title{An open reproducible framework for the study of the iterated prisoner's
+dilemma}
+
+\author{Karol Langner\\
+        \and
+        Marc Harper\\
+        \and
+        Owen Campbell\\
+        \and
+        Vincent Knight\\
+}
+
+\date{\today}
+
+\begin{document}
 
 \maketitle
 
-Original paper by Axelrod and Hamilton \cite{1981-Axelrod-Hamilton}.
+\section{Introduction}\label{sec:introduction}
 
-Some recent discussion of memory one strategies \cite{press2012iterated, stewart2012extortion}.
+\begin{itemize}
+\item Review of the tournament itself;
+      Original paper by Axelrod and Hamilton~\cite{1981-Axelrod-Hamilton}.
+      Some recent discussion of memory one strategies~\cite{press2012iterated, stewart2012extortion}.
 
-\bibliography{references.bib}
-\bibliographystyle{unsrt}
+\item Discussion about open reproducible science (there are some reference
+      around) (Python, git, github etc\dots)
+\item Overview of the library (what it can do, what has been done with it)
+\item Point at Sections~\ref{sec:reproducing-previous-tournaments}
+      and~\ref{sec:new-strategies-and-implications}.
+\end{itemize}
 
+\section{Reproducing previous tournaments}\label{sec:reproducing-previous-tournaments}
+
+\section{New strategies and implications}\label{sec:new-strategies-and-implications}
+
+\section{Conclusion}\label{sec:conclusion}
+
+\printbibliography
 \end{document}
