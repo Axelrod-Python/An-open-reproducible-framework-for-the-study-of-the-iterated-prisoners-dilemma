@@ -13,13 +13,13 @@
 \title{An open reproducible framework for the study of the iterated prisoner's
 dilemma}
 
-\author{Karol Langner\\
+\author{Owen Campbell\\
         \and
         Marc Harper\\
         \and
-        Owen Campbell\\
-        \and
         Vincent Knight\\
+        \and
+        Karol Langner\\
 }
 
 \date{\today}
@@ -29,6 +29,38 @@ dilemma}
 \maketitle
 
 \section{Introduction}\label{sec:introduction}
+
+In 1980, Axelrod wrote two papers:~\cite{Axelrod1980a,Axelrod1980b} which
+described a computer tournament that has been at the origin of a majority of
+game theoretic work~\cite{readallthepapers}.
+
+The tournament is based on an iterated game (see~\cite{Maschler2013} or similar
+for details) where two players repeatedly play the normal form game of
+(\ref{equ:one-shot}) in full knowledge of each others playing history to date:
+
+\begin{equation}
+    \begin{pmatrix}
+        3,3 & 0,5\\
+        5,0 & 1,1
+    \end{pmatrix}
+    \label{equ:one-shot}
+\end{equation}
+
+The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. This is a game with the following rhetoric:
+
+\begin{quote}
+    Two players have committed some sort of crime and have been separated for
+    questioning, if they \textit{Cooperate} which each other and do not confess
+    they will receive a reduced sentence (corresponding to the advantageous utility
+    of \(3\) in (\ref{equ:one-shot})). If however, one of them cooperate and the
+    other \textit{Defects} then the cooperator will receive a heavier sentence
+    (corresponding to a utility of \(0\)) and the defector will be offered a deal
+    (corresponding to a utility of \(5\)). If both players defect they both receive
+    longer sentences (corresponding to a utility of \(1\)).
+\end{quote}
+
+Axelrod's tournaments (and further implementations of these) are sometimes
+referred to as Iterated Prisoner's Dilemma tournaments.
 
 \begin{itemize}
 \item Review of the tournament itself;
