@@ -43,7 +43,7 @@ theoretic work~\cite{Banks1990, Bendor2015, Boyd1987, Chellapilla1999,
     Lorberbaum1994, Milgrom1982, Molander1985, Murnighan2015, Press2012,
 Stephens2002, Stewart2012}. As described in~\cite{Bendor2015} this work has not
 only had mathematical impact but has also led to insights in biology (for
-example in~\cite{Chellapilla1999}, a real tournament where Blu Jays are the
+example in~\cite{Stephens2002}, a real tournament where Blu Jays are the
 participants is described) and in particular to the study of evolution.
 
 The tournament is based on an iterated game (see~\cite{Maschler2013} or similar
@@ -76,7 +76,22 @@ Two players must choose between \textit{Cooperate} (\(C\)) and \textit{Defect}
 The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Numerical
 values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature. Axelrod's
 tournaments (and further implementations of these) are sometimes referred to as
-Iterated Prisoner's Dilemma tournaments.
+Iterated Prisoner's Dilemma tournaments, an overview of published tournaments is
+given in Table~\ref{tab:tournament}.
+
+\begin{table}[!hbtp]
+    \begin{center}
+        \begin{tabular}{ccccc}
+            \toprule
+            Year & Reference            & Number of Strategies & Type     & Reproducible\\
+            \midrule
+            1979 & \cite{Axelrod1980a}  & 13                   & Standard & With difficulty\\
+            1979 & \cite{Axelrod1980b}  & 64                   & Standard & With difficulty\\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \caption{An overview of published tournaments}\label{tab:tournaments}
+\end{table}
 
 \begin{itemize}
 \item Review of the tournament itself;
