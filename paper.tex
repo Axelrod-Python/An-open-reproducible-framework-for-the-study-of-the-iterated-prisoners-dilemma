@@ -10,6 +10,10 @@
 \usepackage[parfill]{parskip}
 %-----------------------------
 
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
 \title{An open reproducible framework for the study of the iterated prisoner's
 dilemma}
 
@@ -30,37 +34,49 @@ dilemma}
 
 \section{Introduction}\label{sec:introduction}
 
-In 1980, Axelrod wrote two papers:~\cite{Axelrod1980a,Axelrod1980b} which
-described a computer tournament that has been at the origin of a majority of
-game theoretic work~\cite{readallthepapers}.
+As stated in~\cite{Bendor2015}: ``\textit{few works in social science have had
+the general impact of [Axelrod's study of the evolution of cooperation]}''.  In
+1980, Axelrod wrote two papers:~\cite{Axelrod1980a,Axelrod1980b} which described
+a computer tournament that has been at the origin of a majority of game
+theoretic work~\cite{Banks1990, Bendor2015, Boyd1987, Chellapilla1999,
+    DavidB1993, Doebeli2005, Ellison1994, Gotts2003, Isaac2008, Kraines1989,
+    Lorberbaum1994, Milgrom1982, Molander1985, Murnighan2015, Press2012,
+Stephens2002, Stewart2012}. As described in~\cite{Bendor2015} this work has not
+only had mathematical impact but has also led to insights in biology (for
+example in~\cite{Chellapilla1999}, a real tournament where Blu Jays are the
+participants is described) and in particular to the study of evolution.
 
 The tournament is based on an iterated game (see~\cite{Maschler2013} or similar
 for details) where two players repeatedly play the normal form game of
-(\ref{equ:one-shot}) in full knowledge of each others playing history to date:
+(\ref{equ:one-shot}) in full knowledge of each others playing history to date.
+An excellent description of the \textit{one shot} game is given
+in~\cite{Gotts2003} which is paraphrased below:
+
+Two players must choose between \textit{Cooperate} (\(C\)) and \textit{Defect}
+(\(D\)):
+
+\begin{itemize}
+    \item If both choose \(C\), they receive a payoff of \(R\)
+        (\textbf{R}eward);
+    \item If both choose \(D\), they receive a payoff of \(P\)
+        (\textbf{P}punishment);
+    \item If one chooses \(C\) and the other \(D\), the defector receives a
+        payoff of \(T\) (\textbf{T}emptation) and the cooperator a payoff of
+        \(S\) (\textbf{S}ucker).
+\end{itemize}
 
 \begin{equation}
     \begin{pmatrix}
-        3,3 & 0,5\\
-        5,0 & 1,1
-    \end{pmatrix}
+        R,R & S,T\\
+        S,S & P,P
+    \end{pmatrix}\quad\text{such that } T>R>P>S \text{ and } 2R > T + S
     \label{equ:one-shot}
 \end{equation}
 
-The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. This is a game with the following rhetoric:
-
-\begin{quote}
-    Two players have committed some sort of crime and have been separated for
-    questioning, if they \textit{Cooperate} which each other and do not confess
-    they will receive a reduced sentence (corresponding to the advantageous utility
-    of \(3\) in (\ref{equ:one-shot})). If however, one of them cooperate and the
-    other \textit{Defects} then the cooperator will receive a heavier sentence
-    (corresponding to a utility of \(0\)) and the defector will be offered a deal
-    (corresponding to a utility of \(5\)). If both players defect they both receive
-    longer sentences (corresponding to a utility of \(1\)).
-\end{quote}
-
-Axelrod's tournaments (and further implementations of these) are sometimes
-referred to as Iterated Prisoner's Dilemma tournaments.
+The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Numerical
+values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature. Axelrod's
+tournaments (and further implementations of these) are sometimes referred to as
+Iterated Prisoner's Dilemma tournaments.
 
 \begin{itemize}
 \item Review of the tournament itself;
