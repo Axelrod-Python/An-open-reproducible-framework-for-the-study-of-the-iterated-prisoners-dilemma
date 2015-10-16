@@ -50,8 +50,8 @@ following stated goals:
 \end{itemize}
 
 This library is motivated by an ongoing discussion in the academic community
-about reproducible research \cite{Crick2014a, Prlic2012, Sandve2013,
-Hong2015a}. The library is:
+about reproducible research \cite{Crick2014a, Hong2015a, Prlic2012, Sandve2013},
+and is:
 
 \begin{itemize}
     \item Open: all code is released under an MIT license;
@@ -158,25 +158,34 @@ readily available for a similar analysis.
 \subsection{Description of the Axelrod python package}\label{sec:description-of-axelrod-python}.
 
 The library is written in Python (\url{http://www.python.org/}) which is a
-popular language in the academic community with libraries developed for:
+popular language in the academic community with libraries developed for a
+variety of uses including:
 
 \begin{itemize}
     \item Machine learning (\url{http://scikit-learn.org/});
     \item Visualisation (\url{http://matplotlib.org/});
-    \item Mathematics (\url{http://www.sagemath.org/}).
+    \item Mathematics (\url{http://www.sagemath.org/});
+    \item Astrophysics (\url{http://www.astropy.org/});
+    \item Data manipulation (\url{http://pandas.pydata.org/});
+    \item Algorithmic Game Theory (\url{http://gambit.sourceforge.net/)}).
 \end{itemize}
 
-In \cite{Isaac2008} Python is described as an appropriate language for the
+Furthermore \cite{Isaac2008} Python is described as an appropriate language for the
 reproduction of Iterated Prisoner's dilemma tournaments due to it's object
 oriented nature and readability.
 
 The library itself is available at
-\url{https://github.com/Axelrod-Python/Axelrod}. This is a hosted git repository
-which. Git is a popular version control system which is one of the recommended
-aspects of reproducible research \cite{Crick2014a, Sandve2013}.
+\url{https://github.com/Axelrod-Python/Axelrod}. This is a hosted git
+repository. Git is a popular version control system which is one of the
+recommended aspects of reproducible research \cite{Crick2014a, Sandve2013}.
+
+Installation of the library is straightforward as it is available via the
+standard Python installation package: `pip'
+(\url{https://pypi.python.org/pypi}). This ensures it can be used on all major
+operating systems (Windows, OS X and Linux).
 
 Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
-the library to create a basic tournament with the graphical output shown in
+the library to create a basic tournament giving the graphical output shown in
 Figure~\ref{fig:demo_tournament}.
 
 \begin{figure}[!hbtp]
@@ -271,8 +280,8 @@ class TestGrudger(TestPlayer):
         self.responses_test([C, D, D, D], [C, C, C, C], [C])
         self.responses_test([C, C, D, D, D], [C, D, C, C, C], [D])
     \end{lstlisting}
-    \caption{Source code for the Grudger strategy.}
-    \label{fig:grudger}
+    \caption{Test code for the Grudger strategy.}
+    \label{fig:grudger_test}
 \end{figure}
 
 You can see an overview of some of the source code in Figure~\ref{fig:overview}.
