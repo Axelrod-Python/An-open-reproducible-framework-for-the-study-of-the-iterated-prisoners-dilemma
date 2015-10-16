@@ -34,6 +34,38 @@ dilemma}
 
 \section{Introduction}\label{sec:introduction}
 
+This paper introduces a software package: the Axelrod python library
+\cite{Axelrod-Pythonprojectteam2015}. The Axelrod-Python project has the
+following stated goals:
+
+\begin{itemize}
+    \item To enable the reproduction of previous Iterated Prisoner's Dilemma
+    research as easily as possible.
+    \item To produce the de-facto tool for any future Iterated Prisoner's
+    Dilemma research.
+    \item To provide as simple a means as possible for anyone to define and
+    contribute new and original Iterated Prisoner's Dilemma strategies.
+\end{itemize}
+
+This library is motivated by an ongoing discussion in the academic community
+about reproducible research \cite{Crick2014a, Prlic2012, Sandve2013,
+Hong2015a}. The library is:
+
+\begin{itemize}
+    \item Open: all code is released under an MIT license;
+    \item Reproducible: at the time of writing there is an excellent level of
+        integrated tests with 99.59\% coverage;
+    \item Documented: all features of the library are documented for ease of
+        use.
+    \item Extensive: over 100 strategies are included.
+\end{itemize}
+
+Before describing the package in more detail in
+Section~\ref{sec:description-of-axelrod-python}, an overview of some previous
+Iterated Prisoner's Dilemma research will be given.
+
+\subsection{Review of the literature}\label{sec:review}
+
 As stated in~\cite{Bendor1991}: ``\textit{few works in social science have had
 the general impact of [Axelrod's study of the evolution of cooperation]}''.  In
 1980, Axelrod wrote two papers:~\cite{Axelrod1980a,Axelrod1980b} which
@@ -76,7 +108,7 @@ Two players must choose between \textit{Cooperate} (\(C\)) and \textit{Defect}
 The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Numerical
 values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature. Axelrod's
 tournaments (and further implementations of these) are sometimes referred to as
-Iterated Prisoner's Dilemma tournaments, an overview of published tournaments is
+Iterated Prisoner's Dilemma (IPD) tournaments, an overview of published tournaments is
 given in Table~\ref{tab:tournaments}.
 
 \begin{table}[!hbtp]
@@ -96,16 +128,41 @@ given in Table~\ref{tab:tournaments}.
     \caption{An overview of published tournaments}\label{tab:tournaments}
 \end{table}
 
-\begin{itemize}
-\item Review of the tournament itself;
-      Original paper by Axelrod and Hamilton~\cite{1981-Axelrod-Hamilton}.
-      Some recent discussion of memory one strategies~\cite{press2012iterated, stewart2012extortion}.
+In \cite{Milgrom1982} describes how incomplete information can be used to
+enhance cooperation, in a similar approach to the proof of the Folk theorem for
+repeated games \cite{Maschler2013}. This aspect of incomplete information is
+also considered in \cite{Molander1985, Bendor1991, Lee2015} where ``noisy''
+tournaments randomly flip the choice made by a given strategy. In
+\cite{Murnighan2015} incomplete information is considered in the sense of a
+probabilistic termination of each round of the tournament.
 
-\item Discussion about open reproducible science (there are some reference
-      around) (Python, git, github etc\dots)
-\item Overview of the library (what it can do, what has been done with it)
-\item Point at Sections~\ref{sec:reproducing-previous-tournaments}
-      and~\ref{sec:new-strategies-and-implications}.
+As mentioned before, IPD tournaments have been studied in an evolutionary
+context: \cite{Ellison1994, Lee2015, Press2012, Stewart2012} consider this in a
+traditional evolutionary game theory context. These works investigates
+particular evolutionary contexts within which cooperation can emerge as stable.
+Often these works consider direct opposition to another strategy and disregard
+the population dynamics, for example in \cite{Lee2015} a simple machine learning
+algorithm outperforms a strategy found in \cite{Press2012}.
+
+Further to these evolutionary ideas, \cite{Chellapilla1999, DavidB1993} are
+examples of using machine learning techniques to evolve particular strategies.
+In \cite{Axelrod} Axelrod describes how similar techniques are used to
+genetically evolve a high performing strategy from a given set of strategies.
+Note that in his original work Axelrod only used a base strategy set of 12
+strategies for this evolutionary study. This is noteworthy as
+\cite{Axelrod-Pythonprojectteam2015} now boasts over 90 strategies that are
+readily available for a similar analysis.
+
+\subsection{Description of the Axelrod python package}\label{sec:description-of-axelrod-python}.
+
+\begin{itemize}
+    \item Describe library,
+    \item Perhaps include image like:
+        http://vknight.org/Talks/2015-10-12-Evolutionary-mathematics/static/outline_of_library.svg
+        (am playing with https://pycallgraph.readthedocs.org/en/master/)
+    \item Show code to create basic tournament
+    \item Show code for a strategy
+    \item Show process to contribute strategy
 \end{itemize}
 
 \section{Reproducing previous tournaments}\label{sec:reproducing-previous-tournaments}
