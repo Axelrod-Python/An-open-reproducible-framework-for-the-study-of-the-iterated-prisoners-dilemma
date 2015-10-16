@@ -7,3 +7,4 @@ paper.fls
 paper.log
 paper.run.xml
 *out
+*.ipynb_checkpoints*

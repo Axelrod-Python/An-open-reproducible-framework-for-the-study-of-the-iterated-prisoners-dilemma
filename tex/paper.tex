@@ -10,9 +10,11 @@
 \usepackage[parfill]{parskip}
 %-----------------------------
 
-\usepackage{amsmath}
-\usepackage{hyperref}
-\usepackage{booktabs}
+\usepackage{amsmath}  % Basic
+\usepackage{hyperref}  % Links etc
+\usepackage{booktabs}  % Better tables
+\usepackage{listings}  % Code
+\usepackage{graphicx}  % Images
 
 \title{An open reproducible framework for the study of the iterated prisoner's
 dilemma}
@@ -155,15 +157,143 @@ readily available for a similar analysis.
 
 \subsection{Description of the Axelrod python package}\label{sec:description-of-axelrod-python}.
 
+The library is written in Python (\url{http://www.python.org/}) which is a
+popular language in the academic community with libraries developed for:
+
 \begin{itemize}
-    \item Describe library,
-    \item Perhaps include image like:
-        http://vknight.org/Talks/2015-10-12-Evolutionary-mathematics/static/outline_of_library.svg
-        (am playing with https://pycallgraph.readthedocs.org/en/master/)
-    \item Show code to create basic tournament
-    \item Show code for a strategy
-    \item Show process to contribute strategy
+    \item Machine learning (\url{http://scikit-learn.org/});
+    \item Visualisation (\url{http://matplotlib.org/});
+    \item Mathematics (\url{http://www.sagemath.org/}).
 \end{itemize}
+
+In \cite{Isaac2008} Python is described as an appropriate language for the
+reproduction of Iterated Prisoner's dilemma tournaments due to it's object
+oriented nature and readability.
+
+The library itself is available at
+\url{https://github.com/Axelrod-Python/Axelrod}. This is a hosted git repository
+which. Git is a popular version control system which is one of the recommended
+aspects of reproducible research \cite{Crick2014a, Sandve2013}.
+
+Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
+the library to create a basic tournament with the graphical output shown in
+Figure~\ref{fig:demo_tournament}.
+
+\begin{figure}[!hbtp]
+    \begin{lstlisting}[frame=single]
+>>> import axelrod
+>>> strategies = [s() for s in axelrod.demo_strategies])
+>>> tournament = axelrod.Tournament(strategies)
+>>> results = tournament.play()
+>>> plot = axelrod.Plot(results)
+>>> plot.boxplot()
+    \end{lstlisting}
+    \caption{A simple set of commands to create a demonstration tournament. The
+        output is shown in Figure~\ref{fig:demo_tournament}.}
+    \label{fig:demo_tournament_commands}
+\end{figure}
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.8\textwidth]{../img/demo_tournament.pdf}
+    \caption{The results from a simple tournament.}
+    \label{fig:demo_tournament}
+\end{figure}
+
+This just shows the very basic utilisation of the library and further details
+can be found at the online documentation:
+\url{http://axelrod.readthedocs.org}. Some further implemented capabilities include:
+
+\begin{itemize}
+    \item Noisy tournaments;
+    \item Ecological tournaments;
+    \item Full tournament history.
+\end{itemize}
+
+As stated in Section~\ref{sec:introduction} one of the main goals of the library
+is to allow for the easy contribution of strategies. To do this requires the
+writing of a simple python class (which can inherit from other predefined
+classes). Full contribution guidelines can be found in the documentation.
+Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
+the Grudger strategy as well as it's corresponding test.
+
+\begin{figure}[!hbtp]
+    \begin{lstlisting}[frame=single]
+class Grudger(Player):
+    """A player starts by cooperating however will defect if
+       at any point the opponent has defected."""
+
+    name = 'Grudger'
+    classifier = {
+        'memory_depth': float('inf'),  # Long memory
+        'stochastic': False,
+        'inspects_source': False,
+        'manipulates_source': False,
+        'manipulates_state': False
+    }
+
+    def strategy(self, opponent):
+        """Begins by playing C, then plays D for the remaining
+           rounds if the opponent ever plays D."""
+        if opponent.defections:
+            return D
+        return C
+    \end{lstlisting}
+    \caption{Source code for the Grudger strategy.}
+    \label{fig:grudger}
+\end{figure}
+
+
+\begin{figure}[!hbtp]
+    \begin{lstlisting}[frame=single]
+class TestGrudger(TestPlayer):
+
+    name = "Grudger"
+    player = axelrod.Grudger
+    expected_classifier = {
+        'memory_depth': float('inf'),  # Long memory
+        'stochastic': False,
+        'inspects_source': False,
+        'manipulates_source': False,
+        'manipulates_state': False
+    }
+
+    def test_initial_strategy(self):
+        """
+        Starts by cooperating
+        """
+        self.first_play_test(C)
+
+    def test_strategy(self):
+        """
+        If opponent defects at any point then the player will defect forever
+        """
+        self.responses_test([C, D, D, D], [C, C, C, C], [C])
+        self.responses_test([C, C, D, D, D], [C, D, C, C, C], [D])
+    \end{lstlisting}
+    \caption{Source code for the Grudger strategy.}
+    \label{fig:grudger}
+\end{figure}
+
+You can see an overview of some of the source code in Figure~\ref{fig:overview}.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.8\textwidth]{../img/outline_of_library.pdf}
+    \caption{An overview of the source code.}
+    \label{fig:overview}
+\end{figure}
+
+To date the library has had contributions from 19 contributors from a variety of
+backgrounds. These contributions have both been in terms of strategies (one
+strategy is the creation of an undergraduate mathematics student with little
+prior knowledge of programming) as well as the architecture of the library
+itself.
+
+Before discussing the novel insights obtained from the study of this library in
+Section~\ref{sec:new-strategies-and-implications} an overview of some
+tournaments that have been reproduced will be given in
+Section~\ref{sec:reproducing-previous-tournaments}.
 
 \section{Reproducing previous tournaments}\label{sec:reproducing-previous-tournaments}
 
