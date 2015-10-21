@@ -77,7 +77,7 @@ DavidB1993, Doebeli2005, Ellison1994, Gotts2003, Hilbe2013, Isaac2008,
 Kraines1989, Lee2015, Lorberbaum1994, Milgrom1982, Molander1985, Murnighan2015,
 Press2012, Stephens2002, Stewart2012}. As described in~\cite{Bendor1991} this
 work has not only had mathematical impact but has also led to insights in
-biology (for example in~\cite{Stephens2002}, a real tournament where Blu Jays
+biology (for example in~\cite{Stephens2002}, a real tournament where Blue Jays
 are the participants is described) and in particular to the study of evolution.
 
 The tournament is based on an iterated game (see~\cite{Maschler2013} or similar
@@ -110,7 +110,7 @@ Two players must choose between \textit{Cooperate} (\(C\)) and \textit{Defect}
 The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Numerical
 values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature. Axelrod's
 tournaments (and further implementations of these) are sometimes referred to as
-Iterated Prisoner's Dilemma (IPD) tournaments, an overview of published tournaments is
+Iterated Prisoner's Dilemma (IPD) tournaments. An overview of published tournaments is
 given in Table~\ref{tab:tournaments}.
 
 \begin{table}[!hbtp]
@@ -130,17 +130,17 @@ given in Table~\ref{tab:tournaments}.
     \caption{An overview of published tournaments}\label{tab:tournaments}
 \end{table}
 
-In \cite{Milgrom1982} describes how incomplete information can be used to
+\cite{Milgrom1982} describes how incomplete information can be used to
 enhance cooperation, in a similar approach to the proof of the Folk theorem for
 repeated games \cite{Maschler2013}. This aspect of incomplete information is
 also considered in \cite{Molander1985, Bendor1991, Lee2015} where ``noisy''
 tournaments randomly flip the choice made by a given strategy. In
-\cite{Murnighan2015} incomplete information is considered in the sense of a
+\cite{Murnighan2015}, incomplete information is considered in the sense of a
 probabilistic termination of each round of the tournament.
 
 As mentioned before, IPD tournaments have been studied in an evolutionary
 context: \cite{Ellison1994, Lee2015, Press2012, Stewart2012} consider this in a
-traditional evolutionary game theory context. These works investigates
+traditional evolutionary game theory context. These works investigate
 particular evolutionary contexts within which cooperation can emerge as stable.
 Often these works consider direct opposition to another strategy and disregard
 the population dynamics, for example in \cite{Lee2015} a simple machine learning
@@ -148,9 +148,9 @@ algorithm outperforms a strategy found in \cite{Press2012}.
 
 Further to these evolutionary ideas, \cite{Chellapilla1999, DavidB1993} are
 examples of using machine learning techniques to evolve particular strategies.
-In \cite{Axelrod} Axelrod describes how similar techniques are used to
+In \cite{Axelrod}, Axelrod describes how similar techniques are used to
 genetically evolve a high performing strategy from a given set of strategies.
-Note that in his original work Axelrod only used a base strategy set of 12
+Note that in his original work, Axelrod only used a base strategy set of 12
 strategies for this evolutionary study. This is noteworthy as
 \cite{Axelrod-Pythonprojectteam2015} now boasts over 90 strategies that are
 readily available for a similar analysis.
@@ -170,8 +170,8 @@ variety of uses including:
     \item Algorithmic Game Theory (\url{http://gambit.sourceforge.net/)}).
 \end{itemize}
 
-Furthermore \cite{Isaac2008} Python is described as an appropriate language for the
-reproduction of Iterated Prisoner's dilemma tournaments due to it's object
+Furthermore, \cite{Isaac2008} Python is described as an appropriate language for the
+reproduction of Iterated Prisoner's dilemma tournaments due to its object
 oriented nature and readability.
 
 The library itself is available at
@@ -224,7 +224,7 @@ is to allow for the easy contribution of strategies. To do this requires the
 writing of a simple python class (which can inherit from other predefined
 classes). Full contribution guidelines can be found in the documentation.
 Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
-the Grudger strategy as well as it's corresponding test.
+the Grudger strategy as well as its corresponding test.
 
 \begin{figure}[!hbtp]
     \begin{lstlisting}[frame=single]
