@@ -36,17 +36,36 @@ dilemma}
 
 \section{Introduction}\label{sec:introduction}
 
+Several iterated prisoner's dilemma tournaments have generated much interest,
+including Axelrod's original tournaments, two 2004 anniversary tournaments, and
+the S&P 2012 tournament following the discovery of zero-determinant strategies.
+Subsequent research has spawned an enormous number of papers, but rarely are the
+results reproducible. Among well-known tournaments, in only one case is the full
+original source code available (Axelrod's second tournament, in FORTRAN); in no
+cases is the available code well-documented, easily modifiable, or released
+with significant test suites.
+
+To make matters more complicated, often a newly-created strategy is studied in
+isolation by opponents chosen by the strategy's creators, and often such
+strategies are not sufficiently described to enable realiable recreation
+(in the absense of source code), with \cite{slany2007some} being a notable
+counter-example. In some cases strategies are revised without updates to their
+names or published implementations \cite{li2007design} \cite{li2011engineering}.
+As a result, some of the results related to these strategies and tournaments
+have not been reliably replicated, and have not met the basic scientific
+criterion of falsifiability.
+
 This paper introduces a software package: the Axelrod python library
 \cite{Axelrod-Pythonprojectteam2015}. The Axelrod-Python project has the
 following stated goals:
 
 \begin{itemize}
-    \item To enable the reproduction of previous Iterated Prisoner's Dilemma
-    research as easily as possible.
+    \item To enable the reproduction of Iterated Prisoner's Dilemma
+    research as easily as possible
     \item To produce the de-facto tool for any future Iterated Prisoner's
-    Dilemma research.
+    Dilemma research
     \item To provide as simple a means as possible for anyone to define and
-    contribute new and original Iterated Prisoner's Dilemma strategies.
+    contribute new and original Iterated Prisoner's Dilemma strategies
 \end{itemize}
 
 This library is motivated by an ongoing discussion in the academic community
@@ -55,11 +74,13 @@ and is:
 
 \begin{itemize}
     \item Open: all code is released under an MIT license;
-    \item Reproducible: at the time of writing there is an excellent level of
-        integrated tests with 99.59\% coverage;
-    \item Documented: all features of the library are documented for ease of
-        use.
-    \item Extensive: over 100 strategies are included.
+    \item Reproducible and well-tested: at the time of writing there is an excellent level of
+        integrated tests with 99.59\% coverage
+    \item Well-documented: all features of the library are documented for ease of
+        use and modification
+    \item Extensive: over 100 strategies are included, with infinitely-many
+    strategies available in the case of parameterized strategies
+    \item Extensible: easy to modify to include new strategies and to run new tournaments
 \end{itemize}
 
 Before describing the package in more detail in
