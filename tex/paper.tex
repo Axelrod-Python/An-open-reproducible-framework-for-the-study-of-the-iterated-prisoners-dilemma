@@ -47,7 +47,7 @@ with significant test suites.
 
 To make matters more complicated, often a newly-created strategy is studied in
 isolation by opponents chosen by the strategy's creators, and often such
-strategies are not sufficiently described to enable realiable recreation
+strategies are not sufficiently described to enable reliable recreation
 (in the absense of source code), with \cite{slany2007some} being a notable
 counter-example. In some cases strategies are revised without updates to their
 names or published implementations \cite{li2007design} \cite{li2011engineering}.
@@ -236,9 +236,10 @@ can be found at the online documentation:
 \url{http://axelrod.readthedocs.org}. Some further implemented capabilities include:
 
 \begin{itemize}
-    \item Noisy tournaments;
-    \item Ecological tournaments;
-    \item Full tournament history.
+    \item Noisy tournaments
+    \item Ecological tournaments
+    \item Full tournament history
+    \item Creation of plots of distributions of scores and wins
 \end{itemize}
 
 As stated in Section~\ref{sec:introduction} one of the main goals of the library
@@ -327,6 +328,9 @@ tournaments that have been reproduced will be given in
 Section~\ref{sec:reproducing-previous-tournaments}.
 
 \section{Reproducing previous tournaments}\label{sec:reproducing-previous-tournaments}
+
+S&P 2012 is fully reproducible; results are unstable (e.g. substituting soft_majo for
+hard_majo changes the results). ZD strategies do not fare well in many tournaments.
 
 \section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
