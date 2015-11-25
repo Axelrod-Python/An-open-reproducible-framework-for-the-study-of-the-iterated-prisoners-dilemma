@@ -9,3 +9,4 @@ paper.run.xml
 *out
 *.ipynb_checkpoints*
 .DS_Store
+tex/_minted-paper

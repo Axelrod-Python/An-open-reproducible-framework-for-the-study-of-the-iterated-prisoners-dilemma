@@ -13,7 +13,7 @@
 \usepackage{amsmath}  % Basic
 \usepackage{hyperref}  % Links etc
 \usepackage{booktabs}  % Better tables
-\usepackage{listings}  % Code
+\usepackage{minted}  % Code
 \usepackage{graphicx}  % Images
 
 \title{An open reproducible framework for the study of the iterated prisoner's
@@ -211,14 +211,14 @@ the library to create a basic tournament giving the graphical output shown in
 Figure~\ref{fig:demo_tournament}.
 
 \begin{figure}[!hbtp]
-    \begin{lstlisting}[frame=single]
+    \begin{minted}[breaklines, linenos, frame=lines]{python}
 >>> import axelrod
 >>> strategies = [s() for s in axelrod.demo_strategies])
 >>> tournament = axelrod.Tournament(strategies)
 >>> results = tournament.play()
 >>> plot = axelrod.Plot(results)
 >>> plot.boxplot()
-    \end{lstlisting}
+    \end{minted}
     \caption{A simple set of commands to create a demonstration tournament. The
         output is shown in Figure~\ref{fig:demo_tournament}.}
     \label{fig:demo_tournament_commands}
@@ -250,7 +250,7 @@ Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
 the Grudger strategy as well as its corresponding test.
 
 \begin{figure}[!hbtp]
-    \begin{lstlisting}[frame=single]
+    \begin{minted}[breaklines, linenos, frame=lines]{python}
 class Grudger(Player):
     """A player starts by cooperating however will defect if
        at any point the opponent has defected."""
@@ -270,14 +270,14 @@ class Grudger(Player):
         if opponent.defections:
             return D
         return C
-    \end{lstlisting}
+    \end{minted}
     \caption{Source code for the Grudger strategy.}
     \label{fig:grudger}
 \end{figure}
 
 
 \begin{figure}[!hbtp]
-    \begin{lstlisting}[frame=single]
+    \begin{minted}[breaklines, linenos, frame=lines]{python}
 class TestGrudger(TestPlayer):
 
     name = "Grudger"
@@ -302,7 +302,7 @@ class TestGrudger(TestPlayer):
         """
         self.responses_test([C, D, D, D], [C, C, C, C], [C])
         self.responses_test([C, C, D, D, D], [C, D, C, C, C], [D])
-    \end{lstlisting}
+    \end{minted}
     \caption{Test code for the Grudger strategy.}
     \label{fig:grudger_test}
 \end{figure}
