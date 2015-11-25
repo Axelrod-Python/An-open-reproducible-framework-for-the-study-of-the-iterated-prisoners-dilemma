@@ -36,17 +36,36 @@ dilemma}
 
 \section{Introduction}\label{sec:introduction}
 
+Several iterated prisoner's dilemma tournaments have generated much interest,
+including Axelrod's original tournaments, two 2004 anniversary tournaments, and
+the S&P 2012 tournament following the discovery of zero-determinant strategies.
+Subsequent research has spawned an enormous number of papers, but rarely are the
+results reproducible. Among well-known tournaments, in only one case is the full
+original source code available (Axelrod's second tournament, in FORTRAN); in no
+cases is the available code well-documented, easily modifiable, or released
+with significant test suites.
+
+To make matters more complicated, often a newly-created strategy is studied in
+isolation by opponents chosen by the strategy's creators, and often such
+strategies are not sufficiently described to enable reliable recreation
+(in the absense of source code), with \cite{slany2007some} being a notable
+counter-example. In some cases strategies are revised without updates to their
+names or published implementations \cite{li2007design} \cite{li2011engineering}.
+As a result, some of the results related to these strategies and tournaments
+have not been reliably replicated, and have not met the basic scientific
+criterion of falsifiability.
+
 This paper introduces a software package: the Axelrod python library
 \cite{Axelrod-Pythonprojectteam2015}. The Axelrod-Python project has the
 following stated goals:
 
 \begin{itemize}
-    \item To enable the reproduction of previous Iterated Prisoner's Dilemma
-    research as easily as possible.
+    \item To enable the reproduction of Iterated Prisoner's Dilemma
+    research as easily as possible
     \item To produce the de-facto tool for any future Iterated Prisoner's
-    Dilemma research.
+    Dilemma research
     \item To provide as simple a means as possible for anyone to define and
-    contribute new and original Iterated Prisoner's Dilemma strategies.
+    contribute new and original Iterated Prisoner's Dilemma strategies
 \end{itemize}
 
 This library is motivated by an ongoing discussion in the academic community
@@ -55,11 +74,13 @@ and is:
 
 \begin{itemize}
     \item Open: all code is released under an MIT license;
-    \item Reproducible: at the time of writing there is an excellent level of
-        integrated tests with 99.59\% coverage;
-    \item Documented: all features of the library are documented for ease of
-        use.
-    \item Extensive: over 100 strategies are included.
+    \item Reproducible and well-tested: at the time of writing there is an excellent level of
+        integrated tests with 99.59\% coverage
+    \item Well-documented: all features of the library are documented for ease of
+        use and modification
+    \item Extensive: over 100 strategies are included, with infinitely-many
+    strategies available in the case of parameterized strategies
+    \item Extensible: easy to modify to include new strategies and to run new tournaments
 \end{itemize}
 
 Before describing the package in more detail in
@@ -120,10 +141,11 @@ given in Table~\ref{tab:tournaments}.
             Year     & Reference           & Number of Strategies & Type     & Source Code\\
             \midrule
             1979     & \cite{Axelrod1980a} & 13                   & Standard & Not immediately available\\
-            1979     & \cite{Axelrod1980b} & 64                   & Standard & Not immediately available\\
+            1979     & \cite{Axelrod1980b} & 64                   & Standard & Available in FORTRAN\\
             1991     & \cite{Bendor1991}   & 13                   & Noisy    & Not immediately available\\
             2002     & \cite{Stephens2002} & 16                   & Wildlife & Not applicable\\
-            % Is this worth including? If so I think we need more.
+            2005     & \cite{kendall2007iterated} & 223           & Varied   & Not available \\
+            2012     & \cite{Stewart2012} & 13                    & Standard & Not fully available \\
             \bottomrule
         \end{tabular}
     \end{center}
@@ -214,9 +236,10 @@ can be found at the online documentation:
 \url{http://axelrod.readthedocs.org}. Some further implemented capabilities include:
 
 \begin{itemize}
-    \item Noisy tournaments;
-    \item Ecological tournaments;
-    \item Full tournament history.
+    \item Noisy tournaments
+    \item Ecological tournaments
+    \item Full tournament history
+    \item Creation of plots of distributions of scores and wins
 \end{itemize}
 
 As stated in Section~\ref{sec:introduction} one of the main goals of the library
@@ -306,7 +329,25 @@ Section~\ref{sec:reproducing-previous-tournaments}.
 
 \section{Reproducing previous tournaments}\label{sec:reproducing-previous-tournaments}
 
+S&P 2012 is fully reproducible; results are unstable (e.g. substituting soft_majo for
+hard_majo changes the results).
+
 \section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
+
+Ideas for this section:
+* ZD strategies -- extortionate strategies win well but no ZDs score partiocualrly well,
+even ZDGTFT2. With noise the ZD strategies don't win well either.
+* TFT, T2FT, TF2T -- no so great but variants with e.g. deadlock breaking, such as OmegaTFT,
+fare well
+* It's posible to win many matchups as well score highly -- backstabber, doublecrosser,
+foolmeonce. These strategies also score well in noisy tournaments
+* It's possible to be generally cooperative and still exploit naive strategies effective,
+such as LookerUp and MetaHunter
+* Long memory strategies are generally better
+* Meta strategies fare very well in general, also in noisy tournaments
+* Variance of score distributions is surprisingly low
+
+Plot of memory_depth vs mean score, mean wins?
 
 \section{Conclusion}\label{sec:conclusion}
 
