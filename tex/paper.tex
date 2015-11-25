@@ -38,19 +38,19 @@ dilemma}
 
 Several iterated prisoner's dilemma tournaments have generated much interest,
 including Axelrod's original tournaments, two 2004 anniversary tournaments, and
-the S&P 2012 tournament following the discovery of zero-determinant strategies.
-Subsequent research has spawned an enormous number of papers, but rarely are the
-results reproducible. Among well-known tournaments, in only one case is the full
-original source code available (Axelrod's second tournament, in FORTRAN); in no
-cases is the available code well-documented, easily modifiable, or released
-with significant test suites.
+the Stewart and Plotkin 2012 tournament following the discovery of
+zero-determinant strategies.  Subsequent research has spawned an enormous number
+of papers, but rarely are the results reproducible. Among well-known
+tournaments, in only one case is the full original source code available
+(Axelrod's second tournament, in FORTRAN); in no cases is the available code
+well-documented, easily modifiable, or released with significant test suites.
 
 To make matters more complicated, often a newly-created strategy is studied in
 isolation by opponents chosen by the strategy's creators, and often such
 strategies are not sufficiently described to enable reliable recreation
 (in the absense of source code), with \cite{slany2007some} being a notable
 counter-example. In some cases strategies are revised without updates to their
-names or published implementations \cite{li2007design} \cite{li2011engineering}.
+names or published implementations \cite{li2007design, li2011engineering}.
 As a result, some of the results related to these strategies and tournaments
 have not been reliably replicated, and have not met the basic scientific
 criterion of falsifiability.
@@ -329,8 +329,8 @@ Section~\ref{sec:reproducing-previous-tournaments}.
 
 \section{Reproducing previous tournaments}\label{sec:reproducing-previous-tournaments}
 
-S&P 2012 is fully reproducible; results are unstable (e.g. substituting soft_majo for
-hard_majo changes the results).
+Stewart and Plotkin 2012 is fully reproducible; results are unstable (e.g.\
+substituting \texttt{soft\_majo} for \texttt{hard\_majo} changes the results).
 
 \section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
@@ -347,7 +347,7 @@ such as LookerUp and MetaHunter
 * Meta strategies fare very well in general, also in noisy tournaments
 * Variance of score distributions is surprisingly low
 
-Plot of memory_depth vs mean score, mean wins?
+%Plot of memory_depth vs mean score, mean wins?
 
 \section{Conclusion}\label{sec:conclusion}
 
