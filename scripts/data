@@ -428,18 +428,6 @@
 1442267444 94 784e0c32f68bc9f4ea22071f6e2e20091c1a11de
 1442268309 94 bc4cbc4bb8e2451f9a60bd7581ec6758c7cf7ec7
 1442269176 94 d0ae3c06c9b1b0e317f29702fac5effececeb46e
-<class 'axelrod.strategies.alternator.Alternator'>
-<class 'axelrod.strategies.titfortat.AntiTitForTat'>
-<class 'axelrod.strategies.titfortat.Bully'>
-<class 'axelrod.strategies.cooperator.Cooperator'>
-<class 'axelrod.strategies.cycler.CyclerCCCCCD'>
-<class 'axelrod.strategies.cycler.CyclerCCCD'>
-<class 'axelrod.strategies.cycler.CyclerCCD'>
-<class 'axelrod.strategies.defector.Defector'>
-<class 'axelrod.strategies.gobymajority.GoByMajority'>
-<class 'axelrod.strategies.titfortat.SuspiciousTitForTat'>
-<class 'axelrod.strategies.titfortat.TitForTat'>
-<class 'axelrod.strategies.memoryone.WinStayLoseShift'>
 1442331150 94 63bb40ab447b12700b3b3188c89cce57d5b9f7f1
 1442331251 94 009a40b928c42ef1033a768e291f7c34e6837a0d
 1442331400 94 629d25dfda6077d63bed2afa74bf4547e951da36
