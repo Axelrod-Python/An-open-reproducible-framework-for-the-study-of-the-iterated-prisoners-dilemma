@@ -15,5 +15,4 @@ after_success:
 notifications:
     webhooks:
         urls:
-            - https://webhooks.gitter.im/e/3cc093037c0df458209d
-
+            - https://webhooks.gitter.im/e/0432918765b16cf8e5a9
