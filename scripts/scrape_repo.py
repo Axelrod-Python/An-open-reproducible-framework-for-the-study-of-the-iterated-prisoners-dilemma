@@ -1,3 +1,9 @@
+"""
+A script to walk through all commits of a repository.
+
+Works with `number_of_strategies.py` to get the number of strategies in the
+library at each commit.
+"""
 from git import Repo
 import axelrod
 import os

@@ -1,3 +1,11 @@
+"""
+A script to write the number of available strategies in the library to a data
+file. This is used in conjunction with scrape_repo.py to obtain the number of
+strategies at any given commit.
+
+A big thanks must go to Mario Wenzel for the discussion about this here:
+http://vknight.org/unpeudemath/code/2015/12/05/I-think-this-is-the-way-to-crawl-a-git-repository/
+"""
 from sys import argv
 import csv
 
