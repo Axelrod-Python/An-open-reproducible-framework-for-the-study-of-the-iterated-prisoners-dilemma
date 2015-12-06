@@ -213,11 +213,11 @@ Figure~\ref{fig:demo_tournament}.
 \begin{figure}[!hbtp]
     \begin{minted}[breaklines, linenos, frame=lines]{python}
 >>> import axelrod
->>> strategies = [s() for s in axelrod.demo_strategies])
+>>> strategies = [s() for s in axelrod.demo_strategies]
 >>> tournament = axelrod.Tournament(strategies)
 >>> results = tournament.play()
 >>> plot = axelrod.Plot(results)
->>> plot.boxplot()
+>>> plot.boxplot()  # doctest:+SKIP
     \end{minted}
     \caption{A simple set of commands to create a demonstration tournament. The
         output is shown in Figure~\ref{fig:demo_tournament}.}
@@ -376,28 +376,28 @@ the plot of Figure~\ref{fig:stewart_tournament}.
 >>> import axelrod
 
 >>> strategies = [axelrod.Cooperator(),
-....              axelrod.Defector(),
-....              axelrod.ZDExtort2(),
-....              axelrod.Joss(),
-....              axelrod.HardTitForTat(),
-....              axelrod.HardTitFor2Tats(),
-....              axelrod.TitForTat(),
-....              axelrod.Grudger(),
-....              axelrod.TitFor2Tats(),
-....              axelrod.WinStayLoseShift(),
-....              axelrod.Random(),
-....              axelrod.ZDGTFT2(),
-....              axelrod.GTFT(),
-....              axelrod.HardProber(),
-....              axelrod.Prober(),
-....              axelrod.Prober2(),
-....              axelrod.Prober3(),
-....              axelrod.Calculator(),
-....              axelrod.HardGoByMajority()]
+...               axelrod.Defector(),
+...               axelrod.ZDExtort2(),
+...               axelrod.Joss(),
+...               axelrod.HardTitForTat(),
+...               axelrod.HardTitFor2Tats(),
+...               axelrod.TitForTat(),
+...               axelrod.Grudger(),
+...               axelrod.TitFor2Tats(),
+...               axelrod.WinStayLoseShift(),
+...               axelrod.Random(),
+...               axelrod.ZDGTFT2(),
+...               axelrod.GTFT(),
+...               axelrod.HardProber(),
+...               axelrod.Prober(),
+...               axelrod.Prober2(),
+...               axelrod.Prober3(),
+...               axelrod.Calculator(),
+...               axelrod.HardGoByMajority()]
 >>> tournament = axelrod.Tournament(strategies)
 >>> results = tournament.play()
 >>> plot = axelrod.Plot(results)
->>> p = plot.boxplot()
+>>> plot.boxplot()  # doctest:+SKIP
     \end{minted}
     \caption{Source code for the Grudger strategy.}
     \label{fig:stewart-code}
