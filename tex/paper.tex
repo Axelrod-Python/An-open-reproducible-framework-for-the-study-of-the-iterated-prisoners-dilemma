@@ -330,8 +330,89 @@ Section~\ref{sec:reproducing-previous-tournaments}.
 
 \section{Reproducing previous tournaments}\label{sec:reproducing-previous-tournaments}
 
-Stewart and Plotkin 2012 is fully reproducible; results are unstable (e.g.\
-substituting \texttt{soft\_majo} for \texttt{hard\_majo} changes the results).
+Due to the open nature of the library the number of strategies included has
+grown at a fast pace, as can be seen in
+Figure~\ref{fig:number_of_strategies_against_date}. Despite this, due to
+previous research being done in an irreproducible way due to, for example no
+source code, and/or vaguely described strategies; not all previous tournaments
+are yet to be reproduced.
+
+\begin{figure}[!hbtp] \centering
+    \includegraphics[width=.8\textwidth]{../img/number_of_strategies_with_arima_projection.pdf}
+    \caption{The number of strategies included in the library}
+    \label{fig:number_of_strategies_against_date}
+\end{figure}
+
+One tournament that is possible to reproduce is that of
+\cite{Stewart2012}. The strategies used in that tournament are the following:
+
+\begin{enumerate}
+    \item Cooperator
+    \item Defector
+    \item ZD-Extort-2
+    \item Joss: 0.9
+    \item Hard Tit For Tat
+    \item Hard Tit For 2 Tats
+    \item Tit For Tat
+    \item Grudger
+    \item Tit For 2 Tats
+    \item Win-Stay Lose-Shift
+    \item Random: 0.5
+    \item ZD-GTFT-2
+    \item GTFT: 0.33
+    \item Hard Prober
+    \item Prober
+    \item Prober 2
+    \item Prober 3
+    \item Calculator
+    \item Hard Go By Majority
+\end{enumerate}
+
+This can be reproduced as shown in Figure~\ref{fig:stewart-code}, which gives
+the plot of Figure~\ref{fig:stewart_tournament}.
+
+\begin{figure}[!hbtp]
+    \begin{minted}[breaklines, linenos, frame=lines]{python}
+>>> import axelrod
+
+>>> strategies = [axelrod.Cooperator(),
+....              axelrod.Defector(),
+....              axelrod.ZDExtort2(),
+....              axelrod.Joss(),
+....              axelrod.HardTitForTat(),
+....              axelrod.HardTitFor2Tats(),
+....              axelrod.TitForTat(),
+....              axelrod.Grudger(),
+....              axelrod.TitFor2Tats(),
+....              axelrod.WinStayLoseShift(),
+....              axelrod.Random(),
+....              axelrod.ZDGTFT2(),
+....              axelrod.GTFT(),
+....              axelrod.HardProber(),
+....              axelrod.Prober(),
+....              axelrod.Prober2(),
+....              axelrod.Prober3(),
+....              axelrod.Calculator(),
+....              axelrod.HardGoByMajority()]
+>>> tournament = axelrod.Tournament(strategies)
+>>> results = tournament.play()
+>>> plot = axelrod.Plot(results)
+>>> p = plot.boxplot()
+    \end{minted}
+    \caption{Source code for the Grudger strategy.}
+    \label{fig:stewart-code}
+\end{figure}
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.8\textwidth]{../img/stewart_tournament.pdf}
+    \caption{The results from a simple tournament.}
+    \label{fig:stewart_tournament}
+\end{figure}
+
+Work is actively ongoing to include more strategies. In the next Section, an
+overview of some of the early and novel research insights made possible by the
+library.
 
 \section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
