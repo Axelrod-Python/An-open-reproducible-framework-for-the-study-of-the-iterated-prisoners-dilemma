@@ -5,14 +5,11 @@ Works with `number_of_strategies.py` to get the number of strategies in the
 library at each commit.
 """
 from git import Repo
-import axelrod
 import os
 import subprocess
-import time
-import csv
 
 
-path_to_repo = "../../../Axelrod"
+path_to_repo = "~/src/Axelrod"
 repo = Repo(path_to_repo)
 
 all_commits = [c for c in repo.iter_commits()]
@@ -43,7 +40,8 @@ for c in sorted(all_commits, key=lambda x:x.committed_date):
     git.checkout(c)
 
     try:
-        subprocess.call(['python2', '-B', 'number_of_strategies.py', str(c.committed_date), c.hexsha])
+        subprocess.call(['python2', '-B', 'number_of_strategies.py',
+            str(c.committed_date), c.hexsha, str(c.author)])
         dates.append(c.committed_date)
 
     except ImportError:

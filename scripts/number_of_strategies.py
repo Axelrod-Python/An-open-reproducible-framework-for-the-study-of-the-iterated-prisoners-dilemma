@@ -43,7 +43,7 @@ try:
 
     f = open('data', 'a')
     csvwrtr = csv.writer(f)
-    csvwrtr.writerow([argv[1], count, argv[2]])
+    csvwrtr.writerow([argv[1], count, argv[2], argv[3]])
     f.close()
 
 except:
