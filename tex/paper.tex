@@ -406,7 +406,7 @@ the plot of Figure~\ref{fig:stewart_tournament}.
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.8\textwidth]{../img/stewart_tournament.pdf}
-    \caption{The results from a simple tournament.}
+    \caption{The results from \cite{Stewart2012}.}
     \label{fig:stewart_tournament}
 \end{figure}
 
@@ -415,6 +415,32 @@ overview of some of the early and novel research insights made possible by the
 library.
 
 \section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
+
+In parallel to the Python library, a tournament is being kept up to date that
+pits all strategies against each other. Figure \ref{fig:tournament} shows the
+results from the full tournament.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.8\textwidth]{../img/tournament.pdf}
+    \caption{Results from the library tournament (2015-12-19)}
+    \label{fig:tournament}
+\end{figure}
+
+The current winning strategy is a novel strategy of type: \textbf{LookerUp}. This
+is a strategy that maps a given set of states to actions. The state space is
+defined generically by \(m, n\) so as to map states to actions in the following
+way:
+
+\[(\underbrace{(C, D, D, D, C, D, D, C)}_{m\text{ first actions by opponent}},
+\overbrace{((C, C), (C, C))}^{n\text{ last pairs of actions}}) \to D\]
+
+The above example is an incomplete illustration of the mapping for \(m=8, n=2\).
+Intuitively this state space uses the initial plays of the opponent to gain some
+information about the intentions of it whilst still taking in to account the
+recent play.  The actual winning strategy an instance of the this framework for
+\(m=n=2\) for which an evolutionary algorithm has been used to train it. More
+details of this can be found in \cite{mojones}.
 
 Ideas for this section:
 * ZD strategies -- extortionate strategies win well but no ZDs score partiocualrly well,
