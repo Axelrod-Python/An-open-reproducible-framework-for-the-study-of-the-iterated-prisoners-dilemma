@@ -399,7 +399,7 @@ the plot of Figure~\ref{fig:stewart_tournament}.
 >>> plot = axelrod.Plot(results)
 >>> plot.boxplot()  # doctest:+SKIP
     \end{minted}
-    \caption{Source code for the Grudger strategy.}
+    \caption{Source code for reproducing the tournament of \cite{Stewart2012}}
     \label{fig:stewart-code}
 \end{figure}
 
@@ -417,7 +417,7 @@ library.
 \section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
 In parallel to the Python library, a tournament is being kept up to date that
-pits all strategies against each other. Figure \ref{fig:tournament} shows the
+pits all strategies against each other. Figure~\ref{fig:tournament} shows the
 results from the full tournament.
 
 \begin{figure}[!hbtp]
@@ -440,20 +440,33 @@ Intuitively this state space uses the initial plays of the opponent to gain some
 information about the intentions of it whilst still taking in to account the
 recent play.  The actual winning strategy an instance of the this framework for
 \(m=n=2\) for which an evolutionary algorithm has been used to train it. More
-details of this can be found in \cite{mojones}.
+details of this can be found in \cite{mojones}. In \cite{} experiments are
+carried out to evaluate how this particular strategy behaves in environments
+other than those in which it was trained\dots
 
-Ideas for this section:
-* ZD strategies -- extortionate strategies win well but no ZDs score partiocualrly well,
-even ZDGTFT2. With noise the ZD strategies don't win well either.
-* TFT, T2FT, TF2T -- no so great but variants with e.g. deadlock breaking, such as OmegaTFT,
-fare well
-* It's posible to win many matchups as well score highly -- backstabber, doublecrosser,
-foolmeonce. These strategies also score well in noisy tournaments
-* It's possible to be generally cooperative and still exploit naive strategies effective,
-such as LookerUp and MetaHunter
-* Long memory strategies are generally better
-* Meta strategies fare very well in general, also in noisy tournaments
-* Variance of score distributions is surprisingly low
+There are various other insights that have been gained from ongoing open
+research on the library. These include:
+
+\begin{itemize}
+    \item A closer look at zero determinant strategies, showing that
+        extortionate strategies obtain a large number of wins \textit{but} do
+        not perform particularly well. This is relevant given the findings of
+        \cite{Stewart2012} in which zero determinant strategies are shown to be
+        able to perform better than a given other strategy. This finding extends
+        to noisy tournaments (which are also implemented in the library).
+    \item This negative relationship between wins and performance does not
+        generalise, there are some strategies that perform well, both in terms
+        of matches won and overall performance: Back stabber, Double crosser and
+        Fool Me Once. These strategies continue to perform well in noisy
+        tournaments.
+    \item Strategies like LookerUp and MetaHunter seem to be generally
+        cooperative yet still exploit naive strategies. The MetaHunter strategy
+        is a particular type of Meta strategy which uses a variety of other
+        strategy behaviours to choose a best action. These strategies perform
+        very well in general and continue to do so in noisy tournaments.
+\end{itemize}
+
+Details for the above can be found at \cite{}.
 
 %Plot of memory_depth vs mean score, mean wins?
 
