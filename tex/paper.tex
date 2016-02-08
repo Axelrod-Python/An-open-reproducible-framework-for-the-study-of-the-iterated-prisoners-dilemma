@@ -38,12 +38,13 @@ dilemma}
 
 Several iterated prisoner's dilemma tournaments have generated much interest,
 including Axelrod's original tournaments, two 2004 anniversary tournaments, and
-the Stewart and Plotkin 2012 tournament following the discovery of
-zero-determinant strategies.  Subsequent research has spawned an enormous number
-of papers, but rarely are the results reproducible. Among well-known
-tournaments, in only one case is the full original source code available
-(Axelrod's second tournament, in FORTRAN); in no cases is the available code
-well-documented, easily modifiable, or released with significant test suites.
+the Stewart and Plotkin 2012 tournament \cite{Stewart2012} following the
+discovery of zero-determinant strategies.  Subsequent research has spawned an
+enormous number of papers, but rarely are the results reproducible. Among
+well-known tournaments, in only one case is the full original source code
+available (Axelrod's second tournament, in FORTRAN); in no cases is the
+available code well-documented, easily modifiable, or released with significant
+test suites.
 
 To make matters more complicated, often a newly-created strategy is studied in
 isolation by opponents chosen by the strategy's creators, and often such
@@ -55,7 +56,7 @@ As a result, some of the results related to these strategies and tournaments
 have not been reliably replicated, and have not met the basic scientific
 criterion of falsifiability.
 
-This paper introduces a software package: the Axelrod python library
+This paper introduces a software package: the Axelrod Python library
 \cite{Axelrod-Pythonprojectteam2015}. The Axelrod-Python project has the
 following stated goals:
 
@@ -85,7 +86,8 @@ and is:
 
 Before describing the package in more detail in
 Section~\ref{sec:description-of-axelrod-python}, an overview of some previous
-Iterated Prisoner's Dilemma research will be given.
+Iterated Prisoner's Dilemma research will be given in
+Section~\ref{sec:review}.
 
 \subsection{Review of the literature}\label{sec:review}
 
@@ -131,8 +133,8 @@ Two players must choose between \textit{Cooperate} (\(C\)) and \textit{Defect}
 The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Numerical
 values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature. Axelrod's
 tournaments (and further implementations of these) are sometimes referred to as
-Iterated Prisoner's Dilemma (IPD) tournaments. An overview of published tournaments is
-given in Table~\ref{tab:tournaments}.
+Iterated Prisoner's Dilemma (IPD) tournaments. An incomplete overview of
+published tournaments is given in Table~\ref{tab:tournaments}.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -152,11 +154,11 @@ given in Table~\ref{tab:tournaments}.
     \caption{An overview of published tournaments}\label{tab:tournaments}
 \end{table}
 
-\cite{Milgrom1982} describes how incomplete information can be used to
-enhance cooperation, in a similar approach to the proof of the Folk theorem for
-repeated games \cite{Maschler2013}. This aspect of incomplete information is
-also considered in \cite{Molander1985, Bendor1991, Lee2015} where ``noisy''
-tournaments randomly flip the choice made by a given strategy. In
+In \cite{Milgrom1982} a description is given of how incomplete information can
+be used to enhance cooperation, in a similar approach to the proof of the Folk
+theorem for repeated games \cite{Maschler2013}. This aspect of incomplete
+information is also considered in \cite{Molander1985, Bendor1991, Lee2015} where
+``noisy'' tournaments randomly flip the choice made by a given strategy. In
 \cite{Murnighan2015}, incomplete information is considered in the sense of a
 probabilistic termination of each round of the tournament.
 
@@ -165,7 +167,7 @@ context: \cite{Ellison1994, Lee2015, Press2012, Stewart2012} consider this in a
 traditional evolutionary game theory context. These works investigate
 particular evolutionary contexts within which cooperation can emerge as stable.
 Often these works consider direct opposition to another strategy and disregard
-the population dynamics, for example in \cite{Lee2015} a simple machine learning
+the population dynamics, for example in \cite{Lee2015} a machine learning
 algorithm outperforms a strategy found in \cite{Press2012}.
 
 Further to these evolutionary ideas, \cite{Chellapilla1999, DavidB1993} are
@@ -174,10 +176,10 @@ In \cite{Axelrod}, Axelrod describes how similar techniques are used to
 genetically evolve a high performing strategy from a given set of strategies.
 Note that in his original work, Axelrod only used a base strategy set of 12
 strategies for this evolutionary study. This is noteworthy as
-\cite{Axelrod-Pythonprojectteam2015} now boasts over 90 strategies that are
+\cite{Axelrod-Pythonprojectteam2015} now boasts over 120 strategies that are
 readily available for a similar analysis.
 
-\subsection{Description of the Axelrod python package}\label{sec:description-of-axelrod-python}.
+\subsection{Description of the Axelrod Python package}\label{sec:description-of-axelrod-python}
 
 The library is written in Python (\url{http://www.python.org/}) which is a
 popular language in the academic community with libraries developed for a
@@ -231,24 +233,17 @@ Figure~\ref{fig:demo_tournament}.
     \label{fig:demo_tournament}
 \end{figure}
 
-Figure \ref{fig:demo_tournament_commands} just shows the very basic utilisation
+Figure~\ref{fig:demo_tournament_commands} just shows the very basic utilisation
 of the library and further details can be found at the online documentation:
-\url{http://axelrod.readthedocs.org}. Some further implemented capabilities
-include:
-
-\begin{itemize}
-    \item Noisy tournaments
-    \item Ecological tournaments
-    \item Full tournament history
-    \item Creation of plots of distributions of scores and wins
-\end{itemize}
+\url{http://axelrod.readthedocs.org}.
 
 As stated in Section~\ref{sec:introduction} one of the main goals of the library
 is to allow for the easy contribution of strategies. To do this requires the
-writing of a simple python class (which can inherit from other predefined
+writing of a simple Python class (which can inherit from other predefined
 classes). Full contribution guidelines can be found in the documentation.
-Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
+As an example, Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
 the Grudger strategy as well as its corresponding test.
+You can see an overview of the structure of the source code in Figure~\ref{fig:overview}.
 
 \begin{figure}[!hbtp]
     \begin{minted}[linenos, frame=lines]{python}
@@ -309,7 +304,6 @@ class TestGrudger(TestPlayer):
     \label{fig:grudger_test}
 \end{figure}
 
-You can see an overview of some of the source code in Figure~\ref{fig:overview}.
 
 \begin{figure}[!hbtp]
     \centering
@@ -318,18 +312,16 @@ You can see an overview of some of the source code in Figure~\ref{fig:overview}.
     \label{fig:overview}
 \end{figure}
 
-To date the library has had contributions from 19 contributors from a variety of
+To date the library has had contributions from 24 contributors from a variety of
 backgrounds. These contributions have both been in terms of strategies (one
 strategy is the creation of an undergraduate mathematics student with little
 prior knowledge of programming) as well as the architecture of the library
 itself.
 
-Before discussing the novel insights obtained from the study of this library in
-Section~\ref{sec:new-strategies-and-implications} an overview of some
-tournaments that have been reproduced will be given in
-Section~\ref{sec:reproducing-previous-tournaments}.
+Section~\ref{sec:new-strategies-and-implications} will describe in more detail
+some of research capabilities of the library.
 
-\section{Reproducing previous tournaments}\label{sec:reproducing-previous-tournaments}
+\section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
 Due to the open nature of the library the number of strategies included has
 grown at a fast pace, as can be seen in
@@ -413,15 +405,10 @@ the plot of Figure~\ref{fig:stewart_tournament}.
     \label{fig:stewart_tournament}
 \end{figure}
 
-Work is ongoing to include more strategies. In the next Section, an
-overview of some of the early and novel research insights made possible by the
-library is described.
-
-\section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
-
 In parallel to the Python library, a tournament is being kept up to date that
-pits all strategies against each other. Figure~\ref{fig:tournament} shows the
-results from the full tournament.
+pits all available strategies against each other. Figure~\ref{fig:tournament}
+shows the results from the full tournament which can also be seen (in full
+detail) here: \url{http://axelrod-tournament.readthedocs.org/}.
 
 \begin{figure}[!hbtp]
     \centering
@@ -430,7 +417,7 @@ results from the full tournament.
     \label{fig:tournament}
 \end{figure}
 
-The current winning strategy is a novel strategy of type: \textbf{LookerUp}. This
+The current winning strategy is a novel strategy called: Looker Up. This
 is a strategy that maps a given set of states to actions. The state space is
 defined generically by \(m, n\) so as to map states to actions in the following
 way:
@@ -439,13 +426,16 @@ way:
 \overbrace{((C, C), (C, C))}^{n\text{ last pairs of actions}}) \to D\]
 
 The above example is an incomplete illustration of the mapping for \(m=8, n=2\).
-Intuitively this state space uses the initial plays of the opponent to gain some
-information about its intentions whilst still taking in to account the
+Intuitively, this state space uses the initial plays of the opponent to gain
+some information about its intentions whilst still taking in to account the
 recent play. The actual winning strategy is an instance of the framework for
 \(m=n=2\) for which an evolutionary algorithm has been used to train it. More
-details of this can be found in \cite{mojones}. In \cite{} experiments are
-carried out to evaluate how this particular strategy behaves in environments
-other than those in which it was trained\dots
+details of this can be found at
+\url{http://mojones.net/evolving-strategies-for-an-iterated-prisoners-dilemma-tournament.html}.
+At
+\url{http://vknight.org/unpeudemath/gametheory/2015/11/28/Experimenting-with-a-high-performing-evolved-strategy-in-other-environments/}
+experiments are described that evaluate how this particular strategy behaves in
+environments other than those in which it was trained\dots
 
 There are various other insights that have been gained from ongoing open
 research on the library. These include:
@@ -472,9 +462,7 @@ research on the library. These include:
         very well in general and continue to do so in noisy tournaments.
 \end{itemize}
 
-Details for the above can be found at \cite{}.
-
-%Plot of memory_depth vs mean score, mean wins?
+Details for the above can be found at \url{http://marcharper.codes/}.
 
 \section{Conclusion}\label{sec:conclusion}
 
