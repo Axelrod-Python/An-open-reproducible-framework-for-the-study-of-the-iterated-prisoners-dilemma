@@ -211,7 +211,7 @@ the library to create a basic tournament giving the graphical output shown in
 Figure~\ref{fig:demo_tournament}.
 
 \begin{figure}[!hbtp]
-    \begin{minted}[breaklines, linenos, frame=lines]{python}
+    \begin{minted}[linenos, frame=lines]{python}
 >>> import axelrod
 >>> strategies = [s() for s in axelrod.demo_strategies]
 >>> tournament = axelrod.Tournament(strategies)
@@ -251,7 +251,7 @@ Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
 the Grudger strategy as well as its corresponding test.
 
 \begin{figure}[!hbtp]
-    \begin{minted}[breaklines, linenos, frame=lines]{python}
+    \begin{minted}[linenos, frame=lines]{python}
 class Grudger(Player):
     """A player starts by cooperating however will defect if
        at any point the opponent has defected."""
@@ -277,8 +277,9 @@ class Grudger(Player):
 \end{figure}
 
 
+
 \begin{figure}[!hbtp]
-    \begin{minted}[breaklines, linenos, frame=lines]{python}
+    \begin{minted}[linenos, frame=lines]{python}
 class TestGrudger(TestPlayer):
 
     name = "Grudger"
@@ -333,9 +334,11 @@ Section~\ref{sec:reproducing-previous-tournaments}.
 Due to the open nature of the library the number of strategies included has
 grown at a fast pace, as can be seen in
 Figure~\ref{fig:number_of_strategies_against_date}. Despite this, due to
-previous research being done in an irreproducible way due to, for example no
-source code, and/or vaguely described strategies; not all previous tournaments
-are yet to be reproduced.
+previous research being done in an irreproducible, with for example no
+source code, and/or vaguely described strategies, not all previous tournaments
+are yet to be reproduced. In fact, some of the early tournaments might be
+impossible to reproduce as the source code is forever lost, this library aims to
+prevent this from happening again in the future.
 
 \begin{figure}[!hbtp] \centering
     \includegraphics[width=.8\textwidth]{../img/number_of_strategies_with_arima_projection.pdf}
@@ -372,7 +375,7 @@ This can be reproduced as shown in Figure~\ref{fig:stewart-code}, which gives
 the plot of Figure~\ref{fig:stewart_tournament}.
 
 \begin{figure}[!hbtp]
-    \begin{minted}[breaklines, linenos, frame=lines]{python}
+    \begin{minted}[linenos, frame=lines]{python}
 >>> import axelrod
 
 >>> strategies = [axelrod.Cooperator(),
@@ -410,9 +413,9 @@ the plot of Figure~\ref{fig:stewart_tournament}.
     \label{fig:stewart_tournament}
 \end{figure}
 
-Work is actively ongoing to include more strategies. In the next Section, an
+Work is ongoing to include more strategies. In the next Section, an
 overview of some of the early and novel research insights made possible by the
-library.
+library is described.
 
 \section{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
@@ -437,8 +440,8 @@ way:
 
 The above example is an incomplete illustration of the mapping for \(m=8, n=2\).
 Intuitively this state space uses the initial plays of the opponent to gain some
-information about the intentions of it whilst still taking in to account the
-recent play.  The actual winning strategy an instance of the this framework for
+information about its intentions whilst still taking in to account the
+recent play. The actual winning strategy is an instance of the framework for
 \(m=n=2\) for which an evolutionary algorithm has been used to train it. More
 details of this can be found in \cite{mojones}. In \cite{} experiments are
 carried out to evaluate how this particular strategy behaves in environments
@@ -452,13 +455,16 @@ research on the library. These include:
         extortionate strategies obtain a large number of wins \textit{but} do
         not perform particularly well. This is relevant given the findings of
         \cite{Stewart2012} in which zero determinant strategies are shown to be
-        able to perform better than a given other strategy. This finding extends
+        able to perform better than any other strategy. This finding extends
         to noisy tournaments (which are also implemented in the library).
     \item This negative relationship between wins and performance does not
-        generalise, there are some strategies that perform well, both in terms
-        of matches won and overall performance: Back stabber, Double crosser and
-        Fool Me Once. These strategies continue to perform well in noisy
-        tournaments.
+        generalise. There are some strategies that perform well, both in terms
+        of matches won and overall performance: Back stabber, Double crosser,
+        Looker Up, and Fool Me Once. These strategies continue to perform well in noisy
+        tournaments, however some of these have knowledge of the length of the
+        game (Back stabber and Double crosser). This is not necessary to rank
+        well in both wins and score as demonstrated by Looker Up and Fool Me
+        Once.
     \item Strategies like LookerUp and MetaHunter seem to be generally
         cooperative yet still exploit naive strategies. The MetaHunter strategy
         is a particular type of Meta strategy which uses a variety of other
@@ -473,10 +479,10 @@ Details for the above can be found at \cite{}.
 \section{Conclusion}\label{sec:conclusion}
 
 This paper has presented a game theoretic software package that aims to address
-reproducibility of research in to the iterated prisoner's dilemma. Through the
-very nature of the development of this library, all open research and
-development, it has not only acquired a large number of strategies (120) but
-also already discovered various insights that will lead to further publications.
+reproducibility of research into the iterated prisoner's dilemma. The open
+nature of the development of the library has lead rapidly to the inclusion of
+many well known strategies, many novel strategies, and new and recapitulated
+insights.
 
 The capabilities of the library mentioned above are not at all comprehensive, a
 list of the current abilities include:
