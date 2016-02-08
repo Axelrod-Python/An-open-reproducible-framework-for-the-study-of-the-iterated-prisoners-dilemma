@@ -15,6 +15,7 @@
 \usepackage{booktabs}  % Better tables
 \usepackage{minted}  % Code
 \usepackage{graphicx}  % Images
+\usepackage{subcaption}  % Subfigures
 
 \title{An open reproducible framework for the study of the iterated prisoner's
 dilemma}
@@ -140,14 +141,14 @@ published tournaments is given in Table~\ref{tab:tournaments}.
     \begin{center}
         \begin{tabular}{ccccc}
             \toprule
-            Year     & Reference           & Number of Strategies & Type     & Source Code\\
+            Year     & Reference                  & Number of Strategies & Type     & Source Code\\
             \midrule
-            1979     & \cite{Axelrod1980a} & 13                   & Standard & Not immediately available\\
-            1979     & \cite{Axelrod1980b} & 64                   & Standard & Available in FORTRAN\\
-            1991     & \cite{Bendor1991}   & 13                   & Noisy    & Not immediately available\\
-            2002     & \cite{Stephens2002} & 16                   & Wildlife & Not applicable\\
-            2005     & \cite{kendall2007iterated} & 223           & Varied   & Not available \\
-            2012     & \cite{Stewart2012} & 13                    & Standard & Not fully available \\
+            1979     & \cite{Axelrod1980a}        & 13                   & Standard & Not immediately available\\
+            1979     & \cite{Axelrod1980b}        & 64                   & Standard & Available in FORTRAN\\
+            1991     & \cite{Bendor1991}          & 13                   & Noisy    & Not immediately available\\
+            2002     & \cite{Stephens2002}        & 16                   & Wildlife & Not applicable\\
+            2005     & \cite{kendall2007iterated} & 223                  & Varied   & Not available \\
+            2012     & \cite{Stewart2012}         & 13                   & Standard & Not fully available \\
             \bottomrule
         \end{tabular}
     \end{center}
@@ -227,10 +228,19 @@ Figure~\ref{fig:demo_tournament}.
 \end{figure}
 
 \begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.8\textwidth]{../img/demo_tournament.pdf}
-    \caption{The results from a simple tournament.}
-    \label{fig:demo_tournament}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../img/demo_tournament.pdf}
+		\caption{The results from a simple tournament.}
+		\label{fig:demo_tournament}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../img/stewart_tournament.pdf}
+		\caption{The results from \cite{Stewart2012}.}
+		\label{fig:stewart_tournament}
+	\end{subfigure}
+	\caption{Summary plots produced by the library.}
 \end{figure}
 
 Figure~\ref{fig:demo_tournament_commands} just shows the very basic utilisation
@@ -243,7 +253,6 @@ writing of a simple Python class (which can inherit from other predefined
 classes). Full contribution guidelines can be found in the documentation.
 As an example, Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
 the Grudger strategy as well as its corresponding test.
-You can see an overview of the structure of the source code in Figure~\ref{fig:overview}.
 
 \begin{figure}[!hbtp]
     \begin{minted}[linenos, frame=lines]{python}
@@ -304,19 +313,28 @@ class TestGrudger(TestPlayer):
     \label{fig:grudger_test}
 \end{figure}
 
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.8\textwidth]{../img/outline_of_library.pdf}
-    \caption{An overview of the source code.}
-    \label{fig:overview}
-\end{figure}
-
-To date the library has had contributions from 24 contributors from a variety of
-backgrounds. These contributions have both been in terms of strategies (one
+To date the library has had contributions from 24 contributors from a variety
+of backgrounds. These contributions have both been in terms of strategies (one
 strategy is the creation of an undergraduate mathematics student with little
 prior knowledge of programming) as well as the architecture of the library
-itself.
+itself. You can see an overview of the structure of the source code in
+Figure~\ref{fig:overview}.
+
+\begin{figure}[!hbtp]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../img/outline_of_library.pdf}
+		\caption{An overview of the source code.}
+		\label{fig:overview}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../img/number_of_strategies_with_arima_projection.pdf}
+		\caption{The number of strategies included in the library}
+		\label{fig:number_of_strategies_against_date}
+	\end{subfigure}
+	\caption{An overview of the library.}
+\end{figure}
 
 Section~\ref{sec:new-strategies-and-implications} will describe in more detail
 some of research capabilities of the library.
@@ -331,12 +349,6 @@ source code, and/or vaguely described strategies, not all previous tournaments
 are yet to be reproduced. In fact, some of the early tournaments might be
 impossible to reproduce as the source code is forever lost, this library aims to
 prevent this from happening again in the future.
-
-\begin{figure}[!hbtp] \centering
-    \includegraphics[width=.8\textwidth]{../img/number_of_strategies_with_arima_projection.pdf}
-    \caption{The number of strategies included in the library}
-    \label{fig:number_of_strategies_against_date}
-\end{figure}
 
 One tournament that is possible to reproduce is that of
 \cite{Stewart2012}. The strategies used in that tournament are the following:
@@ -398,44 +410,38 @@ the plot of Figure~\ref{fig:stewart_tournament}.
     \label{fig:stewart-code}
 \end{figure}
 
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.8\textwidth]{../img/stewart_tournament.pdf}
-    \caption{The results from \cite{Stewart2012}.}
-    \label{fig:stewart_tournament}
-\end{figure}
-
 In parallel to the Python library, a tournament is being kept up to date that
 pits all available strategies against each other. Figure~\ref{fig:tournament}
 shows the results from the full tournament which can also be seen (in full
 detail) here: \url{http://axelrod-tournament.readthedocs.org/}.
 
 \begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.8\textwidth]{../img/tournament.pdf}
-    \caption{Results from the library tournament (2015-12-19)}
-    \label{fig:tournament}
+	\centering
+	\includegraphics[width=.9\textwidth]{../img/tournament.pdf}
+	\caption{Results from the library tournament (2015-12-19)}
+	\label{fig:tournament}
 \end{figure}
 
-The current winning strategy is a novel strategy called: Looker Up. This
-is a strategy that maps a given set of states to actions. The state space is
-defined generically by \(m, n\) so as to map states to actions in the following
-way:
+The current winning strategy is a novel strategy called: Looker Up. This is a
+strategy that maps a given set of states to actions. The state space is defined
+generically by \(m, n\) so as to map states to actions as shown
+in~(\ref{equ:example_of_lookerup}).
 
-\[(\underbrace{(C, D, D, D, C, D, D, C)}_{m\text{ first actions by opponent}},
-\overbrace{((C, C), (C, C))}^{n\text{ last pairs of actions}}) \to D\]
+\begin{equation}
+	(\underbrace{(C, D, D, D, C, D, D, C)}_{m\text{ first actions by opponent}},
+	\overbrace{((C, C), (C, C))}^{n\text{ last pairs of actions}}) \to D
+	\label{equ:example_of_lookerup}
+\end{equation}
 
-The above example is an incomplete illustration of the mapping for \(m=8, n=2\).
-Intuitively, this state space uses the initial plays of the opponent to gain
-some information about its intentions whilst still taking in to account the
-recent play. The actual winning strategy is an instance of the framework for
-\(m=n=2\) for which an evolutionary algorithm has been used to train it. More
-details of this can be found at
-\url{http://mojones.net/evolving-strategies-for-an-iterated-prisoners-dilemma-tournament.html}.
-At
-\url{http://vknight.org/unpeudemath/gametheory/2015/11/28/Experimenting-with-a-high-performing-evolved-strategy-in-other-environments/}
+The above example is an incomplete illustration of the mapping for \(m=8,
+n=2\). Intuitively, this state space uses the initial plays of the opponent to
+gain some information about its intentions whilst still taking in to account
+the recent play. The actual winning strategy is an instance of the framework
+for \(m=n=2\) for which an evolutionary algorithm has been used to train it.
+More details of this can be found in \cite{Jones2015}. In \cite{Knight2015}
 experiments are described that evaluate how this particular strategy behaves in
-environments other than those in which it was trained\dots
+environments other than those in which it was trained and it continues to
+perform strongly.
 
 There are various other insights that have been gained from ongoing open
 research on the library. These include:
@@ -462,7 +468,7 @@ research on the library. These include:
         very well in general and continue to do so in noisy tournaments.
 \end{itemize}
 
-Details for the above can be found at \url{http://marcharper.codes/}.
+Details for the above can be found in \cite{Harper2015}.
 
 \section{Conclusion}\label{sec:conclusion}
 
