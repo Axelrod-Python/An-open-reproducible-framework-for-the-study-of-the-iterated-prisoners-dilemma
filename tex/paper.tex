@@ -40,12 +40,16 @@ dilemma}
     The Axelrod Python library is an open source package that allows for
     reproducible game theoretic research in to the iterated Prisoner's Dilemma.
     This area of research began in the 1980 but suffers from a lack of
-    documented and tested code. This library aims to address this.\\
+    documented and tested code.
 
 \noindent
     With a growing collection of 120 strategies the library is also a platform
     for an original tournament that in itself is of interest to the game
     theoretic community.
+
+\noindent
+    This paper describes the iterated Prisoner's Dilemma, the library and
+    insights gained from some novel research.
 \end{abstract}
 
 
@@ -57,9 +61,9 @@ the Stewart and Plotkin 2012 tournament \cite{Stewart2012} following the
 discovery of zero-determinant strategies.  Subsequent research has spawned an
 enormous number of papers, but rarely are the results reproducible. Among
 well-known tournaments, in only one case is the full original source code
-available (Axelrod's second tournament, in FORTRAN); in no cases is the
-available code well-documented, easily modifiable, or released with significant
-test suites.
+available (Axelrod's second tournament \cite{Axelrod1980b}, in FORTRAN); in no
+cases is the available code well-documented, easily modifiable, or released with
+significant test suites.
 
 To make matters more complicated, often a newly-created strategy is studied in
 isolation by opponents chosen by the strategy's creators, and often such
@@ -91,10 +95,10 @@ and is:
 \begin{itemize}
     \item Open: all code is released under an MIT license;
     \item Reproducible and well-tested: at the time of writing there is an excellent level of
-        integrated tests with 99.59\% coverage
+        integrated tests with 99.37\% coverage
     \item Well-documented: all features of the library are documented for ease of
         use and modification
-    \item Extensive: over 100 strategies are included, with infinitely-many
+    \item Extensive: 120 strategies are included, with infinitely-many
     strategies available in the case of parameterized strategies
     \item Extensible: easy to modify to include new strategies and to run new tournaments
 \end{itemize}
@@ -102,7 +106,9 @@ and is:
 Before describing the package in more detail in
 Section~\ref{sec:description-of-axelrod-python}, an overview of some previous
 Iterated Prisoner's Dilemma research will be given in
-Section~\ref{sec:review}.
+Section~\ref{sec:review}. Section~\ref{sec:new-strategies-and-implications} will
+describe some early research and a conclusion is offered in
+Section~\ref{sec:conclusion}.
 
 \subsection{Review of the literature}\label{sec:review}
 
@@ -131,7 +137,7 @@ Two players must choose between \textit{Cooperate} (\(C\)) and \textit{Defect}
     \item If both choose \(C\), they receive a payoff of \(R\)
         (\textbf{R}eward);
     \item If both choose \(D\), they receive a payoff of \(P\)
-        (\textbf{P}punishment);
+        (\textbf{P}unishment);
     \item If one chooses \(C\) and the other \(D\), the defector receives a
         payoff of \(T\) (\textbf{T}emptation) and the cooperator a payoff of
         \(S\) (\textbf{S}ucker).
@@ -145,11 +151,11 @@ Two players must choose between \textit{Cooperate} (\(C\)) and \textit{Defect}
     \label{equ:one-shot}
 \end{equation}
 
-The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Numerical
-values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature. Axelrod's
-tournaments (and further implementations of these) are sometimes referred to as
-Iterated Prisoner's Dilemma (IPD) tournaments. An incomplete overview of
-published tournaments is given in Table~\ref{tab:tournaments}.
+The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Specific
+numerical values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature.
+Axelrod's tournaments (and further implementations of these) are sometimes
+referred to as Iterated Prisoner's Dilemma (IPD) tournaments. An incomplete
+overview of published tournaments is given in Table~\ref{tab:tournaments}.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -209,13 +215,13 @@ variety of uses including:
     \item Algorithmic Game Theory (\url{http://gambit.sourceforge.net/)}).
 \end{itemize}
 
-Furthermore, \cite{Isaac2008} Python is described as an appropriate language for the
+Furthermore, in \cite{Isaac2008} Python is described as an appropriate language for the
 reproduction of Iterated Prisoner's dilemma tournaments due to its object
 oriented nature and readability.
 
 The library itself is available at
 \url{https://github.com/Axelrod-Python/Axelrod}. This is a hosted git
-repository. Git is a popular version control system which is one of the
+repository. Git is a version control system which is one of the
 recommended aspects of reproducible research \cite{Crick2014a, Sandve2013}.
 
 Installation of the library is straightforward as it is available via the
@@ -257,12 +263,12 @@ Figure~\ref{fig:demo_tournament}.
 	\caption{Summary plots produced by the library.}
 \end{figure}
 
-Figure~\ref{fig:demo_tournament_commands} just shows the very basic utilisation
+Figure~\ref{fig:demo_tournament_commands} shows the very basic utilisation
 of the library and further details can be found at the online documentation:
 \url{http://axelrod.readthedocs.org}.
 
 As stated in Section~\ref{sec:introduction} one of the main goals of the library
-is to allow for the easy contribution of strategies. To do this requires the
+is to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
 classes). Full contribution guidelines can be found in the documentation.
 As an example, Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
@@ -432,7 +438,7 @@ detail) here: \url{http://axelrod-tournament.readthedocs.org/}.
 \begin{figure}[!hbtp]
 	\centering
 	\includegraphics[width=.9\textwidth]{../img/tournament.pdf}
-	\caption{Results from the library tournament (2015-12-19)}
+	\caption{Results from the library tournament (2016-02-10)}
 	\label{fig:tournament}
 \end{figure}
 
@@ -447,15 +453,15 @@ in~(\ref{equ:example_of_lookerup}).
 	\label{equ:example_of_lookerup}
 \end{equation}
 
-The above example is an incomplete illustration of the mapping for \(m=8,
-n=2\). Intuitively, this state space uses the initial plays of the opponent to
-gain some information about its intentions whilst still taking in to account
-the recent play. The actual winning strategy is an instance of the framework
-for \(m=n=2\) for which an evolutionary algorithm has been used to train it.
-More details of this can be found in \cite{Jones2015}. In \cite{Knight2015}
-experiments are described that evaluate how this particular strategy behaves in
-environments other than those in which it was trained and it continues to
-perform strongly.
+The example of (\ref{equ:example_of_lookerup}) is an incomplete illustration of
+the mapping for \(m=8, n=2\). Intuitively, this state space uses the initial
+plays of the opponent to gain some information about its intentions whilst still
+taking in to account the recent play. The actual winning strategy is an instance
+of the framework for \(m=n=2\) for which an evolutionary algorithm has been used
+to train it.  More details of this can be found in \cite{Jones2015}. In
+\cite{Knight2015} experiments are described that evaluate how this particular
+strategy behaves in environments other than those in which it was trained and it
+continues to perform strongly.
 
 There are various other insights that have been gained from ongoing open
 research on the library. These include:
@@ -475,7 +481,7 @@ research on the library. These include:
         game (Back stabber and Double crosser). This is not necessary to rank
         well in both wins and score as demonstrated by Looker Up and Fool Me
         Once.
-    \item Strategies like LookerUp and MetaHunter seem to be generally
+    \item Strategies like Looker Up and Meta Hunter seem to be generally
         cooperative yet still exploit naive strategies. The MetaHunter strategy
         is a particular type of Meta strategy which uses a variety of other
         strategy behaviours to choose a best action. These strategies perform
