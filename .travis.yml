@@ -1,0 +1,18 @@
+
+language: python
+python:
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+install:
+  - pip install cloudpickle
+  - pip install axelrod
+script:
+  - python -m doctest tex/paper.tex
+after_success:
+  - coveralls
+notifications:
+    webhooks:
+        urls:
+            - https://webhooks.gitter.im/e/0432918765b16cf8e5a9

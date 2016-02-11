@@ -6,6 +6,9 @@ paper.fdb_latexmk
 paper.fls
 paper.log
 paper.run.xml
+paper.pyg
+paper.synctex.gz
 *out
 *.ipynb_checkpoints*
 .DS_Store
+tex/_minted-paper
