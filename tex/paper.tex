@@ -186,10 +186,13 @@ probabilistic termination of each round of the tournament.
 As mentioned before, IPD tournaments have been studied in an evolutionary
 context: \cite{Ellison1994, Lee2015, Press2012, Stewart2012} consider this in a
 traditional evolutionary game theory context. These works investigate
-particular evolutionary contexts within which cooperation can emerge as stable.
-Often these works consider direct opposition to another strategy and disregard
-the population dynamics, for example in \cite{Lee2015} a machine learning
-algorithm outperforms a strategy found in \cite{Press2012}.
+particular evolutionary contexts within which cooperation can evolve and
+persist. This can be in the context of direct interactions between strategies
+or population dynamics for populations of many players using a variety of
+strategies, which can lead to very different results. For example, in
+\cite{Lee2015} a machine learning algorithm in a population context outperforms
+strategies described in \cite{Press2012} and \cite{Stewart2012} that are
+claimed to dominate any evolutionary opponent in head-to-head interactions.
 
 Further to these evolutionary ideas, \cite{Chellapilla1999, DavidB1993} are
 examples of using machine learning techniques to evolve particular strategies.
@@ -364,11 +367,11 @@ some of research capabilities of the library.
 Due to the open nature of the library the number of strategies included has
 grown at a fast pace, as can be seen in
 Figure~\ref{fig:number_of_strategies_against_date}. Despite this, due to
-previous research being done in an irreproducible, with for example no
+previous research being done in an irreproducible manner, with for example no
 source code, and/or vaguely described strategies, not all previous tournaments
 are yet to be reproduced. In fact, some of the early tournaments might be
-impossible to reproduce as the source code is forever lost, this library aims to
-prevent this from happening again in the future.
+impossible to reproduce as the source code is forever lost, this library aims
+to prevent this from happening again in the future.
 
 One tournament that is possible to reproduce is that of
 \cite{Stewart2012}. The strategies used in that tournament are the following:
