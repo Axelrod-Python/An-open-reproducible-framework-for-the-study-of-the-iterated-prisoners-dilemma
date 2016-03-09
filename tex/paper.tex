@@ -160,10 +160,11 @@ two decision vectors $\langle C, D \rangle$,
 
 The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Specific
 numerical values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature,
-although any satisfying the conditions in \ref{equ:one-shot} will yield similar results.
-Axelrod's tournaments (and further implementations of these) are sometimes
-referred to as Iterated Prisoner's Dilemma (IPD) tournaments. An incomplete
-overview of published tournaments is given in Table~\ref{tab:tournaments}.
+although any satisfying the conditions in \ref{equ:one-shot} will yield similar
+results.  Axelrod's tournaments (and further implementations of these) are
+sometimes referred to as Iterated Prisoner's Dilemma (IPD) tournaments. An
+incomplete overview of published tournaments is given in
+Table~\ref{tab:tournaments}.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -180,7 +181,9 @@ overview of published tournaments is given in Table~\ref{tab:tournaments}.
             \bottomrule
         \end{tabular}
     \end{center}
-    \caption{An overview of published tournaments (specify what "type" means)}\label{tab:tournaments}
+    \caption{An overview of a selection of published tournaments. Not all
+             tournaments were `standard' round robins; for more details
+             see the indicated references.}\label{tab:tournaments}
 \end{table}
 
 In \cite{Milgrom1982} a description is given of how incomplete information can
@@ -378,7 +381,7 @@ Figure~\ref{fig:number_of_strategies_against_date}. Despite this, due to
 previous research being done in an irreproducible manner, with for example no
 source code, and/or vaguely described strategies, not all previous tournaments
 are yet to be reproduced. In fact, some of the early tournaments might be
-impossible to reproduce as the source code is forever lost, and this library aims
+impossible to reproduce as the source code is forever lost. This library aims
 to prevent this from happening again in the future.
 
 One tournament that is possible to reproduce is that of
@@ -519,11 +522,12 @@ list of the current abilities include:
     \item Transformation of strategies (in effect giving an infinite number of
         strategies);
     \item Classification of strategies according to multiple dimensions.
+    \item Gathering of full interaction history for all interactions.
 \end{itemize}
 
 These capabilities are constantly being updated. Some immediate further work
 includes allowing for tournaments of probabilistic length as well as further
-implementation of known strategies
+implementation of known strategies.
 
 The ability to readily have available a large number of strategies makes this
 tool an excellent and obvious example of the benefits of open research which
