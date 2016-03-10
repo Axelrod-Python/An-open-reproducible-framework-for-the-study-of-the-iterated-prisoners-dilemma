@@ -38,42 +38,42 @@ dilemma}
 \begin{abstract}
 \noindent
     The Axelrod library is an open source Python package that allows for
-    reproducible game theoretic research into the iterated Prisoner's Dilemma.
+    reproducible game theoretic research into the Iterated Prisoner's Dilemma.
     This area of research began in the 1980s but suffers from a lack of
-    documented and test code. The goal of the library is to provide such
-    a resource, with facilities the design new strategies and interactions
-    between them, as well as conducting tournaments and ecological simulations
-    for population of strategies.
+    documentation and test code. The goal of the library is to provide such
+    a resource, with facilities for the design of new strategies and
+    interactions between them, as well as conducting tournaments and ecological
+    simulations for populations of strategies.
 
 \noindent
-    With a growing collection of 120 strategies the library is a also a platform
-    for an original tournament that in itself is of interest to the game
-    theoretic community.
+    With a growing collection of 120 strategies, the library is a also a
+    platform for an original tournament that, in itself, is of interest to the
+    game theoretic community.
 
 \noindent
-    This paper describes the iterated Prisoner's Dilemma, the Axelrod library
+    This paper describes the Iterated Prisoner's Dilemma, the Axelrod library
     and its development, and insights gained from some novel research.
 \end{abstract}
 
 
 \section{Introduction}\label{sec:introduction}
 
-Several iterated prisoner's dilemma tournaments have generated much interest,
+Several Iterated Prisoner's Dilemma tournaments have generated much interest;
 including Axelrod's original tournaments \cite{Axelrod1980a,Axelrod1980b},
 two 2004 anniversary tournaments (ref?), and
-the Stewart and Plotkin 2012 tournament \cite{Stewart2012} following the
+the Stewart and Plotkin 2012 tournament \cite{Stewart2012}, following the
 discovery of zero-determinant strategies.  Subsequent research has spawned an
 enormous number of papers, but rarely are the results reproducible. Among
 well-known tournaments, in only one case is the full original source code
-available (Axelrod's second tournament \cite{Axelrod1980b}, in FORTRAN); in no
+available (Axelrod's second tournament \cite{Axelrod1980b}, in FORTRAN). In no
 cases is the available code well-documented, easily modifiable, or released with
 significant test suites.
 
 To make matters more complicated, often a newly-created strategy is studied in
 isolation by opponents chosen by the strategy's creators, and often such
 strategies are not sufficiently described to enable reliable recreation
-(in the absense of source code), with \cite{slany2007some} being a notable
-counter-example. In some cases strategies are revised without updates to their
+(in the absence of source code), with \cite{slany2007some} being a notable
+counter-example. In some cases, strategies are revised without updates to their
 names or published implementations \cite{li2007design, li2011engineering}.
 As a result, some of the results related to these strategies and tournaments
 cannot be reliably replicated, and therefore have not met the basic scientific
@@ -103,7 +103,7 @@ and is:
     \item Well-documented: all features of the library are documented for ease of
         use and modification
     \item Extensive: 120 strategies are included, with infinitely-many
-    strategies available in the case of parameterized strategies
+        strategies available in the case of parametrised strategies
     \item Extensible: easy to modify to include new strategies and to run new tournaments
 \end{itemize}
 
@@ -119,7 +119,7 @@ Section~\ref{sec:conclusion}.
 As stated in~\cite{Bendor1991}: ``\textit{few works in social science have had
 the general impact of [Axelrod's study of the evolution of cooperation]}''.  In
 1980, Axelrod wrote two papers:~\cite{Axelrod1980a,Axelrod1980b} which
-describe a computer tournament that has been a imajor influence on
+describe a computer tournament that has been a major influence on
 subsequent game theoretic work~\cite{Banks1990, Bendor1991, Boyd1987, Chellapilla1999,
 DavidB1993, Doebeli2005, Ellison1994, Gotts2003, Hilbe2013, Isaac2008,
 Kraines1989, Lee2015, Lorberbaum1994, Milgrom1982, Molander1985, Murnighan2015,
@@ -130,7 +130,7 @@ are the participants is described) and in particular in the study of evolution.
 
 The tournament is based on an iterated game (see~\cite{Maschler2013} or similar
 for details) where two players repeatedly play the normal form game of
-(\ref{equ:one-shot}) in full knowledge of each others playing history to date.
+(\ref{equ:one-shot}) in full knowledge of each other's playing history to date.
 An excellent description of the \textit{one shot} game is given
 in~\cite{Gotts2003} which is paraphrased below:
 
@@ -230,7 +230,7 @@ variety of uses including:
 \end{itemize}
 
 Furthermore, in \cite{Isaac2008} Python is described as an appropriate language for the
-reproduction of Iterated Prisoner's dilemma tournaments due to its object
+reproduction of Iterated Prisoner's Dilemma tournaments due to its object
 oriented nature and readability.
 
 The library itself is available at
@@ -281,7 +281,7 @@ Figure~\ref{fig:demo_tournament_commands} shows the very basic utilisation
 of the library and further details can be found at the online documentation:
 \url{http://axelrod.readthedocs.org}.
 
-As stated in Section~\ref{sec:introduction} one of the main goals of the library
+As stated in Section~\ref{sec:introduction}, one of the main goals of the library
 is to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
 classes). Full contribution guidelines can be found in the documentation.
@@ -378,9 +378,9 @@ some of research capabilities of the library.
 Due to the open nature of the library the number of strategies included has
 grown at a fast pace, as can be seen in
 Figure~\ref{fig:number_of_strategies_against_date}. Despite this, due to
-previous research being done in an irreproducible manner, with for example no
-source code, and/or vaguely described strategies, not all previous tournaments
-are yet to be reproduced. In fact, some of the early tournaments might be
+previous research being done in an irreproducible manner with, for example, no
+source code and/or vaguely described strategies, not all previous tournaments
+can yet be reproduced. In fact, some of the early tournaments might be
 impossible to reproduce as the source code is forever lost. This library aims
 to prevent this from happening again in the future.
 
@@ -470,7 +470,7 @@ in~(\ref{equ:example_of_lookerup}).
 The example of (\ref{equ:example_of_lookerup}) is an incomplete illustration of
 the mapping for \(m=8, n=2\). Intuitively, this state space uses the initial
 plays of the opponent to gain some information about its intentions whilst still
-taking in to account the recent play. The actual winning strategy is an instance
+taking into account the recent play. The actual winning strategy is an instance
 of the framework for \(m=n=2\) for which an evolutionary algorithm has been used
 to train it.  More details of this can be found in \cite{Jones2015}. In
 \cite{Knight2015} experiments are described that evaluate how this particular
@@ -507,7 +507,7 @@ Details for the above can be found in \cite{Harper2015}.
 \section{Conclusion}\label{sec:conclusion}
 
 This paper has presented a game theoretic software package that aims to address
-reproducibility of research into the iterated prisoner's dilemma. The open
+reproducibility of research into the Iterated Prisoner's Dilemma. The open
 nature of the development of the library has lead rapidly to the inclusion of
 many well known strategies, many novel strategies, and new and recapitulated
 insights.
@@ -529,7 +529,7 @@ These capabilities are constantly being updated. Some immediate further work
 includes allowing for tournaments of probabilistic length as well as further
 implementation of known strategies.
 
-The ability to readily have available a large number of strategies makes this
+The ability to have readily available a large number of strategies makes this
 tool an excellent and obvious example of the benefits of open research which
 should positively impact the game theoretic community.
 
