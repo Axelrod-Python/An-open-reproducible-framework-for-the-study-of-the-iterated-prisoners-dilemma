@@ -12,3 +12,4 @@ paper.synctex.gz
 *.ipynb_checkpoints*
 .DS_Store
 tex/_minted-paper
+scripts/iterate.dat
