@@ -130,7 +130,7 @@ and is:
         integrated tests with 99.37\% coverage
     \item Well-documented: all features of the library are documented for ease of
         use and modification
-    \item Extensive: 120 strategies are included, with infinitely-many
+    \item Extensive: 123 strategies are included, with infinitely-many
         strategies available in the case of parametrised strategies
     \item Extensible: easy to modify to include new strategies and to run new tournaments
 \end{itemize}
@@ -482,7 +482,7 @@ detail) here: \url{http://axelrod-tournament.readthedocs.org/}.
 \begin{figure}[!hbtp]
 	\centering
 	\includegraphics[width=.9\textwidth]{../img/tournament.pdf}
-	\caption{Results from the library tournament (2016-02-10)}
+	\caption{Results from the library tournament (2016-03-31)}
 	\label{fig:tournament}
 \end{figure}
 
@@ -501,11 +501,12 @@ The example of (\ref{equ:example_of_lookerup}) is an incomplete illustration of
 the mapping for \(m=8, n=2\). Intuitively, this state space uses the initial
 plays of the opponent to gain some information about its intentions whilst still
 taking into account the recent play. The actual winning strategy is an instance
-of the framework for \(m=n=2\) for which an evolutionary algorithm has been used
-to train it.  More details of this can be found in \cite{Jones2015}. In
-\cite{Knight2015} experiments are described that evaluate how this particular
-strategy behaves in environments other than those in which it was trained and it
-continues to perform strongly.
+of the framework for \(m=n=2\) for which a particle swarm algorithm has been
+used to train it, the second placed strategy was trained with an evolutionary
+algorithms. More details of this can be found in \cite{Goerge2016, Jones2015}.
+In \cite{Knight2015} experiments are described that evaluate how the second
+placed strategy behaves in environments other than those in which it was trained
+and it continues to perform strongly.
 
 There are various other insights that have been gained from ongoing open
 research on the library. These include:
