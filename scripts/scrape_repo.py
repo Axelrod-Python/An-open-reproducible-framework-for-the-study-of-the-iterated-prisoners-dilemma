@@ -5,6 +5,7 @@ Works with `number_of_strategies.py` to get the number of strategies in the
 library at each commit.
 """
 from git import Repo
+from tqdm import tqdm
 import os
 import subprocess
 
@@ -26,7 +27,7 @@ try:
 except OSError:
     pass
 
-for c in sorted(all_commits, key=lambda x:x.committed_date):
+for c in tqdm(sorted(all_commits, key=lambda x:x.committed_date)):
 
     for rubbish in [".DS_Store",
                     "axelrod/.DS_Store",
