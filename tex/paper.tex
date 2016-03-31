@@ -1,14 +1,19 @@
-\documentclass{article}
+\documentclass{jors}
+
+%% Set the header information
+
+% Commenting out as this overrides the section titles.
+%\pagestyle{fancy}
+%\definecolor{mygray}{gray}{0.6}
+%\renewcommand\headrule{}
+%\rhead{\footnotesize 3}
+%\rhead{\textcolor{gray}{UP JORS software Latex paper template version 0.1}}
 
 % Nicer bibliography management
 \usepackage[backend=biber, backref=true, firstinits=true, url=true, isbn=true]{biblatex}
 \addbibresource{references.bib}
 %-----------------------------
 
-% Lazy page formating (we can adjust when submitting)
-\usepackage{fullpage}
-\usepackage[parfill]{parskip}
-%-----------------------------
 
 \usepackage{amsmath}  % Basic
 \usepackage{hyperref}  % Links etc
@@ -56,7 +61,6 @@ dilemma}
 \date{\today}
 
 \begin{document}
-
 \maketitle
 \begin{center}
     \thanks{Corresponding author: Vincent Knight
