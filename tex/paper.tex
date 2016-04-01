@@ -18,6 +18,8 @@
 \usepackage{subcaption}  % Subfigures
 \usepackage{authblk}  % Authors
 
+\usepackage{multicol}
+
 \title{An open reproducible framework for the study of the iterated prisoner's
 dilemma}
 
@@ -43,7 +45,7 @@ dilemma}
 \author[3]{Paul Slavin}
 \author[2]{Timothy Standen}
 \author[1]{Luis Visintini}
-\author[1]{Karl ?}
+\author[1]{Karl Molden}
 
 % Affiliations
 \affil[1]{Not affiliated}
@@ -420,27 +422,29 @@ to prevent this from happening again in the future.
 One tournament that is possible to reproduce is that of
 \cite{Stewart2012}. The strategies used in that tournament are the following:
 
-\begin{enumerate}
-    \item Cooperator
-    \item Defector
-    \item ZD-Extort-2
-    \item Joss: 0.9
-    \item Hard Tit For Tat
-    \item Hard Tit For 2 Tats
-    \item Tit For Tat
-    \item Grudger
-    \item Tit For 2 Tats
-    \item Win-Stay Lose-Shift
-    \item Random: 0.5
-    \item ZD-GTFT-2
-    \item GTFT: 0.33
-    \item Hard Prober
-    \item Prober
-    \item Prober 2
-    \item Prober 3
-    \item Calculator
-    \item Hard Go By Majority
-\end{enumerate}
+\begin{multicols}{3}
+    \begin{enumerate}
+        \item Cooperator
+        \item Defector
+        \item ZD-Extort-2
+        \item Joss: 0.9
+        \item Hard Tit For Tat
+        \item Hard Tit For 2 Tats
+        \item Tit For Tat
+        \item Grudger
+        \item Tit For 2 Tats
+        \item Win-Stay Lose-Shift
+        \item Random: 0.5
+        \item ZD-GTFT-2
+        \item GTFT: 0.33
+        \item Hard Prober
+        \item Prober
+        \item Prober 2
+        \item Prober 3
+        \item Calculator
+        \item Hard Go By Majority
+    \end{enumerate}
+\end{multicols}
 
 This can be reproduced as shown in Figure~\ref{fig:stewart-code}, which gives
 the plot of Figure~\ref{fig:stewart_tournament}.
@@ -537,6 +541,85 @@ research on the library. These include:
 \end{itemize}
 
 Details for the above can be found in \cite{Harper2015}.
+
+\section{Availability}\label{sec:availability}
+
+\subsection{Operating system}
+
+The Axelrod library runs on all major operating systems: Linux, Mac OSX and
+Windows.
+
+\subsection{Programming language}
+
+The library is continuously tested for Python 2.7, 3.3, 3.4 and 3.5.
+
+\subsection{Additional system requirements}
+
+There are no specific additional system requirements.
+
+\subsection{Support}
+
+Support is readily available in multiple forms:
+
+\begin{itemize}
+    \item An online chat channel:
+        \url{https://gitter.im/Axelrod-Python/Axelrod}.
+    \item An  email group:
+        \url{https://groups.google.com/forum/#!topic/axelrod-python}.
+\end{itemize}
+
+\subsection{Dependencies}
+
+The following Python libraries are required dependencies:
+
+\begin{multicols}{3}
+    \begin{itemize}
+        \item Numpy 1.9.2:
+        \item Matplotlib 1.4.2:
+        \item Cloudpickle  0.1.1:
+        \item Hypothesis  3.0:
+        \item Testfixtures  4.9.1:
+    \end{itemize}
+\end{multicols}
+
+\subsection{List of contributors}
+
+The names of all the contributors are not known: as these were mainly done
+through github and certain have not provided their name or responded to a
+request for further details. Here is an incomplete list:
+
+\begin{multicols}{3}
+    \begin{itemize}
+        \item {Owen Campbell}
+        \item {Mark Harper}
+        \item {Vincent Knight}
+        \item {Karol Langner}
+        \item {James Campbell}
+        \item {Thomas Campbell}
+        \item {Alex Carney}
+        \item {Martin Chorley}
+        \item {Cameron Davidson-Pilon}
+        \item {Kristian Glass}
+        \item {Tom{\'a}{\v s} Ehrlich}
+        \item {Martin Jones}
+        \item {Georgios Koutsovoulos}
+        \item {Holly Marissa}
+        \item {Jochen M{\"u}ller}
+        \item {Geraint Palmer}
+        \item {Paul Slavin}
+        \item {Timothy Standen}
+        \item {Luis Visintini}
+        \item {Karl Molden}
+        \item {Jason Young}
+        \item {Andy Boot}
+        \item {Anna Barriscale}
+    \end{itemize}
+\end{multicols}
+
+\subsection{Archive}
+\subsection{Code repository}
+
+\section{Reuse potential}\label{sec:reuse}
 
 \section{Conclusion}\label{sec:conclusion}
 
