@@ -16,82 +16,112 @@
 
 
 \usepackage{amsmath}  % Basic
-\usepackage{hyperref}  % Links etc
 \usepackage{booktabs}  % Better tables
-\usepackage{minted}  % Code
 \usepackage{graphicx}  % Images
+\usepackage{hyperref}  % Links etc
+\usepackage{minted}  % Code
+\usepackage{multicol}  % Multi column list
 \usepackage{subcaption}  % Subfigures
-\usepackage{authblk}  % Authors
 
-\usepackage{multicol}
-
-\title{An open reproducible framework for the study of the iterated prisoner's
-dilemma}
-
-% Core devs (alphabetic order of last name)
-\author[1]{Owen Campbell}
-\author[1]{Mark Harper}
-\author[2]{Vincent Knight}
-\author[1]{Karol Langner}
-
-% All devs (alphabetic order of last name)
-\author[2]{James Campbell}
-\author[5]{Thomas Campbell}
-\author[2]{Alex Carney}
-\author[2]{Martin Chorley}
-\author[1]{Cameron Davidson-Pilon}
-\author[1]{Kristian Glass}
-\author[1]{Tom{\'a}{\v s} Ehrlich}
-\author[1]{Martin Jones}
-\author[4]{Georgios Koutsovoulos}
-\author[1]{Holly Marissa}
-\author[1]{Jochen M{\"u}ller}
-\author[2]{Geraint Palmer}
-\author[3]{Paul Slavin}
-\author[2]{Timothy Standen}
-\author[1]{Luis Visintini}
-\author[1]{Karl Molden}
-
-% Affiliations
-\affil[1]{Not affiliated}
-\affil[2]{Cardiff University}
-\affil[3]{The University of Manchester}
-\affil[4]{The University of Edinburgh}
-\affil[5]{St. Nicholas Catholic High School, Hartford}
-
-% Corresponding author
-
-\date{\today}
 
 \begin{document}
-\maketitle
-\begin{center}
-    \thanks{Corresponding author: Vincent Knight
-        \href{mailto:knightva@cf.ac.uk}{knightva@cf.ac.uk}}
-\end{center}
+%% Set the header information
+\pagestyle{fancy}
+\definecolor{mygray}{gray}{0.6}
+\renewcommand\headrule{}
+\rhead{\footnotesize 3}
+\rhead{\textcolor{gray}{UP JORS software Latex paper template version 0.1}}
 
-\begin{abstract}
-\noindent
-    The Axelrod library is an open source Python package that allows for
-    reproducible game theoretic research into the Iterated Prisoner's Dilemma.
-    This area of research began in the 1980s but suffers from a lack of
-    documentation and test code. The goal of the library is to provide such
-    a resource, with facilities for the design of new strategies and
-    interactions between them, as well as conducting tournaments and ecological
-    simulations for populations of strategies.
+\rule{\textwidth}{1pt}
 
-\noindent
-    With a growing collection of 120 strategies, the library is a also a
-    platform for an original tournament that, in itself, is of interest to the
-    game theoretic community.
+\section*{(1) Overview}\label{sec:sec:overview}
 
-\noindent
-    This paper describes the Iterated Prisoner's Dilemma, the Axelrod library
-    and its development, and insights gained from some novel research.
-\end{abstract}
+\vspace{0.5cm}
+
+\section*{Title}
+
+An open reproducible framework for the study of the iterated prisoner's
+dilemma.
+
+\section*{Authors}
+
+\begin{multicols}{2}
+    \begin{enumerate}[noitemsep,topsep=0pt]
+        % Core devs (alphabetic order of last name)
+        \item Campbell, Owen
+        \item Harper, Marc
+        \item Knight, Vincent
+        \item Langner, Karol
+        % All devs (alphabetic order of last name)
+        \item Campbell, James
+        \item Campbell, Thomas
+        \item Carney, Alex
+        \item Chorley, Martin
+        \item Davidson-Pilon, Cameron
+        \item Glass, Kristian
+        \item Ehrlich Tom{\'a}{\v s}
+        \item Jones, Martin
+        \item Koutsovoulos, Georgios
+        \item Marissa, Holly
+        \item M{\"u}ller, Jochen
+        \item Palmer, Geraint
+        \item Slavin, Paul
+        \item Standen, Timothy
+        \item Visintini, Luis
+        \item Molden, Karl
+    \end{enumerate}
+\end{multicols}
+
+\section*{Paper Author Roles and Affiliations}
 
 
-\section{Overview}\label{sec:sec:overview}
+\begin{multicols}{2}
+    \begin{enumerate}[noitemsep,topsep=0pt]
+\item Development; Not affiliated
+\item Development; Not affiliated
+\item Development; Knight, Vincent
+\item Development; Cardiff University
+\item Development; Cardiff University
+\item Development; St. Nicholas Catholic High School, Hartford
+\item Development; Cardiff University
+\item Development; Cardiff University
+\item Development; Not affiliated
+\item Development; Not affiliated
+\item Development; Not affiliated
+\item Development; Not affiliated
+\item Development; The University of Edinburgh
+\item Development; Not affiliated
+\item Development; Not affiliated
+\item Development; Not affiliated
+\item Development; The University of Manchester
+\item Development; Cardiff University
+\item Development; Not affiliated
+\item Development; Not affiliated
+    \end{enumerate}
+\end{multicols}
+
+\section*{Abstract}
+
+The Axelrod library is an open source Python package that allows for
+reproducible game theoretic research into the Iterated Prisoner's Dilemma.
+This area of research began in the 1980s but suffers from a lack of
+documentation and test code. The goal of the library is to provide such
+a resource, with facilities for the design of new strategies and
+interactions between them, as well as conducting tournaments and ecological
+simulations for populations of strategies.
+
+With a growing collection of 120 strategies, the library is a also a
+platform for an original tournament that, in itself, is of interest to the
+game theoretic community.
+
+This paper describes the Iterated Prisoner's Dilemma, the Axelrod library
+and its development, and insights gained from some novel research.
+
+\section*{Keywords}
+
+Game Theory; Prisoners Dilemma; Python
+
+\section*{Introduction}
 
 Several Iterated Prisoner's Dilemma tournaments have generated much interest;
 including Axelrod's original tournaments \cite{Axelrod1980a,Axelrod1980b},
@@ -118,7 +148,7 @@ This paper introduces a software package: the Axelrod Python library
 \cite{Axelrod-Pythonprojectteam2015}. The Axelrod-Python project has the
 following stated goals:
 
-\begin{itemize}
+\begin{itemize}[noitemsep,topsep=0pt]
     \item To enable the reproduction of Iterated Prisoner's Dilemma
     research as easily as possible
     \item To produce the de-facto tool for any future Iterated Prisoner's
@@ -131,7 +161,7 @@ The presented library is partly motivated by an ongoing discussion in the academ
 about reproducible research \cite{Crick2014a, Hong2015a, Prlic2012, Sandve2013},
 and is:
 
-\begin{itemize}
+\begin{itemize}[noitemsep,topsep=0pt]
     \item Open: all code is released under an MIT license;
     \item Reproducible and well-tested: at the time of writing there is an excellent level of
         integrated tests with 99.37\% coverage
@@ -142,14 +172,7 @@ and is:
     \item Extensible: easy to modify to include new strategies and to run new tournaments
 \end{itemize}
 
-Before describing the package in more detail in
-Section~\ref{sec:description-of-axelrod-python}, an overview of some previous
-Iterated Prisoner's Dilemma research will be given in
-Section~\ref{sec:review}. Section~\ref{sec:new-strategies-and-implications} will
-describe some early research and a conclusion is offered in
-Section~\ref{sec:conclusion}.
-
-\subsection{Review of the literature}\label{sec:review}
+\section*{Review of the literature}\label{sec:review}
 
 As stated in~\cite{Bendor1991}: ``\textit{few works in social science have had
 the general impact of [Axelrod's study of the evolution of cooperation]}''.  In
@@ -164,15 +187,15 @@ biology (for example in~\cite{Stephens2002}, a real tournament where Blue Jays
 are the participants is described) and in particular in the study of evolution.
 
 The tournament is based on an iterated game (see~\cite{Maschler2013} or similar
-for details) where two players repeatedly play the normal form game of
-(\ref{equ:one-shot}) in full knowledge of each other's playing history to date.
-An excellent description of the \textit{one shot} game is given
+for details) where two players repeatedly play the normal form game
+of~(\ref{equ:one-shot}) in full knowledge of each other's playing history to
+date.  An excellent description of the \textit{one shot} game is given
 in~\cite{Gotts2003} which is paraphrased below:
 
 Two players must choose between \textit{Cooperate} (\(C\)) and \textit{Defect}
 (\(D\)):
 
-\begin{itemize}
+\begin{itemize}[noitemsep,topsep=0pt]
     \item If both choose \(C\), they receive a payoff of \(R\)
         (\textbf{R}eward);
     \item If both choose \(D\), they receive a payoff of \(P\)
@@ -193,9 +216,9 @@ two decision vectors $\langle C, D \rangle$,
     \label{equ:one-shot}
 \end{equation}
 
-The game of (\ref{equ:one-shot}) is called the Prisoner's Dilemma. Specific
+The game of~(\ref{equ:one-shot}) is called the Prisoner's Dilemma. Specific
 numerical values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature,
-although any satisfying the conditions in \ref{equ:one-shot} will yield similar
+although any satisfying the conditions in~\ref{equ:one-shot} will yield similar
 results.  Axelrod's tournaments (and further implementations of these) are
 sometimes referred to as Iterated Prisoner's Dilemma (IPD) tournaments. An
 incomplete overview of published tournaments is given in
@@ -249,21 +272,23 @@ strategies for this evolutionary study. This is noteworthy as
 \cite{Axelrod-Pythonprojectteam2015} now boasts over 120 strategies that are
 readily available for a similar analysis.
 
-\section{Implementation and architecture}
+\section*{Implementation and architecture}
 
-\subsection{Description of the Axelrod Python package}\label{sec:description-of-axelrod-python}
+\section*{Description of the Axelrod Python package}\label{sec:description-of-axelrod-python}
 
 The library is written in Python (\url{http://www.python.org/}) which is a
 popular language in the academic community with libraries developed for a
 variety of uses including:
 
-\begin{itemize}
-    \item Machine learning \cite{scikit-learn} (\url{http://scikit-learn.org/});
-    \item Visualisation \cite{Hunter:2007} (\url{http://matplotlib.org/});
-    \item Mathematics \cite{sage} (\url{http://www.sagemath.org/});
+\begin{itemize}[noitemsep,topsep=0pt]
+    \item Algorithmic Game Theory \cite{Mckelvey06gambit:software}
+          (\url{http://gambit.sourceforge.net/})).
     \item Astrophysics \cite{astropy} (\url{http://www.astropy.org/});
-    \item Data manipulation \cite{mckinney-proc-scipy-2010} (\url{http://pandas.pydata.org/});
-    \item Algorithmic Game Theory \cite{Mckelvey06gambit:software} (\url{http://gambit.sourceforge.net/})).
+    \item Data manipulation \cite{mckinney-proc-scipy-2010}
+          (\url{http://pandas.pydata.org/});
+    \item Machine learning \cite{scikit-learn} (\url{http://scikit-learn.org/});
+    \item Mathematics \cite{sage} (\url{http://www.sagemath.org/});
+    \item Visualisation \cite{Hunter:2007} (\url{http://matplotlib.org/});
 \end{itemize}
 
 Furthermore, in \cite{Isaac2008} Python is described as an appropriate language for the
@@ -318,7 +343,7 @@ Figure~\ref{fig:demo_tournament_commands} shows the very basic utilisation
 of the library and further details can be found at the online documentation:
 \url{http://axelrod.readthedocs.org}.
 
-As stated in Section~\ref{sec:sec:overview}, one of the main goals of the library
+As stated in the Overview, one of the main goals of the library
 is to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
 classes). Full contribution guidelines can be found in the documentation.
@@ -409,10 +434,7 @@ Figure~\ref{fig:overview}.
 	\caption{An overview of the library.}
 \end{figure}
 
-Section~\ref{sec:new-strategies-and-implications} will describe in more detail
-some of research capabilities of the library.
-
-\subsection{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
+\section*{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
 Due to the open nature of the library the number of strategies included has
 grown at a fast pace, as can be seen in
@@ -426,8 +448,8 @@ to prevent this from happening again in the future.
 One tournament that is possible to reproduce is that of
 \cite{Stewart2012}. The strategies used in that tournament are the following:
 
-\begin{multicols}{3}
-    \begin{enumerate}
+\begin{multicols}{2}
+    \begin{enumerate}[noitemsep,topsep=0pt]
         \item Cooperator
         \item Defector
         \item ZD-Extort-2
@@ -522,7 +544,7 @@ and it continues to perform strongly.
 There are various other insights that have been gained from ongoing open
 research on the library. These include:
 
-\begin{itemize}
+\begin{itemize}[noitemsep,topsep=0pt]
     \item A closer look at zero determinant strategies, showing that
         extortionate strategies obtain a large number of wins \textit{but} do
         not perform particularly well. This is relevant given the findings of
@@ -546,38 +568,38 @@ research on the library. These include:
 
 Details for the above can be found in \cite{Harper2015}.
 
-\section{Availability}\label{sec:availability}
+\section*{(2) Availability}\label{sec:availability}
 
-\subsection{Operating system}
+\section*{Operating system}
 
 The Axelrod library runs on all major operating systems: Linux, Mac OSX and
 Windows.
 
-\subsection{Programming language}
+\section*{Programming language}
 
 The library is continuously tested for Python 2.7, 3.3, 3.4 and 3.5.
 
-\subsection{Additional system requirements}
+\section*{Additional system requirements}
 
 There are no specific additional system requirements.
 
-\subsection{Support}
+\section*{Support}
 
 Support is readily available in multiple forms:
 
-\begin{itemize}
+\begin{itemize}[noitemsep,topsep=0pt]
     \item An online chat channel:
         \url{https://gitter.im/Axelrod-Python/Axelrod}.
     \item An  email group:
         \url{https://groups.google.com/forum/#!topic/axelrod-python}.
 \end{itemize}
 
-\subsection{Dependencies}
+\section*{Dependencies}
 
 The following Python libraries are required dependencies:
 
 \begin{multicols}{3}
-    \begin{itemize}
+    \begin{itemize}[noitemsep,topsep=0pt]
         \item Numpy 1.9.2:
         \item Matplotlib 1.4.2:
         \item Cloudpickle  0.1.1:
@@ -586,14 +608,14 @@ The following Python libraries are required dependencies:
     \end{itemize}
 \end{multicols}
 
-\subsection{List of contributors}
+\section*{List of contributors}
 
 The names of all the contributors are not known: as these were mainly done
 through Github and certain have not provided their name or responded to a
 request for further details. Here is an incomplete list:
 
-\begin{multicols}{3}
-    \begin{itemize}
+\begin{multicols}{2}
+    \begin{itemize}[noitemsep,topsep=0pt]
         \item {Owen Campbell}
         \item {Mark Harper}
         \item {Vincent Knight}
@@ -620,32 +642,30 @@ request for further details. Here is an incomplete list:
     \end{itemize}
 \end{multicols}
 
-\subsection{Archive}
+\section*{Software location:}
 
-\begin{multicols}{2}
-    \begin{itemize}
-        \item Name: Zenodo
-        \item Persistent identifier:
+{\bf Archive}
+
+\begin{description}[noitemsep,topsep=0pt]
+    \item[Name:] Zenodo
+    \item[Persistent identifier:]
 \href{https://zenodo.org/record/45187}{10.5281/zenodo.45187}
-        \item Licence: MIT
-        \item Publisher:  Vincent Knight
-        \item Version published: Axelrod: Alternator Release. v0.0.28
-        \item Date published: 2016-01-26
-    \end{itemize}
-\end{multicols}
+    \item[Licence:] MIT
+    \item[Publisher:]  Vincent Knight
+    \item[Version published:] Axelrod: Alternator Release. v0.0.28
+    \item[Date published:] 2016-01-26
+\end{description}
 
-\subsection{Code repository}
+{\bf Code repository}
 
-\begin{multicols}{2}
-    \begin{itemize}
-        \item Name: Github
-        \item Identifier: \url{https://github.com/Axelrod-Python/Axelrod}
-        \item Licence: MIT
-        \item Date published: 2015-02-16
-    \end{itemize}
-\end{multicols}
+\begin{description}[noitemsep,topsep=0pt]
+    \item[Name:] Github
+    \item[Identifier:] \url{https://github.com/Axelrod-Python/Axelrod}
+    \item[Licence:] MIT
+    \item[Date published:] 2015-02-16
+\end{description}
 
-\section{Reuse potential}\label{sec:reuse}
+\section*{Reuse potential}\label{sec:reuse}
 
 The Axelrod library has been designed with sustainable software practice in
 mind. There is an extensive documentation suite:
@@ -658,11 +678,10 @@ iterated Prisoner's dilemma. In particular, having a large library of
 tested strategies readily available for experimentation is of high value to the
 research community.
 
-This has been evidenced by the work described in
-Section~\ref{sec:new-strategies-and-implications} the library has already shown
+This has been evidenced by the work described: the library has already shown
 it's potential for reuse.
 
-\section{Conclusion}\label{sec:conclusion}
+\section*{Conclusion}\label{sec:conclusion}
 
 This paper has presented a game theoretic software package that aims to address
 reproducibility of research into the Iterated Prisoner's Dilemma. The open
@@ -673,7 +692,7 @@ insights.
 The capabilities of the library mentioned above are not at all comprehensive, a
 list of the current abilities include:
 
-\begin{itemize}
+\begin{itemize}[noitemsep,topsep=0pt]
     \item Noisy tournaments;
     \item Tournaments with probabilistic ending of interactions;
     \item Ecological analysis of tournaments;
@@ -689,6 +708,7 @@ These capabilities are constantly being updated.
 The ability to have readily available a large number of strategies makes this
 tool an excellent and obvious example of the benefits of open research which
 should positively impact the game theoretic community.
+
 
 \printbibliography
 \end{document}
