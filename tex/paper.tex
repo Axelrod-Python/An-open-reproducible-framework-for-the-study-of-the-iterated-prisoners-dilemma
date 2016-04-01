@@ -111,7 +111,7 @@ a resource, with facilities for the design of new strategies and
 interactions between them, as well as conducting tournaments and ecological
 simulations for populations of strategies.
 
-With a growing collection of 120 strategies, the library is a also a
+With a growing collection of 122 strategies, the library is a also a
 platform for an original tournament that, in itself, is of interest to the
 game theoretic community.
 
@@ -344,7 +344,7 @@ Figure~\ref{fig:demo_tournament_commands} shows the very basic utilisation
 of the library and further details can be found at the online documentation:
 \url{http://axelrod.readthedocs.org}.
 
-As stated in the Overview, one of the main goals of the library
+As stated in the \textbf{Introduction}, one of the main goals of the library
 is to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
 classes). Full contribution guidelines can be found in the documentation.
@@ -410,14 +410,14 @@ class TestGrudger(TestPlayer):
     \label{fig:grudger_test}
 \end{figure}
 
-To date the library has had contributions from 24 contributors from a variety of
-backgrounds. These contributions have been in terms of strategies. One strategy
-is the creation of an undergraduate mathematics student with little prior
-knowledge of programming. Multiple other strategies were written by a 15 year old
-secondary school student. As well as these strategy contributions, vital
-architectural improvements to the library itself have also been received. You
-can see an overview of the structure of the source code in
-Figure~\ref{fig:overview}.
+To date the library has had contributions from 24 contributors from a variety
+of backgrounds. These contributions have been in terms of strategies. One
+strategy is the creation of an undergraduate mathematics student with little
+prior knowledge of programming. Multiple other strategies were written by a 15
+year old secondary school student. Both of these students are authors of this
+paper. As well as these strategy contributions, vital architectural
+improvements to the library itself have also been received. You can see an
+overview of the structure of the source code in Figure~\ref{fig:overview}.
 
 \begin{figure}[!hbtp]
 	\begin{subfigure}{.5\textwidth}
@@ -674,15 +674,13 @@ mind. There is an extensive documentation suite:
 of example Jupyter notebooks available here:
 \url{https://github.com/Axelrod-Python/Axelrod-notebooks}.
 
-This library has the potential to be a common standard for research in to the
-iterated Prisoner's dilemma. In particular, having a large library of
-tested strategies readily available for experimentation is of high value to the
-research community.
-
+The ability to have readily available a large number of strategies makes this
+tool an excellent and obvious example of the benefits of open research which
+should positively impact the game theoretic community.
 This has been evidenced by the work described: the library has already shown
 it's potential for reuse.
 
-\section*{Conclusion}\label{sec:conclusion}
+\section*{Conclusion}
 
 This paper has presented a game theoretic software package that aims to address
 reproducibility of research into the Iterated Prisoner's Dilemma. The open
@@ -706,10 +704,14 @@ list of the current abilities include:
 
 These capabilities are constantly being updated.
 
-The ability to have readily available a large number of strategies makes this
-tool an excellent and obvious example of the benefits of open research which
-should positively impact the game theoretic community.
+\section*{Acknowledgements}
 
+The authors would like to thank all contributors. Also, they thank
+Robert Axelrod himself for his well wishes with the library.
+
+\section*{Competing interests}
+
+The authors declare that they have no competing interests.
 
 \printbibliography
 \end{document}
