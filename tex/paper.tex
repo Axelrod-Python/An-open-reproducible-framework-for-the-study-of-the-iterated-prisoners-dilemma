@@ -19,7 +19,7 @@
 \usepackage{booktabs}  % Better tables
 \usepackage{graphicx}  % Images
 \usepackage{hyperref}  % Links etc
-\usepackage{minted}  % Code
+% \usepackage{minted}  % Code: minted does not compile on arXiv
 \usepackage{multicol}  % Multi column list
 \usepackage{subcaption}  % Subfigures
 
@@ -312,33 +312,33 @@ the library to create a basic tournament giving the graphical output shown in
 Figure~\ref{fig:demo_tournament}.
 
 \begin{figure}[!hbtp]
-    \begin{minted}[linenos, frame=lines]{python}
+    \begin{verbatim}
 >>> import axelrod
 >>> strategies = [s() for s in axelrod.demo_strategies]
 >>> tournament = axelrod.Tournament(strategies)
 >>> results = tournament.play()
 >>> plot = axelrod.Plot(results)
 >>> plot.boxplot()
-    \end{minted}
+    \end{verbatim}
     \caption{A simple set of commands to create a demonstration tournament. The
         output is shown in Figure~\ref{fig:demo_tournament}.}
     \label{fig:demo_tournament_commands}
 \end{figure}
 
 \begin{figure}[!hbtp]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[width=.75\textwidth]{demo_tournament.pdf}
-		\caption{The results from a simple tournament.}
-		\label{fig:demo_tournament}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[width=.75\textwidth]{stewart_tournament.pdf}
-		\caption{The results from \cite{Stewart2012}.}
-		\label{fig:stewart_tournament}
-	\end{subfigure}
-	\caption{Summary plots produced by the library.}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.75\textwidth]{demo_tournament.pdf}
+        \caption{The results from a simple tournament.}
+        \label{fig:demo_tournament}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.75\textwidth]{stewart_tournament.pdf}
+        \caption{The results from \cite{Stewart2012}.}
+        \label{fig:stewart_tournament}
+    \end{subfigure}
+    \caption{Summary plots produced by the library.}
 \end{figure}
 
 Figure~\ref{fig:demo_tournament_commands} shows the very basic utilisation
@@ -353,7 +353,7 @@ As an example, Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the sou
 the Grudger strategy as well as its corresponding test.
 
 \begin{figure}[!hbtp]
-    \begin{minted}[linenos, frame=lines]{python}
+    \begin{verbatim}
 class Grudger(Player):
     """A player starts by cooperating however will defect if
        at any point the opponent has defected."""
@@ -373,7 +373,7 @@ class Grudger(Player):
         if opponent.defections:
             return D
         return C
-    \end{minted}
+    \end{verbatim}
     \caption{Source code for the Grudger strategy.}
     \label{fig:grudger}
 \end{figure}
@@ -381,7 +381,7 @@ class Grudger(Player):
 
 
 \begin{figure}[!hbtp]
-    \begin{minted}[linenos, frame=lines]{python}
+    \begin{verbatim}
 class TestGrudger(TestPlayer):
 
     name = "Grudger"
@@ -406,7 +406,7 @@ class TestGrudger(TestPlayer):
         """
         self.responses_test([C, D, D, D], [C, C, C, C], [C])
         self.responses_test([C, C, D, D, D], [C, D, C, C, C], [D])
-    \end{minted}
+    \end{verbatim}
     \caption{Test code for the Grudger strategy.}
     \label{fig:grudger_test}
 \end{figure}
@@ -421,19 +421,19 @@ improvements to the library itself have also been received. You can see an
 overview of the structure of the source code in Figure~\ref{fig:overview}.
 
 \begin{figure}[!hbtp]
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[width=.75\textwidth]{outline_of_library.pdf}
-		\caption{An overview of the source code.}
-		\label{fig:overview}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\centering
-		\includegraphics[width=.9\textwidth]{number_of_strategies_with_arima_projection.pdf}
-		\caption{The number of strategies included in the library}
-		\label{fig:number_of_strategies_against_date}
-	\end{subfigure}
-	\caption{An overview of the library.}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.75\textwidth]{outline_of_library.pdf}
+        \caption{An overview of the source code.}
+        \label{fig:overview}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{number_of_strategies_with_arima_projection.pdf}
+        \caption{The number of strategies included in the library}
+        \label{fig:number_of_strategies_against_date}
+    \end{subfigure}
+    \caption{An overview of the library.}
 \end{figure}
 
 \section*{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
@@ -478,7 +478,7 @@ This can be reproduced as shown in Figure~\ref{fig:stewart-code}, which gives
 the plot of Figure~\ref{fig:stewart_tournament}.
 
 \begin{figure}[!hbtp]
-    \begin{minted}[linenos, frame=lines]{python}
+    \begin{verbatim}
 >>> import axelrod
 
 >>> strategies = [axelrod.Cooperator(),
@@ -504,7 +504,7 @@ the plot of Figure~\ref{fig:stewart_tournament}.
 >>> results = tournament.play()
 >>> plot = axelrod.Plot(results)
 >>> plot.boxplot()
-    \end{minted}
+    \end{verbatim}
     \caption{Source code for reproducing the tournament of \cite{Stewart2012}}
     \label{fig:stewart-code}
 \end{figure}
@@ -515,10 +515,10 @@ shows the results from the full tournament which can also be seen (in full
 detail) here: \url{http://axelrod-tournament.readthedocs.org/}.
 
 \begin{figure}[!hbtp]
-	\centering
-	\includegraphics[width=.75\textwidth]{tournament.pdf}
-	\caption{Results from the library tournament (2016-03-31)}
-	\label{fig:tournament}
+    \centering
+    \includegraphics[width=.75\textwidth]{tournament.pdf}
+    \caption{Results from the library tournament (2016-03-31)}
+    \label{fig:tournament}
 \end{figure}
 
 The current winning strategy is a novel strategy called: Looker Up. This is a
@@ -527,9 +527,9 @@ generically by \(m, n\) so as to map states to actions as shown
 in~(\ref{equ:example_of_lookerup}).
 
 \begin{equation}
-	(\underbrace{(C, D, D, D, C, D, D, C)}_{m\text{ first actions by opponent}},
-	\overbrace{((C, C), (C, C))}^{n\text{ last pairs of actions}}) \to D
-	\label{equ:example_of_lookerup}
+    (\underbrace{(C, D, D, D, C, D, D, C)}_{m\text{ first actions by opponent}},
+    \overbrace{((C, C), (C, C))}^{n\text{ last pairs of actions}}) \to D
+    \label{equ:example_of_lookerup}
 \end{equation}
 
 The example of (\ref{equ:example_of_lookerup}) is an incomplete illustration of
