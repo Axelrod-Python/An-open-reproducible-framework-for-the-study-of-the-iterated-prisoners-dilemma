@@ -213,7 +213,7 @@ two decision vectors $\langle C, D \rangle$,
 \begin{equation}
     \begin{pmatrix}
         R,R & S,T\\
-        S,S & P,P
+        T,S & P,P
     \end{pmatrix}\quad\text{such that } T>R>P>S \text{ and } 2R > T + S
     \label{equ:one-shot}
 \end{equation}
@@ -693,14 +693,16 @@ The capabilities of the library mentioned above are not at all comprehensive, a
 list of the current abilities include:
 
 \begin{itemize}[noitemsep,topsep=0pt]
-    \item Noisy tournaments;
-    \item Tournaments with probabilistic ending of interactions;
-    \item Ecological analysis of tournaments;
-    \item Morality metrics based on \cite{Singer-Clark2014};
+    \item Noisy tournaments.
+    \item Tournaments with probabilistic ending of interactions.
+    \item Ecological analysis of tournaments.
+    \item Morality metrics based on \cite{Singer-Clark2014}.
     \item Transformation of strategies (in effect giving an infinite number of
-        strategies);
+        strategies).
     \item Classification of strategies according to multiple dimensions.
     \item Gathering of full interaction history for all interactions.
+    \item Parallelization of computations for tournaments with a high
+        computational cost \cite{Pathos, Mckerns2011}.
 \end{itemize}
 
 These capabilities are constantly being updated.
