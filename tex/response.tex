@@ -1,0 +1,82 @@
+\documentclass{jors}
+
+%% Set the header information
+
+% Commenting out as this overrides the section titles.
+\pagestyle{fancy}
+\definecolor{mygray}{gray}{0.6}
+\renewcommand\headrule{}
+\rhead{\footnotesize 3}
+\rhead{\textcolor{gray}{UP JORS software Latex paper template version 0.1}}
+
+% Nicer bibliography management
+\usepackage[backend=bibtex, firstinits=true, url=true, isbn=true]{biblatex}
+\addbibresource{references.bib}
+%-----------------------------
+
+
+\usepackage{amsmath}  % Basic
+\usepackage{booktabs}  % Better tables
+\usepackage{graphicx}  % Images
+\usepackage{hyperref}  % Links etc
+% \usepackage{minted}  % Code: minted does not compile on arXiv
+\usepackage{multicol}  % Multi column list
+\usepackage{subcaption}  % Subfigures
+
+
+\begin{document}
+%% Set the header information
+\pagestyle{fancy}
+\definecolor{mygray}{gray}{0.6}
+\renewcommand\headrule{}
+\rhead{\footnotesize 3}
+\rhead{\textcolor{gray}{UP JORS software Latex paper template version 0.1}}
+
+\rule{\textwidth}{1pt}
+
+\section*{(1) Overview}\label{sec:sec:overview}
+
+\vspace{0.5cm}
+
+\section*{Title}
+
+Response to first review: An open framework for the reproducible study of the
+iterated prisoner's dilemma.
+
+\section*{Major comments}
+
+
+\begin{itemize}
+\item \textit{suggested title change}: This has been changed to ``An open framework for
+      the reproducible study of the iterated prisoner's dilemma''
+\item Implementation & Architecture section currently discusses how to use library, but should be refactored to expand upon architecture
+\item \textit{Side-by-side figures appear too small, and should be replaced with full-size (perhaps top-bottom) figures}: Figures have been resized.
+\item Discrepancy between version of software in paper and on Zenodo
+\item \textif{Dependencies not automatically installed or checked via pip}: This has been addressed. Here is a url to the code patch (github pull request) that fixed this: \url{https://github.com/Axelrod-Python/Axelrod/pull/542}.
+\end{itemize}
+
+\section*{Minor comments}
+
+Documentation paragraph in the prob end tournament section has been fixed. It now reads:
+
+\begin{quote}
+	We can also view the length of the matches played by each player. The plot
+	shows that the length of each match (for each player) is not the same. The
+	median length is 4 which is the expected value with the probability of a match
+	ending being 0.5.
+\end{quote}
+
+
+The code snippets that were not complete (final line for plotting) have been
+fixed. Furthermore, an explanation of how to obtain the full tournament results
+has also been included.
+
+The comment about variety of backgrounds: we feel that the paragraph explains what is meant (
+
+The discussion group has been made public. This was an oversight.
+
+Hypothesis is a requirement for development: cloudpickle is no longer a
+requirement following some substanstial rewriting of the internals of the
+library (resulting in speed, memory and readability improvements).
+
+\end{document}
