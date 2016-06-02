@@ -326,19 +326,10 @@ Figure~\ref{fig:demo_tournament}.
 \end{figure}
 
 \begin{figure}[!hbtp]
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=.75\textwidth]{demo_tournament.pdf}
-        \caption{The results from a simple tournament.}
-        \label{fig:demo_tournament}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=.75\textwidth]{stewart_tournament.pdf}
-        \caption{The results from \cite{Stewart2012}.}
-        \label{fig:stewart_tournament}
-    \end{subfigure}
-    \caption{Summary plots produced by the library.}
+	\centering
+	\includegraphics[width=.75\textwidth]{demo_tournament.pdf}
+	\caption{The results from a simple tournament.}
+	\label{fig:demo_tournament}
 \end{figure}
 
 Figure~\ref{fig:demo_tournament_commands} shows the very basic utilisation
@@ -421,31 +412,30 @@ improvements to the library itself have also been received. You can see an
 overview of the structure of the source code in Figure~\ref{fig:overview}.
 
 \begin{figure}[!hbtp]
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=.75\textwidth]{outline_of_library.pdf}
-        \caption{An overview of the source code.}
-        \label{fig:overview}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=.9\textwidth]{number_of_strategies_with_arima_projection.pdf}
-        \caption{The number of strategies included in the library}
-        \label{fig:number_of_strategies_against_date}
-    \end{subfigure}
-    \caption{An overview of the library.}
+	\centering
+	\includegraphics[width=.9\textwidth]{outline_of_library.pdf}
+	\caption{An overview of the source code.}
+	\label{fig:overview}
 \end{figure}
 
 \section*{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
 Due to the open nature of the library the number of strategies included has
 grown at a fast pace, as can be seen in
-Figure~\ref{fig:number_of_strategies_against_date}. Despite this, due to
-previous research being done in an irreproducible manner with, for example, no
-source code and/or vaguely described strategies, not all previous tournaments
-can yet be reproduced. In fact, some of the early tournaments might be
-impossible to reproduce as the source code is forever lost. This library aims
-to prevent this from happening again in the future.
+Figure~\ref{fig:number_of_strategies_against_date}.
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width=.75\textwidth]{number_of_strategies_with_arima_projection.pdf}
+	\caption{The number of strategies included in the library}
+	\label{fig:number_of_strategies_against_date}
+\end{figure}
+
+Despite this, due to previous research being done in an irreproducible manner
+with, for example, no source code and/or vaguely described strategies, not all
+previous tournaments can yet be reproduced. In fact, some of the early
+tournaments might be impossible to reproduce as the source code is forever
+lost. This library aims to prevent this from happening again in the future.
 
 One tournament that is possible to reproduce is that of
 \cite{Stewart2012}. The strategies used in that tournament are the following:
@@ -476,6 +466,13 @@ One tournament that is possible to reproduce is that of
 
 This can be reproduced as shown in Figure~\ref{fig:stewart-code}, which gives
 the plot of Figure~\ref{fig:stewart_tournament}.
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width=.75\textwidth]{stewart_tournament.pdf}
+	\caption{The results from \cite{Stewart2012}.}
+	\label{fig:stewart_tournament}
+\end{figure}
 
 \begin{figure}[!hbtp]
     \begin{verbatim}
