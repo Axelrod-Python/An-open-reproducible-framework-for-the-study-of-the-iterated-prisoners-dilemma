@@ -125,15 +125,15 @@ Game Theory; Prisoners Dilemma; Python
 \section*{Introduction}
 
 Several Iterated Prisoner's Dilemma tournaments have generated much interest;
-including Axelrod's original tournaments \cite{Axelrod1980a,Axelrod1980b},
-two 2004 anniversary tournaments \cite{kendall2007iterated}, and
-the Stewart and Plotkin 2012 tournament \cite{Stewart2012}, following the
-discovery of zero-determinant strategies.  Subsequent research has spawned an
-enormous number of papers, but rarely are the results reproducible. Among
-well-known tournaments, in only one case is the full original source code
+Axelrod's original tournaments \cite{Axelrod1980a,Axelrod1980b}, two 2004
+anniversary tournaments \cite{kendall2007iterated}, and the Stewart and Plotkin
+2012 tournament \cite{Stewart2012}, following the discovery of zero-determinant
+strategies.  Subsequent research has spawned a number of papers (many of which
+are referenced throughout this paper), but rarely are the results reproducible.
+Amongst well-known tournaments, in only one case is the full original source code
 available (Axelrod's second tournament \cite{Axelrod1980b}, in FORTRAN). In no
-cases is the available code well-documented, easily modifiable, or released with
-significant test suites.
+cases is the available code well-documented, easily modifiable, or released
+with significant test suites.
 
 To make matters more complicated, often a newly-created strategy is studied in
 isolation by opponents chosen by the strategy's creators, and often such
@@ -145,7 +145,7 @@ As a result, some of the results related to these strategies and tournaments
 cannot be reliably replicated, and therefore have not met the basic scientific
 criterion of falsifiability.
 
-This paper introduces a software package: the Axelrod Python library
+This paper introduces a software package: the Axelrod-Python library
 \cite{Axelrod-Pythonprojectteam2015}. The Axelrod-Python project has the
 following stated goals:
 
@@ -166,7 +166,7 @@ and is:
     \item Open: all code is released under an MIT license;
     \item Reproducible and well-tested: at the time of writing there is an excellent level of
         integrated tests with 99.37\% coverage (including property based tests:
-        \cite{Hypothesis3.0.3}
+        \cite{Hypothesis3.0.3})
     \item Well-documented: all features of the library are documented for ease of
         use and modification
     \item Extensive: 123 strategies are included, with infinitely-many
@@ -219,12 +219,12 @@ two decision vectors $\langle C, D \rangle$,
 \end{equation}
 
 The game of~(\ref{equ:one-shot}) is called the Prisoner's Dilemma. Specific
-numerical values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature,
-although any satisfying the conditions in~\ref{equ:one-shot} will yield similar
-results.  Axelrod's tournaments (and further implementations of these) are
-sometimes referred to as Iterated Prisoner's Dilemma (IPD) tournaments. An
-incomplete overview of published tournaments is given in
-Table~\ref{tab:tournaments}.
+numerical values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature
+\cite{Axelrod1980a, Axelrod1980b}, although any satisfying the conditions
+in~\ref{equ:one-shot} will yield similar results. Axelrod's tournaments (and
+further implementations of these) are sometimes referred to as Iterated
+Prisoner's Dilemma (IPD) tournaments. An incomplete representative overview of
+published tournaments is given in Table~\ref{tab:tournaments}.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -235,7 +235,7 @@ Table~\ref{tab:tournaments}.
             1979     & \cite{Axelrod1980a}        & 13                   & Standard & Not immediately available\\
             1979     & \cite{Axelrod1980b}        & 64                   & Standard & Available in FORTRAN\\
             1991     & \cite{Bendor1991}          & 13                   & Noisy    & Not immediately available\\
-            2002     & \cite{Stephens2002}        & 16                   & Wildlife & Not applicable\\
+            2002     & \cite{Stephens2002}        & 16                   & Wildlife & Not a computer based tournament\\
             2005     & \cite{kendall2007iterated} & 223                  & Varied   & Not available \\
             2012     & \cite{Stewart2012}         & 13                   & Standard & Not fully available \\
             \bottomrule
@@ -304,8 +304,9 @@ recommended aspects of reproducible research \cite{Crick2014a, Sandve2013}.
 
 Installation of the library is straightforward as it is available via the
 standard Python installation package: `pip'
-(\url{https://pypi.python.org/pypi}). This ensures it can be used on all major
-operating systems (Windows, OS X and Linux).
+(\url{https://pypi.python.org/pypi}). The package name is \texttt{axelrod} and
+can thus be installed by calling: \texttt{pip install axelrod}. This ensures it
+can be used on all major operating systems (Windows, OS X and Linux).
 
 Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
 the library to create a basic tournament giving the graphical output shown in
@@ -332,10 +333,6 @@ Figure~\ref{fig:demo_tournament}.
 	\caption{The results from a simple tournament.}
 	\label{fig:demo_tournament}
 \end{figure}
-
-Figure~\ref{fig:demo_tournament_commands} shows the very basic utilisation
-of the library and further details can be found at the online documentation:
-\url{http://axelrod.readthedocs.org}.
 
 As stated in the \textbf{Introduction}, one of the main goals of the library
 is to allow for the easy contribution of strategies. Doing this requires the
@@ -404,13 +401,22 @@ class TestGrudger(TestPlayer):
 \end{figure}
 
 To date the library has had contributions from 24 contributors from a variety
-of backgrounds. These contributions have been in terms of strategies. One
-strategy is the creation of an undergraduate mathematics student with little
-prior knowledge of programming. Multiple other strategies were written by a 15
-year old secondary school student. Both of these students are authors of this
-paper. As well as these strategy contributions, vital architectural
-improvements to the library itself have also been received. You can see an
-overview of the structure of the source code in Figure~\ref{fig:overview}.
+of backgrounds which are not solely academic. These contributions have been in
+terms of strategies. One strategy is the creation of an undergraduate
+mathematics student with little prior knowledge of programming. Multiple other
+strategies were written by a 15 year old secondary school student. Both of
+these students are authors of this paper. As well as these strategy
+contributions, vital architectural improvements to the library itself have also
+been received.
+
+You can see an overview of the structure of the source code in
+Figure~\ref{fig:overview}. Add:
+
+\begin{itemize}
+	\item Discuss match generators (possibly include in image?)
+	\item Discuss what a strategy is (class, inheritance).
+	\item Reuse (possibility of creating new tournament types).
+\end{itemize}
 
 \begin{figure}[!hbtp]
 	\centering
@@ -466,7 +472,8 @@ One tournament that is possible to reproduce is that of
 \end{multicols}
 
 This can be reproduced as shown in Figure~\ref{fig:stewart-code}, which gives
-the plot of Figure~\ref{fig:stewart_tournament}.
+the plot of Figure~\ref{fig:stewart_tournament}. Note that slight differences
+with the results of \cite{Stewart2012} are due to stochastic behaviour.
 
 \begin{figure}[!hbtp]
 	\centering
@@ -532,7 +539,7 @@ to:
     \label{fig:tournament}
 \end{figure}
 
-The current winning strategy is a novel strategy called: Looker Up. This is a
+The current winning strategy is a novel strategy: Looker Up. This is a
 strategy that maps a given set of states to actions. The state space is defined
 generically by \(m, n\) so as to map states to actions as shown
 in~(\ref{equ:example_of_lookerup}).
@@ -548,22 +555,24 @@ the mapping for \(m=8, n=2\). Intuitively, this state space uses the initial
 plays of the opponent to gain some information about its intentions whilst still
 taking into account the recent play. The actual winning strategy is an instance
 of the framework for \(m=n=2\) for which a particle swarm algorithm has been
-used to train it, the second placed strategy was trained with an evolutionary
-algorithms. More details of this can be found in \cite{Jones2015, George2016}.
+used to train it. The second placed strategy was trained with an evolutionary
+algorithm \cite{Jones2015, George2016}.
 In \cite{Knight2015} experiments are described that evaluate how the second
 placed strategy behaves in environments other than those in which it was trained
 and it continues to perform strongly.
 
 There are various other insights that have been gained from ongoing open
-research on the library. These include:
+research on the library, details can be found in \cite{Harper2015}. These include:
 
 \begin{itemize}[noitemsep,topsep=0pt]
     \item A closer look at zero determinant strategies, showing that
-        extortionate strategies obtain a large number of wins \textit{but} do
-        not perform particularly well. This is relevant given the findings of
-        \cite{Stewart2012} in which zero determinant strategies are shown to be
-        able to perform better than any other strategy. This finding extends
-        to noisy tournaments (which are also implemented in the library).
+		extortionate strategies obtain a large number of wins: the number of
+		times they outscore an opponent during a given match. \textit{However} these do
+		not perform particularly well from the overall tournament ranking point of
+		view. This is relevant given the findings of \cite{Stewart2012} in which zero
+		determinant strategies are shown to be able to perform better than any other
+		strategy. This finding extends to noisy tournaments (which are also implemented
+		in the library).
     \item This negative relationship between wins and performance does not
         generalise. There are some strategies that perform well, both in terms
         of matches won and overall performance: Back stabber, Double crosser,
@@ -573,24 +582,22 @@ research on the library. These include:
         well in both wins and score as demonstrated by Looker Up and Fool Me
         Once.
     \item Strategies like Looker Up and Meta Hunter seem to be generally
-        cooperative yet still exploit naive strategies. The MetaHunter strategy
+        cooperative yet still exploit naive strategies. The Meta Hunter strategy
         is a particular type of Meta strategy which uses a variety of other
         strategy behaviours to choose a best action. These strategies perform
         very well in general and continue to do so in noisy tournaments.
 \end{itemize}
 
-Details for the above can be found in \cite{Harper2015}.
-
 \section*{(2) Availability}\label{sec:availability}
 
 \section*{Operating system}
 
-The Axelrod library runs on all major operating systems: Linux, Mac OSX and
+The Axelrod library runs on all major operating systems: Linux, Mac OS X and
 Windows.
 
 \section*{Programming language}
 
-The library is continuously tested for Python 2.7, 3.3, 3.4 and 3.5.
+The library is continuously tested for compatibility with Python 2.7, 3.4 and 3.5.
 
 \section*{Additional system requirements}
 
@@ -615,7 +622,6 @@ The following Python libraries are required dependencies:
     \begin{itemize}[noitemsep,topsep=0pt]
         \item Numpy 1.9.2:
         \item Matplotlib 1.4.2:
-        \item Cloudpickle  0.1.1:
         \item Hypothesis  3.0:
         \item Testfixtures  4.9.1:
     \end{itemize}
@@ -624,7 +630,7 @@ The following Python libraries are required dependencies:
 \section*{List of contributors}
 
 The names of all the contributors are not known: as these were mainly done
-through Github and certain have not provided their name or responded to a
+through Github and some have not provided their name or responded to a
 request for further details. Here is an incomplete list:
 
 \begin{multicols}{2}
@@ -690,7 +696,10 @@ The ability to have readily available a large number of strategies makes this
 tool an excellent and obvious example of the benefits of open research which
 should positively impact the game theoretic community.
 This has been evidenced by the work described: the library has already shown
-it's potential for reuse.
+its potential for reuse.
+
+Add more here: point to previous discussion about new strategies, new
+tournaments, tests etc\dots
 
 \section*{Conclusion}
 
