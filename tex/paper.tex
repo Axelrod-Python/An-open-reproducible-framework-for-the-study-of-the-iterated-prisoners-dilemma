@@ -318,7 +318,8 @@ Figure~\ref{fig:demo_tournament}.
 >>> tournament = axelrod.Tournament(strategies)
 >>> results = tournament.play()
 >>> plot = axelrod.Plot(results)
->>> plot.boxplot()
+>>> p = plot.boxplot()
+>>> p.show()
     \end{verbatim}
     \caption{A simple set of commands to create a demonstration tournament. The
         output is shown in Figure~\ref{fig:demo_tournament}.}
@@ -500,7 +501,8 @@ the plot of Figure~\ref{fig:stewart_tournament}.
 >>> tournament = axelrod.Tournament(strategies)
 >>> results = tournament.play()
 >>> plot = axelrod.Plot(results)
->>> plot.boxplot()
+>>> p = plot.boxplot()
+>>> p.show()
     \end{verbatim}
     \caption{Source code for reproducing the tournament of \cite{Stewart2012}}
     \label{fig:stewart-code}
@@ -509,7 +511,19 @@ the plot of Figure~\ref{fig:stewart_tournament}.
 In parallel to the Python library, a tournament is being kept up to date that
 pits all available strategies against each other. Figure~\ref{fig:tournament}
 shows the results from the full tournament which can also be seen (in full
-detail) here: \url{http://axelrod-tournament.readthedocs.org/}.
+detail) here: \url{http://axelrod-tournament.readthedocs.org/}. Note that to
+obtain this tournament requires a simple change of the code shown in
+Figure~\ref{fig:demo_tournament_commands}, changing:
+
+\begin{verbatim}
+>>> strategies = [s() for s in axelrod.demo_strategies]}
+\end{verbatim}
+
+to:
+
+\begin{verbatim}
+>>> strategies = [s() for s in axelrod.ordinary_strategies]}.
+\end{verbatim}
 
 \begin{figure}[!hbtp]
     \centering
