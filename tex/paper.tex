@@ -271,7 +271,7 @@ In \cite{Axelrod}, Axelrod describes how similar techniques are used to
 genetically evolve a high performing strategy from a given set of strategies.
 Note that in his original work, Axelrod only used a base strategy set of 12
 strategies for this evolutionary study. This is noteworthy as
-\cite{Axelrod-Pythonprojectteam2015} now boasts over 120 strategies that are
+\cite{Axelrod-Pythonprojectteam2015} now boasts over 135 strategies that are
 readily available for a similar analysis.
 
 \section*{Implementation and architecture}
@@ -308,38 +308,17 @@ standard Python installation package: `pip'
 can thus be installed by calling: \texttt{pip install axelrod}. This ensures it
 can be used on all major operating systems (Windows, OS X and Linux).
 
-Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
-the library to create a basic tournament giving the graphical output shown in
-Figure~\ref{fig:demo_tournament}.
-
-\begin{figure}[!hbtp]
-    \begin{verbatim}
->>> import axelrod
->>> strategies = [s() for s in axelrod.demo_strategies]
->>> tournament = axelrod.Tournament(strategies)
->>> results = tournament.play()
->>> plot = axelrod.Plot(results)
->>> p = plot.boxplot()
->>> p.show()
-    \end{verbatim}
-    \caption{A simple set of commands to create a demonstration tournament. The
-        output is shown in Figure~\ref{fig:demo_tournament}.}
-    \label{fig:demo_tournament_commands}
-\end{figure}
-
-\begin{figure}[!hbtp]
-	\centering
-	\includegraphics[width=.75\textwidth]{demo_tournament.pdf}
-	\caption{The results from a simple tournament.}
-	\label{fig:demo_tournament}
-\end{figure}
-
-As stated in the \textbf{Introduction}, one of the main goals of the library
-is to allow for the easy contribution of strategies. Doing this requires the
+As stated in the \textbf{Introduction}, one of the main goals of the library is
+to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
-classes). Full contribution guidelines can be found in the documentation.
-As an example, Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
-the Grudger strategy as well as its corresponding test.
+classes). All components of the library are automatically tested using a
+combination of unit, property and integration tests, these tests are run as new
+features are added to the library to ensure compatibility. Thus, when submitting
+a strategy, a simple test is required which ensures the strategy behaves as
+expected.
+Full contribution guidelines can be found in the documentation.  As an
+example, Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source
+code for the Grudger strategy as well as its corresponding test.
 
 \begin{figure}[!hbtp]
     \begin{verbatim}
@@ -366,7 +345,6 @@ class Grudger(Player):
     \caption{Source code for the Grudger strategy.}
     \label{fig:grudger}
 \end{figure}
-
 
 
 \begin{figure}[!hbtp]
@@ -400,23 +378,16 @@ class TestGrudger(TestPlayer):
     \label{fig:grudger_test}
 \end{figure}
 
-To date the library has had contributions from 24 contributors from a variety
-of backgrounds which are not solely academic. These contributions have been in
-terms of strategies. One strategy is the creation of an undergraduate
-mathematics student with little prior knowledge of programming. Multiple other
-strategies were written by a 15 year old secondary school student. Both of
-these students are authors of this paper. As well as these strategy
-contributions, vital architectural improvements to the library itself have also
-been received.
-
 You can see an overview of the structure of the source code in
-Figure~\ref{fig:overview}. Add:
-
-\begin{itemize}
-	\item Discuss match generators (possibly include in image?)
-	\item Discuss what a strategy is (class, inheritance).
-	\item Reuse (possibility of creating new tournament types).
-\end{itemize}
+Figure~\ref{fig:overview}. This shows the parallel collection of strategies and
+their tests. Furthermore the underlying engine for the library is a class for
+tournaments which lives in the \texttt{tournament.py} module. This class is
+responsible for coordinating the play of generated matches. This generation of
+matches is the responsibility of a match generator class which is designed in
+such a way as to be easily modifiable to create new types of matches. This is
+described fuller in a tutorial in the documentation which shows how to easily
+create a tournament where players only play each other with probability 0.5.
+This will be discussed further in the reuse section of this paper.
 
 \begin{figure}[!hbtp]
 	\centering
@@ -424,6 +395,16 @@ Figure~\ref{fig:overview}. Add:
 	\caption{An overview of the source code.}
 	\label{fig:overview}
 \end{figure}
+
+
+To date the library has had contributions from 25 contributors from a variety
+of backgrounds which are not solely academic. These contributions have been in
+terms of strategies. One strategy is the creation of an undergraduate
+mathematics student with little prior knowledge of programming. Multiple other
+strategies were written by a 15 year old secondary school student. Both of
+these students are authors of this paper. As well as these strategy
+contributions, vital architectural improvements to the library itself have also
+been received.
 
 \section*{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
@@ -618,12 +599,12 @@ Support is readily available in multiple forms:
 
 The following Python libraries are required dependencies:
 
-\begin{multicols}{3}
+\begin{multicols}{2}
     \begin{itemize}[noitemsep,topsep=0pt]
-        \item Numpy 1.9.2:
-        \item Matplotlib 1.4.2:
-        \item Hypothesis  3.0:
-        \item Testfixtures  4.9.1:
+        \item Numpy 1.9.2
+        \item Matplotlib 1.4.2
+        \item Testfixtures 4.9.1
+        \item Hypothesis 3.0 (only a requirement for development)
     \end{itemize}
 \end{multicols}
 
@@ -685,6 +666,32 @@ request for further details. Here is an incomplete list:
 \end{description}
 
 \section*{Reuse potential}\label{sec:reuse}
+
+Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
+the library to create a basic tournament giving the graphical output shown in
+Figure~\ref{fig:demo_tournament}.
+
+\begin{figure}[!hbtp]
+    \begin{verbatim}
+>>> import axelrod
+>>> strategies = [s() for s in axelrod.demo_strategies]
+>>> tournament = axelrod.Tournament(strategies)
+>>> results = tournament.play()
+>>> plot = axelrod.Plot(results)
+>>> p = plot.boxplot()
+>>> p.show()
+    \end{verbatim}
+    \caption{A simple set of commands to create a demonstration tournament. The
+        output is shown in Figure~\ref{fig:demo_tournament}.}
+    \label{fig:demo_tournament_commands}
+\end{figure}
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width=.75\textwidth]{demo_tournament.pdf}
+	\caption{The results from a simple tournament.}
+	\label{fig:demo_tournament}
+\end{figure}
 
 The Axelrod library has been designed with sustainable software practice in
 mind. There is an extensive documentation suite:
