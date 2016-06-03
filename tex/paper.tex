@@ -111,7 +111,7 @@ a resource, with facilities for the design of new strategies and
 interactions between them, as well as conducting tournaments and ecological
 simulations for populations of strategies.
 
-With a growing collection of 122 strategies, the library is a also a
+With a growing collection of 135 strategies, the library is a also a
 platform for an original tournament that, in itself, is of interest to the
 game theoretic community.
 
@@ -171,7 +171,8 @@ Prlic2012, Sandve2013}, and is:
         use and modification
     \item Extensive: 135 strategies are included, with infinitely-many
         available in the case of parametrised strategies
-    \item Extensible: easy to modify to include new strategies and to run new tournaments
+    \item Extensible: easy to modify to include new strategies and to run new
+        tournaments
 \end{itemize}
 
 \section*{Review of the literature}\label{sec:review}
@@ -302,12 +303,6 @@ The library itself is available at
 repository. Git is a version control system which is one of the
 recommended aspects of reproducible research \cite{Crick2014a, Sandve2013}.
 
-Installation of the library is straightforward as it is available via the
-standard Python installation package: `pip'
-(\url{https://pypi.python.org/pypi}). The package name is \texttt{axelrod} and
-can thus be installed by calling: \texttt{pip install axelrod}. This ensures it
-can be used on all major operating systems (Windows, OS X and Linux).
-
 As stated in the \textbf{Introduction}, one of the main goals of the library is
 to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
@@ -382,12 +377,14 @@ You can see an overview of the structure of the source code in
 Figure~\ref{fig:overview}. This shows the parallel collection of strategies and
 their tests. Furthermore the underlying engine for the library is a class for
 tournaments which lives in the \texttt{tournament.py} module. This class is
-responsible for coordinating the play of generated matches. This generation of
-matches is the responsibility of a match generator class which is designed in
-such a way as to be easily modifiable to create new types of matches. This is
-described fuller in a tutorial in the documentation which shows how to easily
-create a tournament where players only play each other with probability 0.5.
-This will be discussed further in the reuse section of this paper.
+responsible for coordinating the play of generated matches (from the
+\texttt{match.py} module). This generation of matches is the responsibility of a
+match generator class (in the \texttt{match\_generator.py} module) which is
+designed in such a way as to be easily modifiable to create new types of
+tournaments. This is described fuller in a tutorial in the documentation which
+shows how to easily create a tournament where players only play each other with
+probability 0.5.  This will be discussed further in the reuse section of this
+paper.
 
 \begin{figure}[!hbtp]
 	\centering
@@ -395,7 +392,6 @@ This will be discussed further in the reuse section of this paper.
 	\caption{An overview of the source code.}
 	\label{fig:overview}
 \end{figure}
-
 
 To date the library has had contributions from 25 contributors from a variety
 of backgrounds which are not solely academic. These contributions have been in
@@ -405,6 +401,148 @@ strategies were written by a 15 year old secondary school student. Both of
 these students are authors of this paper. As well as these strategy
 contributions, vital architectural improvements to the library itself have also
 been received.
+
+\section*{(2) Availability}\label{sec:availability}
+
+\section*{Operating system}
+
+The Axelrod library runs on all major operating systems: Linux, Mac OS X and
+Windows.
+
+\section*{Programming language}
+
+The library is continuously tested for compatibility with Python 2.7, 3.4 and 3.5.
+
+\section*{Additional system requirements}
+
+There are no specific additional system requirements.
+
+\section*{Support}
+
+Support is readily available in multiple forms:
+
+\begin{itemize}[noitemsep,topsep=0pt]
+    \item An online chat channel:
+        \url{https://gitter.im/Axelrod-Python/Axelrod}.
+    \item An  email group:
+        \url{https://groups.google.com/forum/#!topic/axelrod-python}.
+\end{itemize}
+
+\section*{Dependencies}
+
+The following Python libraries are required dependencies:
+
+\begin{multicols}{2}
+    \begin{itemize}[noitemsep,topsep=0pt]
+        \item Numpy 1.9.2
+        \item Matplotlib 1.4.2
+        \item Testfixtures 4.9.1
+        \item Hypothesis 3.0 (only a requirement for development)
+    \end{itemize}
+\end{multicols}
+
+\section*{List of contributors}
+
+The names of all the contributors are not known: as these were mainly done
+through Github and some have not provided their name or responded to a
+request for further details. Here is an incomplete list:
+
+\begin{multicols}{2}
+    \begin{itemize}[noitemsep,topsep=0pt]
+        \item {Owen Campbell}
+        \item {Marc Harper}
+        \item {Vincent Knight}
+        \item {Karol M. Langner}
+        \item {James Campbell}
+        \item {Thomas Campbell}
+        \item {Alex Carney}
+        \item {Martin Chorley}
+        \item {Cameron Davidson-Pilon}
+        \item {Kristian Glass}
+        \item {Tom{\'a}{\v s} Ehrlich}
+        \item {Martin Jones}
+        \item {Georgios Koutsovoulos}
+        \item {Marissa Tibble}
+        \item {Jochen M{\"u}ller}
+        \item {Geraint Palmer}
+        \item {Paul Slavin}
+        \item {Timothy Standen}
+        \item {Luis Visintini}
+        \item {Karl Molden}
+        \item {Jason Young}
+        \item {Andy Boot}
+        \item {Anna Barriscale}
+    \end{itemize}
+\end{multicols}
+
+\section*{Software location:}
+
+{\bf Archive}
+
+\begin{description}[noitemsep,topsep=0pt]
+    \item[Name:] Zenodo
+    \item[Persistent identifier:]
+\href{https://zenodo.org/record/45187}{10.5281/zenodo.45187}
+    \item[Licence:] MIT
+    \item[Publisher:]  Vincent Knight
+    \item[Version published:] Axelrod: Alternator Release. v0.0.28
+    \item[Date published:] 2016-01-26
+\end{description}
+
+{\bf Code repository}
+
+\begin{description}[noitemsep,topsep=0pt]
+    \item[Name:] Github
+    \item[Identifier:] \url{https://github.com/Axelrod-Python/Axelrod}
+    \item[Licence:] MIT
+    \item[Date published:] 2015-02-16
+\end{description}
+
+\section*{Reuse potential}\label{sec:reuse}
+
+The Axelrod library has been designed with sustainable software practice in
+mind. There is an extensive documentation suite:
+\url{axelrod.readthedocs.org/en/latest/}. Furthermore, there is a growing set
+of example Jupyter notebooks available here:
+\url{https://github.com/Axelrod-Python/Axelrod-notebooks}.
+
+The ability to have readily available a large number of strategies makes this
+tool an excellent and obvious example of the benefits of open research which
+should positively impact the game theoretic community.
+This has been evidenced by the work described: the library has already shown
+its potential for reuse.
+
+Installation of the library is straightforward as it is available via the
+standard Python installation package: `pip'
+(\url{https://pypi.python.org/pypi}). The package name is \texttt{axelrod} and
+can thus be installed by calling: \texttt{pip install axelrod}. This ensures it
+can be used on all major operating systems (Windows, OS X and Linux).
+
+Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
+the library to create a basic tournament giving the graphical output shown in
+Figure~\ref{fig:demo_tournament}.
+
+\begin{figure}[!hbtp]
+    \begin{verbatim}
+>>> import axelrod
+>>> strategies = [s() for s in axelrod.demo_strategies]
+>>> tournament = axelrod.Tournament(strategies)
+>>> results = tournament.play()
+>>> plot = axelrod.Plot(results)
+>>> p = plot.boxplot()
+>>> p.show()
+    \end{verbatim}
+    \caption{A simple set of commands to create a demonstration tournament. The
+        output is shown in Figure~\ref{fig:demo_tournament}.}
+    \label{fig:demo_tournament_commands}
+\end{figure}
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width=.75\textwidth]{demo_tournament.pdf}
+	\caption{The results from a simple tournament.}
+	\label{fig:demo_tournament}
+\end{figure}
 
 \section*{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
@@ -568,145 +706,6 @@ research on the library, details can be found in \cite{Harper2015}. These includ
         strategy behaviours to choose a best action. These strategies perform
         very well in general and continue to do so in noisy tournaments.
 \end{itemize}
-
-\section*{(2) Availability}\label{sec:availability}
-
-\section*{Operating system}
-
-The Axelrod library runs on all major operating systems: Linux, Mac OS X and
-Windows.
-
-\section*{Programming language}
-
-The library is continuously tested for compatibility with Python 2.7, 3.4 and 3.5.
-
-\section*{Additional system requirements}
-
-There are no specific additional system requirements.
-
-\section*{Support}
-
-Support is readily available in multiple forms:
-
-\begin{itemize}[noitemsep,topsep=0pt]
-    \item An online chat channel:
-        \url{https://gitter.im/Axelrod-Python/Axelrod}.
-    \item An  email group:
-        \url{https://groups.google.com/forum/#!topic/axelrod-python}.
-\end{itemize}
-
-\section*{Dependencies}
-
-The following Python libraries are required dependencies:
-
-\begin{multicols}{2}
-    \begin{itemize}[noitemsep,topsep=0pt]
-        \item Numpy 1.9.2
-        \item Matplotlib 1.4.2
-        \item Testfixtures 4.9.1
-        \item Hypothesis 3.0 (only a requirement for development)
-    \end{itemize}
-\end{multicols}
-
-\section*{List of contributors}
-
-The names of all the contributors are not known: as these were mainly done
-through Github and some have not provided their name or responded to a
-request for further details. Here is an incomplete list:
-
-\begin{multicols}{2}
-    \begin{itemize}[noitemsep,topsep=0pt]
-        \item {Owen Campbell}
-        \item {Marc Harper}
-        \item {Vincent Knight}
-        \item {Karol M. Langner}
-        \item {James Campbell}
-        \item {Thomas Campbell}
-        \item {Alex Carney}
-        \item {Martin Chorley}
-        \item {Cameron Davidson-Pilon}
-        \item {Kristian Glass}
-        \item {Tom{\'a}{\v s} Ehrlich}
-        \item {Martin Jones}
-        \item {Georgios Koutsovoulos}
-        \item {Marissa Tibble}
-        \item {Jochen M{\"u}ller}
-        \item {Geraint Palmer}
-        \item {Paul Slavin}
-        \item {Timothy Standen}
-        \item {Luis Visintini}
-        \item {Karl Molden}
-        \item {Jason Young}
-        \item {Andy Boot}
-        \item {Anna Barriscale}
-    \end{itemize}
-\end{multicols}
-
-\section*{Software location:}
-
-{\bf Archive}
-
-\begin{description}[noitemsep,topsep=0pt]
-    \item[Name:] Zenodo
-    \item[Persistent identifier:]
-\href{https://zenodo.org/record/45187}{10.5281/zenodo.45187}
-    \item[Licence:] MIT
-    \item[Publisher:]  Vincent Knight
-    \item[Version published:] Axelrod: Alternator Release. v0.0.28
-    \item[Date published:] 2016-01-26
-\end{description}
-
-{\bf Code repository}
-
-\begin{description}[noitemsep,topsep=0pt]
-    \item[Name:] Github
-    \item[Identifier:] \url{https://github.com/Axelrod-Python/Axelrod}
-    \item[Licence:] MIT
-    \item[Date published:] 2015-02-16
-\end{description}
-
-\section*{Reuse potential}\label{sec:reuse}
-
-Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
-the library to create a basic tournament giving the graphical output shown in
-Figure~\ref{fig:demo_tournament}.
-
-\begin{figure}[!hbtp]
-    \begin{verbatim}
->>> import axelrod
->>> strategies = [s() for s in axelrod.demo_strategies]
->>> tournament = axelrod.Tournament(strategies)
->>> results = tournament.play()
->>> plot = axelrod.Plot(results)
->>> p = plot.boxplot()
->>> p.show()
-    \end{verbatim}
-    \caption{A simple set of commands to create a demonstration tournament. The
-        output is shown in Figure~\ref{fig:demo_tournament}.}
-    \label{fig:demo_tournament_commands}
-\end{figure}
-
-\begin{figure}[!hbtp]
-	\centering
-	\includegraphics[width=.75\textwidth]{demo_tournament.pdf}
-	\caption{The results from a simple tournament.}
-	\label{fig:demo_tournament}
-\end{figure}
-
-The Axelrod library has been designed with sustainable software practice in
-mind. There is an extensive documentation suite:
-\url{axelrod.readthedocs.org/en/latest/}. Furthermore, there is a growing set
-of example Jupyter notebooks available here:
-\url{https://github.com/Axelrod-Python/Axelrod-notebooks}.
-
-The ability to have readily available a large number of strategies makes this
-tool an excellent and obvious example of the benefits of open research which
-should positively impact the game theoretic community.
-This has been evidenced by the work described: the library has already shown
-its potential for reuse.
-
-Add more here: point to previous discussion about new strategies, new
-tournaments, tests etc\dots
 
 \section*{Conclusion}
 
