@@ -307,12 +307,13 @@ to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
 classes). All components of the library are automatically tested using a
 combination of unit, property and integration tests, these tests are run as new
-features are added to the library to ensure compatibility. Thus, when submitting
-a strategy, a simple test is required which ensures the strategy behaves as
-expected.
-Full contribution guidelines can be found in the documentation.  As an
-example, Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source
-code for the Grudger strategy as well as its corresponding test.
+features are added to the library to ensure compatibility (they are also run
+automatically using \url{travis-ci.org}). Thus, when submitting a strategy, a
+simple test is required which ensures the strategy behaves as expected.  Full
+contribution guidelines can be found in the documentation, which is also part of
+the library itself and is hosted using \url{readthedocs.org}.  As an example,
+Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
+the Grudger strategy as well as its corresponding test.
 
 \begin{figure}[!hbtp]
     \begin{verbatim}
@@ -481,11 +482,11 @@ request for further details. Here is an incomplete list:
 \begin{description}[noitemsep,topsep=0pt]
     \item[Name:] Zenodo
     \item[Persistent identifier:]
-\href{https://zenodo.org/record/45187}{10.5281/zenodo.45187}
+\href{https://zenodo.org/record/53982}{10.5281/zenodo.53982}
     \item[Licence:] MIT
     \item[Publisher:]  Vincent Knight
-    \item[Version published:] Axelrod: Alternator Release. v0.0.28
-    \item[Date published:] 2016-01-26
+    \item[Version published:] Axelrod: 1.1.1
+    \item[Date published:] 2016-06-01
 \end{description}
 
 {\bf Code repository}
@@ -636,7 +637,8 @@ with the results of \cite{Stewart2012} are due to stochastic behaviour.
 In parallel to the Python library, a tournament is being kept up to date that
 pits all available strategies against each other. Figure~\ref{fig:tournament}
 shows the results from the full tournament which can also be seen (in full
-detail) here: \url{http://axelrod-tournament.readthedocs.org/}. Note that to
+detail) here: \url{http://axelrod-tournament.readthedocs.org/}. Data sets are
+also available showing the plays of every match that takes place. Note that to
 obtain this tournament requires a simple change of the code shown in
 Figure~\ref{fig:demo_tournament_commands}, changing:
 
@@ -653,7 +655,7 @@ to:
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.75\textwidth]{tournament.pdf}
-    \caption{Results from the library tournament (2016-03-31)}
+    \caption{Results from the library tournament (2016-06-01)}
     \label{fig:tournament}
 \end{figure}
 
