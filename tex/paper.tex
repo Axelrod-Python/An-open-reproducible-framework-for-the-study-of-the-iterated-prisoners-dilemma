@@ -306,9 +306,9 @@ As stated in the \textbf{Introduction}, one of the main goals of the library is
 to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
 classes). All components of the library are automatically tested using a
-combination of unit, property and integration tests, these tests are run as new
+combination of unit, property and integration tests. These tests are run as new
 features are added to the library to ensure compatibility (they are also run
-automatically using \url{travis-ci.org}). Thus, when submitting a strategy, a
+automatically using \url{travis-ci.org}). When submitting a strategy, a
 simple test is required which ensures the strategy behaves as expected.  Full
 contribution guidelines can be found in the documentation, which is also part of
 the library itself and is hosted using \url{readthedocs.org}.  As an example,
@@ -379,12 +379,12 @@ their tests. Furthermore the underlying engine for the library is a class for
 tournaments which lives in the \texttt{tournament.py} module. This class is
 responsible for coordinating the play of generated matches (from the
 \texttt{match.py} module). This generation of matches is the responsibility of a
-match generator class (in the \texttt{match\_generator.py} module) which is
-designed in such a way as to be easily modifiable to create new types of
-tournaments. This is described fuller in a tutorial in the documentation which
-shows how to easily create a tournament where players only play each other with
-probability 0.5.  This will be discussed further in the reuse section of this
-paper.
+\textit{match generator} class (in the \texttt{match\_generator.py} module)
+which is designed in such a way as to be easily modifiable to create new types
+of tournaments. This is described further in a tutorial in the documentation
+which shows how to easily create a tournament where players only play each other
+with probability 0.5.  This will be discussed further in the reuse section of
+this paper.
 
 \begin{figure}[!hbtp]
 	\centering
@@ -393,14 +393,14 @@ paper.
 	\label{fig:overview}
 \end{figure}
 
-To date the library has had contributions from 25 contributors from a variety
-of backgrounds which are not solely academic. These contributions have been in
-terms of strategies. One strategy is the creation of an undergraduate
+To date the library has had contributions from 25 contributors from a variety of
+backgrounds which are not solely academic. These contributions have been mostly
+in terms of strategies. One strategy is the creation of an undergraduate
 mathematics student with little prior knowledge of programming. Multiple other
-strategies were written by a 15 year old secondary school student. Both of
-these students are authors of this paper. As well as these strategy
-contributions, vital architectural improvements to the library itself have also
-been received.
+strategies were written by a 15 year old secondary school student. Both of these
+students are authors of this paper. As well as these strategy contributions,
+vital architectural improvements to the library itself have also been
+contributed.
 
 \section*{(2) Availability}\label{sec:availability}
 
@@ -411,7 +411,8 @@ Windows.
 
 \section*{Programming language}
 
-The library is continuously tested for compatibility with Python 2.7, 3.4 and 3.5.
+The library is continuously tested for compatibility with Python 2.7 and the two
+most recent python 3 releases.
 
 \section*{Additional system requirements}
 
@@ -435,8 +436,9 @@ The following Python libraries are required dependencies:
 \begin{multicols}{2}
     \begin{itemize}[noitemsep,topsep=0pt]
         \item Numpy 1.9.2
-        \item Matplotlib 1.4.2
-        \item Testfixtures 4.9.1
+        \item Matplotlib 1.4.2 (only a requirement if graphical output is
+            required)
+        \item Tqdm 3.4.0
         \item Hypothesis 3.0 (only a requirement for development)
     \end{itemize}
 \end{multicols}
@@ -500,23 +502,22 @@ request for further details. Here is an incomplete list:
 
 \section*{Reuse potential}\label{sec:reuse}
 
-The Axelrod library has been designed with sustainable software practice in
+The Axelrod library has been designed with sustainable software practices in
 mind. There is an extensive documentation suite:
 \url{axelrod.readthedocs.org/en/latest/}. Furthermore, there is a growing set
 of example Jupyter notebooks available here:
 \url{https://github.com/Axelrod-Python/Axelrod-notebooks}.
 
-The ability to have readily available a large number of strategies makes this
+The availability of a large number of strategies makes this
 tool an excellent and obvious example of the benefits of open research which
-should positively impact the game theoretic community.
-This has been evidenced by the work described: the library has already shown
-its potential for reuse.
+should positively impact the game theory community.
+This is evidently true already as the library has been used to study and create
+interesting and powerful new strategies.
 
-Installation of the library is straightforward as it is available via the
-standard Python installation package: `pip'
-(\url{https://pypi.python.org/pypi}). The package name is \texttt{axelrod} and
-can thus be installed by calling: \texttt{pip install axelrod}. This ensures it
-can be used on all major operating systems (Windows, OS X and Linux).
+Installation of the library is straightforward via standard python installation
+repositories (\url{https://pypi.python.org/pypi}). The package name is
+\texttt{axelrod} and can thus be installed by calling: \texttt{pip install
+axelrod} on all major operating systems (Windows, OS X and Linux).
 
 Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
 the library to create a basic tournament giving the graphical output shown in
@@ -557,11 +558,11 @@ Figure~\ref{fig:number_of_strategies_against_date}.
 	\label{fig:number_of_strategies_against_date}
 \end{figure}
 
-Despite this, due to previous research being done in an irreproducible manner
+Nevertheless, due to previous research being done in an irreproducible manner
 with, for example, no source code and/or vaguely described strategies, not all
 previous tournaments can yet be reproduced. In fact, some of the early
-tournaments might be impossible to reproduce as the source code is forever
-lost. This library aims to prevent this from happening again in the future.
+tournaments might be impossible to reproduce as the source code is apparently
+forever lost. This library aims ensure reproducibility in the future.
 
 One tournament that is possible to reproduce is that of
 \cite{Stewart2012}. The strategies used in that tournament are the following:
@@ -592,7 +593,8 @@ One tournament that is possible to reproduce is that of
 
 This can be reproduced as shown in Figure~\ref{fig:stewart-code}, which gives
 the plot of Figure~\ref{fig:stewart_tournament}. Note that slight differences
-with the results of \cite{Stewart2012} are due to stochastic behaviour.
+with the results of \cite{Stewart2012} are due to stochastic behaviour of some
+strategies.
 
 \begin{figure}[!hbtp]
 	\centering
@@ -638,8 +640,8 @@ pits all available strategies against each other. Figure~\ref{fig:tournament}
 shows the results from the full tournament which can also be seen (in full
 detail) here: \url{http://axelrod-tournament.readthedocs.org/}. Data sets are
 also available showing the plays of every match that takes place. Note that to
-obtain this tournament requires a simple change of the code shown in
-Figure~\ref{fig:demo_tournament_commands}, changing:
+recreate this tournament simply requires changing a single line of the code
+shown in Figure~\ref{fig:demo_tournament_commands}, changing:
 
 \begin{verbatim}
 >>> strategies = [s() for s in axelrod.demo_strategies]}
@@ -658,9 +660,9 @@ to:
     \label{fig:tournament}
 \end{figure}
 
-The current winning strategy is a novel strategy: Looker Up. This is a
-strategy that maps a given set of states to actions. The state space is defined
-generically by \(m, n\) so as to map states to actions as shown
+The current winning strategy is new to the research literature: Looker Up. This
+is a strategy that maps a given set of states to actions. The state space is
+defined generically by \(m, n\) so as to map states to actions as shown
 in~(\ref{equ:example_of_lookerup}).
 
 \begin{equation}
