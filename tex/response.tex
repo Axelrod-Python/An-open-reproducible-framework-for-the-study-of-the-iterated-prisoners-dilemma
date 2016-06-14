@@ -1,0 +1,85 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{parskip}
+\usepackage{hyperref}
+
+\title{Response to review: An open framework for the reproducible study of the
+iterated prisoner's dilemma.}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+We would like to note that the reviewers provided a thorough and high quality
+review of our paper. We are grateful for this and thankful for all of their
+suggestions as we feel it greatly strengthens our manuscript.
+
+\section{Major comments}
+
+
+\begin{itemize}
+\item \textit{suggested title change}: This has been changed to ``An open
+    framework for the reproducible study of the iterated prisoner's dilemma''
+\item \textit{Implementation \& Architecture section currently discusses how to
+    use library, but should be refactored to expand upon architecture}: The
+    various examples have been moved to the Reuse section and an extra paragraph
+    explaining the structure has been added.
+\item \textit{Side-by-side figures appear too small, and should be replaced with
+    full-size (perhaps top-bottom) figures}: Figures have been resized.
+\item \textit{Discrepancy between version of software in paper and on Zenodo}:
+    This has been addressed.
+\item \textit{Dependencies not automatically installed or checked via pip}: This
+    has been addressed. Here is a url to the code patch (github pull request)
+    that fixed this: \url{https://github.com/Axelrod-Python/Axelrod/pull/542}.
+\end{itemize}
+
+\section{Minor comments}
+
+We have addressed almost all of the minor comments, these can be viewed in
+detail here:
+\url{https://github.com/Axelrod-Python/An-open-reproducible-framework-for-the-study-of-the-iterated-prisoners-dilemma/compare/jors...jors-r1-vk}.
+
+Some of these we comment here for ease of review:
+
+Documentation paragraph in the prob end tournament section has been fixed. It
+now reads:
+
+\begin{quote}
+    We can also view the length of the matches played by each player. The plot
+    shows that the length of each match (for each player) is not the same. The
+    median length is 4 which is the expected value with the probability of a
+    match ending being 0.5.
+\end{quote}
+
+The copyright section of the license has been reworded. A discussion of this can
+be viewed here: \url{https://github.com/Axelrod-Python/Axelrod/issues/615}.
+
+The code snippets that were not complete (final line for plotting) have been
+fixed. Furthermore, an explanation of how to obtain the full tournament results
+has also been included.
+
+The discussion group has been made public. This was an oversight.
+
+Regarding the urls that were not correct in the bibliography: we have removed
+these for the present time and will leave the formatting/requirements for these
+till the editorial process. Note that the ones we have removed correspond to
+well referenced published pieces of work and so removing the urls does not
+hinder finding the sources.
+
+One comment we have not addressed is with regards to hypothesis not being a
+requirement.  Hypothesis is a requirement for development. Cloudpickle is no
+longer a requirement following some substantial rewriting of the internals of
+the library (resulting in speed, memory and readability improvements).
+TestFixtures is also, no longer a requirement.
+
+Other changes include updating the figures showing the number of strategies and
+the latest run of the tournament as well as including another author: due to the
+fact that they contributed a new strategy while the paper was under review.
+
+Furthermore, we have made some minor changes to the text. These were all minor
+typographical changes aimed at improving the readability of the manuscript.
+
+\end{document}

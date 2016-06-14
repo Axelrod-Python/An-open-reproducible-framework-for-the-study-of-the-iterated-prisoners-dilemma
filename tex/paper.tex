@@ -10,7 +10,7 @@
 \rhead{\textcolor{gray}{UP JORS software Latex paper template version 0.1}}
 
 % Nicer bibliography management
-\usepackage[backend=bibtex, firstinits=true, url=true, isbn=true]{biblatex}
+\usepackage[backend=bibtex, firstinits=true, url=false, isbn=true]{biblatex}
 \addbibresource{references.bib}
 %-----------------------------
 
@@ -40,7 +40,7 @@
 
 \section*{Title}
 
-An open reproducible framework for the study of the iterated prisoner's
+An open framework for the reproducible study of the iterated prisoner's
 dilemma.
 
 \section*{Authors}
@@ -60,12 +60,14 @@ dilemma.
         \item Chorley, Martin
         \item Davidson-Pilon, Cameron
         \item Glass, Kristian
+        \item Glynatsi, Nikoleta
         \item Ehrlich Tom{\'a}{\v s}
         \item Jones, Martin
         \item Koutsovoulos, Georgios
         \item Tibble, Holly
         \item M{\"u}ller, Jochen
         \item Palmer, Geraint
+        \item Petunov, Piotr
         \item Slavin, Paul
         \item Standen, Timothy
         \item Visintini, Luis
@@ -88,12 +90,14 @@ dilemma.
 \item Development; Cardiff University
 \item Development; Not affiliated
 \item Development; Not affiliated
+\item Development; Cardiff University
 \item Development; Not affiliated
 \item Development; Not affiliated
 \item Development; The University of Edinburgh
 \item Development; Not affiliated
 \item Development; Not affiliated
 \item Development; Cardiff University
+\item Development; Not affiliated
 \item Development; The University of Manchester
 \item Development; Cardiff University
 \item Development; Not affiliated
@@ -111,7 +115,7 @@ a resource, with facilities for the design of new strategies and
 interactions between them, as well as conducting tournaments and ecological
 simulations for populations of strategies.
 
-With a growing collection of 122 strategies, the library is a also a
+With a growing collection of 136 strategies, the library is a also a
 platform for an original tournament that, in itself, is of interest to the
 game theoretic community.
 
@@ -125,29 +129,27 @@ Game Theory; Prisoners Dilemma; Python
 \section*{Introduction}
 
 Several Iterated Prisoner's Dilemma tournaments have generated much interest;
-including Axelrod's original tournaments \cite{Axelrod1980a,Axelrod1980b},
-two 2004 anniversary tournaments \cite{kendall2007iterated}, and
-the Stewart and Plotkin 2012 tournament \cite{Stewart2012}, following the
-discovery of zero-determinant strategies.  Subsequent research has spawned an
-enormous number of papers, but rarely are the results reproducible. Among
-well-known tournaments, in only one case is the full original source code
+Axelrod's original tournaments \cite{Axelrod1980a,Axelrod1980b}, two 2004
+anniversary tournaments \cite{kendall2007iterated}, and the Stewart and Plotkin
+2012 tournament \cite{Stewart2012}, following the discovery of zero-determinant
+strategies.  Subsequent research has spawned a number of papers (many of which
+are referenced throughout this paper), but rarely are the results reproducible.
+Amongst well-known tournaments, in only one case is the full original source code
 available (Axelrod's second tournament \cite{Axelrod1980b}, in FORTRAN). In no
-cases is the available code well-documented, easily modifiable, or released with
-significant test suites.
+cases is the available code well-documented, easily modifiable, or released
+with significant test suites.
 
-To make matters more complicated, often a newly-created strategy is studied in
-isolation by opponents chosen by the strategy's creators, and often such
-strategies are not sufficiently described to enable reliable recreation
-(in the absence of source code), with \cite{slany2007some} being a notable
-counter-example. In some cases, strategies are revised without updates to their
-names or published implementations \cite{li2007design, li2011engineering}.
-As a result, some of the results related to these strategies and tournaments
-cannot be reliably replicated, and therefore have not met the basic scientific
-criterion of falsifiability.
+To complicate matters further, a new strategy is often studied in isolation
+with opponents chosen by the creator of that strategy. Often such strategies
+are not sufficiently described to enable reliable recreation (in the absence of
+source code), with \cite{slany2007some} being a notable counter-example. In
+some cases, strategies are revised without updates to their names or published
+implementations \cite{li2007design, li2011engineering}.
+As such, the results cannot be reliably replicated and therefore have not met
+the basic scientific criterion of falsifiability.
 
-This paper introduces a software package: the Axelrod Python library
-\cite{Axelrod-Pythonprojectteam2015}. The Axelrod-Python project has the
-following stated goals:
+This paper introduces a software package: the Axelrod-Python library. The
+Axelrod-Python project has the following stated goals:
 
 \begin{itemize}[noitemsep,topsep=0pt]
     \item To enable the reproduction of Iterated Prisoner's Dilemma
@@ -158,20 +160,21 @@ following stated goals:
     contribute new and original Iterated Prisoner's Dilemma strategies
 \end{itemize}
 
-The presented library is partly motivated by an ongoing discussion in the academic community
-about reproducible research \cite{Crick2014a, Hong2015a, Prlic2012, Sandve2013},
-and is:
+The presented library is partly motivated by an ongoing discussion in the
+academic community about reproducible research \cite{Crick2014a, Hong2015a,
+Prlic2012, Sandve2013}, and is:
 
 \begin{itemize}[noitemsep,topsep=0pt]
     \item Open: all code is released under an MIT license;
     \item Reproducible and well-tested: at the time of writing there is an excellent level of
-        integrated tests with 99.37\% coverage (including property based tests:
-        \cite{Hypothesis3.0.3}
+        integrated tests with 99.73\% coverage (including property based tests:
+        \cite{Hypothesis3.0.3})
     \item Well-documented: all features of the library are documented for ease of
         use and modification
-    \item Extensive: 123 strategies are included, with infinitely-many
-        strategies available in the case of parametrised strategies
-    \item Extensible: easy to modify to include new strategies and to run new tournaments
+    \item Extensive: 135 strategies are included, with infinitely-many
+        available in the case of parametrised strategies
+    \item Extensible: easy to modify to include new strategies and to run new
+        tournaments
 \end{itemize}
 
 \section*{Review of the literature}\label{sec:review}
@@ -219,12 +222,12 @@ two decision vectors $\langle C, D \rangle$,
 \end{equation}
 
 The game of~(\ref{equ:one-shot}) is called the Prisoner's Dilemma. Specific
-numerical values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature,
-although any satisfying the conditions in~\ref{equ:one-shot} will yield similar
-results.  Axelrod's tournaments (and further implementations of these) are
-sometimes referred to as Iterated Prisoner's Dilemma (IPD) tournaments. An
-incomplete overview of published tournaments is given in
-Table~\ref{tab:tournaments}.
+numerical values of \((R,S,T,P)=(3,0,5,1)\) are often used in the literature
+\cite{Axelrod1980a, Axelrod1980b}, although any satisfying the conditions
+in~\ref{equ:one-shot} will yield similar results. Axelrod's tournaments (and
+further implementations of these) are sometimes referred to as Iterated
+Prisoner's Dilemma (IPD) tournaments. An incomplete representative overview of
+published tournaments is given in Table~\ref{tab:tournaments}.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -235,7 +238,7 @@ Table~\ref{tab:tournaments}.
             1979     & \cite{Axelrod1980a}        & 13                   & Standard & Not immediately available\\
             1979     & \cite{Axelrod1980b}        & 64                   & Standard & Available in FORTRAN\\
             1991     & \cite{Bendor1991}          & 13                   & Noisy    & Not immediately available\\
-            2002     & \cite{Stephens2002}        & 16                   & Wildlife & Not applicable\\
+            2002     & \cite{Stephens2002}        & 16                   & Wildlife & Not a computer based tournament\\
             2005     & \cite{kendall2007iterated} & 223                  & Varied   & Not available \\
             2012     & \cite{Stewart2012}         & 13                   & Standard & Not fully available \\
             \bottomrule
@@ -271,7 +274,7 @@ In \cite{Axelrod}, Axelrod describes how similar techniques are used to
 genetically evolve a high performing strategy from a given set of strategies.
 Note that in his original work, Axelrod only used a base strategy set of 12
 strategies for this evolutionary study. This is noteworthy as
-\cite{Axelrod-Pythonprojectteam2015} now boasts over 120 strategies that are
+the library now boasts over 136 strategies that are
 readily available for a similar analysis.
 
 \section*{Implementation and architecture}
@@ -302,54 +305,17 @@ The library itself is available at
 repository. Git is a version control system which is one of the
 recommended aspects of reproducible research \cite{Crick2014a, Sandve2013}.
 
-Installation of the library is straightforward as it is available via the
-standard Python installation package: `pip'
-(\url{https://pypi.python.org/pypi}). This ensures it can be used on all major
-operating systems (Windows, OS X and Linux).
-
-Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
-the library to create a basic tournament giving the graphical output shown in
-Figure~\ref{fig:demo_tournament}.
-
-\begin{figure}[!hbtp]
-    \begin{verbatim}
->>> import axelrod
->>> strategies = [s() for s in axelrod.demo_strategies]
->>> tournament = axelrod.Tournament(strategies)
->>> results = tournament.play()
->>> plot = axelrod.Plot(results)
->>> plot.boxplot()
-    \end{verbatim}
-    \caption{A simple set of commands to create a demonstration tournament. The
-        output is shown in Figure~\ref{fig:demo_tournament}.}
-    \label{fig:demo_tournament_commands}
-\end{figure}
-
-\begin{figure}[!hbtp]
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=.75\textwidth]{demo_tournament.pdf}
-        \caption{The results from a simple tournament.}
-        \label{fig:demo_tournament}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=.75\textwidth]{stewart_tournament.pdf}
-        \caption{The results from \cite{Stewart2012}.}
-        \label{fig:stewart_tournament}
-    \end{subfigure}
-    \caption{Summary plots produced by the library.}
-\end{figure}
-
-Figure~\ref{fig:demo_tournament_commands} shows the very basic utilisation
-of the library and further details can be found at the online documentation:
-\url{http://axelrod.readthedocs.org}.
-
-As stated in the \textbf{Introduction}, one of the main goals of the library
-is to allow for the easy contribution of strategies. Doing this requires the
+As stated in the \textbf{Introduction}, one of the main goals of the library is
+to allow for the easy contribution of strategies. Doing this requires the
 writing of a simple Python class (which can inherit from other predefined
-classes). Full contribution guidelines can be found in the documentation.
-As an example, Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
+classes). All components of the library are automatically tested using a
+combination of unit, property and integration tests. These tests are run as new
+features are added to the library to ensure compatibility (they are also run
+automatically using \url{travis-ci.org}). When submitting a strategy, a
+simple test is required which ensures the strategy behaves as expected.  Full
+contribution guidelines can be found in the documentation, which is also part of
+the library itself and is hosted using \url{readthedocs.org}.  As an example,
+Figures~\ref{fig:grudger} and~\ref{fig:grudger_test} show the source code for
 the Grudger strategy as well as its corresponding test.
 
 \begin{figure}[!hbtp]
@@ -377,7 +343,6 @@ class Grudger(Player):
     \caption{Source code for the Grudger strategy.}
     \label{fig:grudger}
 \end{figure}
-
 
 
 \begin{figure}[!hbtp]
@@ -411,41 +376,197 @@ class TestGrudger(TestPlayer):
     \label{fig:grudger_test}
 \end{figure}
 
-To date the library has had contributions from 24 contributors from a variety
-of backgrounds. These contributions have been in terms of strategies. One
-strategy is the creation of an undergraduate mathematics student with little
-prior knowledge of programming. Multiple other strategies were written by a 15
-year old secondary school student. Both of these students are authors of this
-paper. As well as these strategy contributions, vital architectural
-improvements to the library itself have also been received. You can see an
-overview of the structure of the source code in Figure~\ref{fig:overview}.
+You can see an overview of the structure of the source code in
+Figure~\ref{fig:overview}. This shows the parallel collection of strategies and
+their tests. Furthermore the underlying engine for the library is a class for
+tournaments which lives in the \texttt{tournament.py} module. This class is
+responsible for coordinating the play of generated matches (from the
+\texttt{match.py} module). This generation of matches is the responsibility of a
+\textit{match generator} class (in the \texttt{match\_generator.py} module)
+which is designed in such a way as to be easily modifiable to create new types
+of tournaments. This is described further in a tutorial in the documentation
+which shows how to easily create a tournament where players only play each other
+with probability 0.5.  This will be discussed further in the reuse section of
+this paper.
 
 \begin{figure}[!hbtp]
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=.75\textwidth]{outline_of_library.pdf}
-        \caption{An overview of the source code.}
-        \label{fig:overview}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[width=.9\textwidth]{number_of_strategies_with_arima_projection.pdf}
-        \caption{The number of strategies included in the library}
-        \label{fig:number_of_strategies_against_date}
-    \end{subfigure}
-    \caption{An overview of the library.}
+	\centering
+	\includegraphics[width=.9\textwidth]{outline_of_library.pdf}
+	\caption{An overview of the source code.}
+	\label{fig:overview}
+\end{figure}
+
+To date the library has had contributions from 26 contributors from a variety of
+backgrounds which are not solely academic. These contributions have been mostly
+in terms of strategies. One strategy is the creation of an undergraduate
+mathematics student with little prior knowledge of programming. Multiple other
+strategies were written by a 15 year old secondary school student. Both of these
+students are authors of this paper. As well as these strategy contributions,
+vital architectural improvements to the library itself have also been
+contributed.
+
+\section*{(2) Availability}\label{sec:availability}
+
+\section*{Operating system}
+
+The Axelrod library runs on all major operating systems: Linux, Mac OS X and
+Windows.
+
+\section*{Programming language}
+
+The library is continuously tested for compatibility with Python 2.7 and the two
+most recent python 3 releases.
+
+\section*{Additional system requirements}
+
+There are no specific additional system requirements.
+
+\section*{Support}
+
+Support is readily available in multiple forms:
+
+\begin{itemize}[noitemsep,topsep=0pt]
+    \item An online chat channel:
+        \url{https://gitter.im/Axelrod-Python/Axelrod}.
+    \item An  email group:
+        \url{https://groups.google.com/forum/#!topic/axelrod-python}.
+\end{itemize}
+
+\section*{Dependencies}
+
+The following Python libraries are required dependencies:
+
+\begin{multicols}{2}
+    \begin{itemize}[noitemsep,topsep=0pt]
+        \item Numpy 1.9.2
+        \item Matplotlib 1.4.2 (only a requirement if graphical output is
+            required)
+        \item Tqdm 3.4.0
+        \item Hypothesis 3.0 (only a requirement for development)
+    \end{itemize}
+\end{multicols}
+
+\section*{List of contributors}
+
+The names of all the contributors are not known: as these were mainly done
+through Github and some have not provided their name or responded to a
+request for further details. Here is an incomplete list:
+
+\begin{multicols}{2}
+    \begin{itemize}[noitemsep,topsep=0pt]
+        \item {Owen Campbell}
+        \item {Marc Harper}
+        \item {Vincent Knight}
+        \item {Karol M. Langner}
+        \item {James Campbell}
+        \item {Thomas Campbell}
+        \item {Alex Carney}
+        \item {Martin Chorley}
+        \item {Cameron Davidson-Pilon}
+        \item {Kristian Glass}
+        \item {Nikoleta Glynatsi}
+        \item {Tom{\'a}{\v s} Ehrlich}
+        \item {Martin Jones}
+        \item {Georgios Koutsovoulos}
+        \item {Marissa Tibble}
+        \item {Jochen M{\"u}ller}
+        \item {Geraint Palmer}
+        \item {Paul Slavin}
+        \item {Timothy Standen}
+        \item {Luis Visintini}
+        \item {Karl Molden}
+        \item {Jason Young}
+        \item {Andy Boot}
+        \item {Anna Barriscale}
+    \end{itemize}
+\end{multicols}
+
+\section*{Software location:}
+
+{\bf Archive}
+
+\begin{description}[noitemsep,topsep=0pt]
+    \item[Name:] Zenodo
+    \item[Persistent identifier:]
+\href{https://zenodo.org/record/55509}{10.5281/zenodo.55509}
+    \item[Licence:] MIT
+    \item[Publisher:]  Vincent Knight
+    \item[Version published:] Axelrod: 1.2.0
+    \item[Date published:] 2016-06-13
+\end{description}
+
+{\bf Code repository}
+
+\begin{description}[noitemsep,topsep=0pt]
+    \item[Name:] Github
+    \item[Identifier:] \url{https://github.com/Axelrod-Python/Axelrod}
+    \item[Licence:] MIT
+    \item[Date published:] 2015-02-16
+\end{description}
+
+\section*{Reuse potential}\label{sec:reuse}
+
+The Axelrod library has been designed with sustainable software practices in
+mind. There is an extensive documentation suite:
+\url{axelrod.readthedocs.org/en/latest/}. Furthermore, there is a growing set
+of example Jupyter notebooks available here:
+\url{https://github.com/Axelrod-Python/Axelrod-notebooks}.
+
+The availability of a large number of strategies makes this
+tool an excellent and obvious example of the benefits of open research which
+should positively impact the game theory community.
+This is evidently true already as the library has been used to study and create
+interesting and powerful new strategies.
+
+Installation of the library is straightforward via standard python installation
+repositories (\url{https://pypi.python.org/pypi}). The package name is
+\texttt{axelrod} and can thus be installed by calling: \texttt{pip install
+axelrod} on all major operating systems (Windows, OS X and Linux).
+
+Figure~\ref{fig:demo_tournament_commands} shows a very simple example of using
+the library to create a basic tournament giving the graphical output shown in
+Figure~\ref{fig:demo_tournament}.
+
+\begin{figure}[!hbtp]
+    \begin{verbatim}
+>>> import axelrod
+>>> strategies = [s() for s in axelrod.demo_strategies]
+>>> tournament = axelrod.Tournament(strategies)
+>>> results = tournament.play()
+>>> plot = axelrod.Plot(results)
+>>> p = plot.boxplot()
+>>> p.show()
+    \end{verbatim}
+    \caption{A simple set of commands to create a demonstration tournament. The
+        output is shown in Figure~\ref{fig:demo_tournament}.}
+    \label{fig:demo_tournament_commands}
+\end{figure}
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width=.75\textwidth]{demo_tournament.pdf}
+	\caption{The results from a simple tournament.}
+	\label{fig:demo_tournament}
 \end{figure}
 
 \section*{New strategies, tournaments and implications}\label{sec:new-strategies-and-implications}
 
 Due to the open nature of the library the number of strategies included has
 grown at a fast pace, as can be seen in
-Figure~\ref{fig:number_of_strategies_against_date}. Despite this, due to
-previous research being done in an irreproducible manner with, for example, no
-source code and/or vaguely described strategies, not all previous tournaments
-can yet be reproduced. In fact, some of the early tournaments might be
-impossible to reproduce as the source code is forever lost. This library aims
-to prevent this from happening again in the future.
+Figure~\ref{fig:number_of_strategies_against_date}.
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width=.75\textwidth]{number_of_strategies.pdf}
+	\caption{The number of strategies included in the library}
+	\label{fig:number_of_strategies_against_date}
+\end{figure}
+
+Nevertheless, due to previous research being done in an irreproducible manner
+with, for example, no source code and/or vaguely described strategies, not all
+previous tournaments can yet be reproduced. In fact, some of the early
+tournaments might be impossible to reproduce as the source code is apparently
+forever lost. This library aims ensure reproducibility in the future.
 
 One tournament that is possible to reproduce is that of
 \cite{Stewart2012}. The strategies used in that tournament are the following:
@@ -475,12 +596,20 @@ One tournament that is possible to reproduce is that of
 \end{multicols}
 
 This can be reproduced as shown in Figure~\ref{fig:stewart-code}, which gives
-the plot of Figure~\ref{fig:stewart_tournament}.
+the plot of Figure~\ref{fig:stewart_tournament}. Note that slight differences
+with the results of \cite{Stewart2012} are due to stochastic behaviour of some
+strategies.
+
+\begin{figure}[!hbtp]
+	\centering
+	\includegraphics[width=.75\textwidth]{stewart_tournament.pdf}
+	\caption{The results from \cite{Stewart2012}.}
+	\label{fig:stewart_tournament}
+\end{figure}
 
 \begin{figure}[!hbtp]
     \begin{verbatim}
 >>> import axelrod
-
 >>> strategies = [axelrod.Cooperator(),
 ...               axelrod.Defector(),
 ...               axelrod.ZDExtort2(),
@@ -503,7 +632,8 @@ the plot of Figure~\ref{fig:stewart_tournament}.
 >>> tournament = axelrod.Tournament(strategies)
 >>> results = tournament.play()
 >>> plot = axelrod.Plot(results)
->>> plot.boxplot()
+>>> p = plot.boxplot()
+>>> p.show()
     \end{verbatim}
     \caption{Source code for reproducing the tournament of \cite{Stewart2012}}
     \label{fig:stewart-code}
@@ -512,18 +642,31 @@ the plot of Figure~\ref{fig:stewart_tournament}.
 In parallel to the Python library, a tournament is being kept up to date that
 pits all available strategies against each other. Figure~\ref{fig:tournament}
 shows the results from the full tournament which can also be seen (in full
-detail) here: \url{http://axelrod-tournament.readthedocs.org/}.
+detail) here: \url{http://axelrod-tournament.readthedocs.org/}. Data sets are
+also available showing the plays of every match that takes place. Note that to
+recreate this tournament simply requires changing a single line of the code
+shown in Figure~\ref{fig:demo_tournament_commands}, changing:
+
+\begin{verbatim}
+>>> strategies = [s() for s in axelrod.demo_strategies]}
+\end{verbatim}
+
+to:
+
+\begin{verbatim}
+>>> strategies = [s() for s in axelrod.ordinary_strategies]}.
+\end{verbatim}
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.75\textwidth]{tournament.pdf}
-    \caption{Results from the library tournament (2016-03-31)}
+    \caption{Results from the library tournament (2016-06-13)}
     \label{fig:tournament}
 \end{figure}
 
-The current winning strategy is a novel strategy called: Looker Up. This is a
-strategy that maps a given set of states to actions. The state space is defined
-generically by \(m, n\) so as to map states to actions as shown
+The current winning strategy is new to the research literature: Looker Up. This
+is a strategy that maps a given set of states to actions. The state space is
+defined generically by \(m, n\) so as to map states to actions as shown
 in~(\ref{equ:example_of_lookerup}).
 
 \begin{equation}
@@ -537,22 +680,24 @@ the mapping for \(m=8, n=2\). Intuitively, this state space uses the initial
 plays of the opponent to gain some information about its intentions whilst still
 taking into account the recent play. The actual winning strategy is an instance
 of the framework for \(m=n=2\) for which a particle swarm algorithm has been
-used to train it, the second placed strategy was trained with an evolutionary
-algorithms. More details of this can be found in \cite{Jones2015, George2016}.
+used to train it. The second placed strategy was trained with an evolutionary
+algorithm \cite{Jones2015, George2016}.
 In \cite{Knight2015} experiments are described that evaluate how the second
 placed strategy behaves in environments other than those in which it was trained
 and it continues to perform strongly.
 
 There are various other insights that have been gained from ongoing open
-research on the library. These include:
+research on the library, details can be found in \cite{Harper2015}. These include:
 
 \begin{itemize}[noitemsep,topsep=0pt]
     \item A closer look at zero determinant strategies, showing that
-        extortionate strategies obtain a large number of wins \textit{but} do
-        not perform particularly well. This is relevant given the findings of
-        \cite{Stewart2012} in which zero determinant strategies are shown to be
-        able to perform better than any other strategy. This finding extends
-        to noisy tournaments (which are also implemented in the library).
+		extortionate strategies obtain a large number of wins: the number of
+		times they outscore an opponent during a given match. \textit{However} these do
+		not perform particularly well from the overall tournament ranking point of
+		view. This is relevant given the findings of \cite{Stewart2012} in which zero
+		determinant strategies are shown to be able to perform better than any other
+		strategy. This finding extends to noisy tournaments (which are also implemented
+		in the library).
     \item This negative relationship between wins and performance does not
         generalise. There are some strategies that perform well, both in terms
         of matches won and overall performance: Back stabber, Double crosser,
@@ -562,124 +707,11 @@ research on the library. These include:
         well in both wins and score as demonstrated by Looker Up and Fool Me
         Once.
     \item Strategies like Looker Up and Meta Hunter seem to be generally
-        cooperative yet still exploit naive strategies. The MetaHunter strategy
+        cooperative yet still exploit naive strategies. The Meta Hunter strategy
         is a particular type of Meta strategy which uses a variety of other
         strategy behaviours to choose a best action. These strategies perform
         very well in general and continue to do so in noisy tournaments.
 \end{itemize}
-
-Details for the above can be found in \cite{Harper2015}.
-
-\section*{(2) Availability}\label{sec:availability}
-
-\section*{Operating system}
-
-The Axelrod library runs on all major operating systems: Linux, Mac OSX and
-Windows.
-
-\section*{Programming language}
-
-The library is continuously tested for Python 2.7, 3.3, 3.4 and 3.5.
-
-\section*{Additional system requirements}
-
-There are no specific additional system requirements.
-
-\section*{Support}
-
-Support is readily available in multiple forms:
-
-\begin{itemize}[noitemsep,topsep=0pt]
-    \item An online chat channel:
-        \url{https://gitter.im/Axelrod-Python/Axelrod}.
-    \item An  email group:
-        \url{https://groups.google.com/forum/#!topic/axelrod-python}.
-\end{itemize}
-
-\section*{Dependencies}
-
-The following Python libraries are required dependencies:
-
-\begin{multicols}{3}
-    \begin{itemize}[noitemsep,topsep=0pt]
-        \item Numpy 1.9.2:
-        \item Matplotlib 1.4.2:
-        \item Cloudpickle  0.1.1:
-        \item Hypothesis  3.0:
-        \item Testfixtures  4.9.1:
-    \end{itemize}
-\end{multicols}
-
-\section*{List of contributors}
-
-The names of all the contributors are not known: as these were mainly done
-through Github and certain have not provided their name or responded to a
-request for further details. Here is an incomplete list:
-
-\begin{multicols}{2}
-    \begin{itemize}[noitemsep,topsep=0pt]
-        \item {Owen Campbell}
-        \item {Marc Harper}
-        \item {Vincent Knight}
-        \item {Karol M. Langner}
-        \item {James Campbell}
-        \item {Thomas Campbell}
-        \item {Alex Carney}
-        \item {Martin Chorley}
-        \item {Cameron Davidson-Pilon}
-        \item {Kristian Glass}
-        \item {Tom{\'a}{\v s} Ehrlich}
-        \item {Martin Jones}
-        \item {Georgios Koutsovoulos}
-        \item {Marissa Tibble}
-        \item {Jochen M{\"u}ller}
-        \item {Geraint Palmer}
-        \item {Paul Slavin}
-        \item {Timothy Standen}
-        \item {Luis Visintini}
-        \item {Karl Molden}
-        \item {Jason Young}
-        \item {Andy Boot}
-        \item {Anna Barriscale}
-    \end{itemize}
-\end{multicols}
-
-\section*{Software location:}
-
-{\bf Archive}
-
-\begin{description}[noitemsep,topsep=0pt]
-    \item[Name:] Zenodo
-    \item[Persistent identifier:]
-\href{https://zenodo.org/record/45187}{10.5281/zenodo.45187}
-    \item[Licence:] MIT
-    \item[Publisher:]  Vincent Knight
-    \item[Version published:] Axelrod: Alternator Release. v0.0.28
-    \item[Date published:] 2016-01-26
-\end{description}
-
-{\bf Code repository}
-
-\begin{description}[noitemsep,topsep=0pt]
-    \item[Name:] Github
-    \item[Identifier:] \url{https://github.com/Axelrod-Python/Axelrod}
-    \item[Licence:] MIT
-    \item[Date published:] 2015-02-16
-\end{description}
-
-\section*{Reuse potential}\label{sec:reuse}
-
-The Axelrod library has been designed with sustainable software practice in
-mind. There is an extensive documentation suite:
-\url{axelrod.readthedocs.org/en/latest/}. Furthermore, there is a growing set
-of example Jupyter notebooks available here:
-\url{https://github.com/Axelrod-Python/Axelrod-notebooks}.
-
-The ability to have readily available a large number of strategies makes this
-tool an excellent and obvious example of the benefits of open research which
-should positively impact the game theoretic community.
-This has been evidenced by the work described: the library has already shown
-it's potential for reuse.
 
 \section*{Conclusion}
 
@@ -696,13 +728,14 @@ list of the current abilities include:
     \item Noisy tournaments.
     \item Tournaments with probabilistic ending of interactions.
     \item Ecological analysis of tournaments.
+    \item Moran processes.
     \item Morality metrics based on \cite{Singer-Clark2014}.
     \item Transformation of strategies (in effect giving an infinite number of
         strategies).
     \item Classification of strategies according to multiple dimensions.
     \item Gathering of full interaction history for all interactions.
     \item Parallelization of computations for tournaments with a high
-        computational cost \cite{Pathos, Mckerns2011}.
+        computational cost.
 \end{itemize}
 
 These capabilities are constantly being updated.
